@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.5)
+The top-level auxiliary file: Entropy-NDH.aux
+The style file: plain.bst
+Database file #1: bibliojgr.bib
+Warning--I didn't find a database entry for "REF"
+Warning--I didn't find a database entry for "Burnham:2010"
+Warning--there's a number but no volume in Fuster:2000
+You've used 50 entries,
+            2118 wiz_defined-function locations,
+            827 strings with 16019 characters,
+and the built_in function-call counts, 21179 in all, are:
+= -- 2034
+> -- 1354
+< -- 0
++ -- 538
+- -- 484
+* -- 1941
+:= -- 3654
+add.period$ -- 184
+call.type$ -- 50
+change.case$ -- 391
+chr.to.int$ -- 0
+cite$ -- 51
+duplicate$ -- 549
+empty$ -- 1341
+format.name$ -- 484
+if$ -- 4126
+int.to.chr$ -- 0
+int.to.str$ -- 50
+missing$ -- 51
+newline$ -- 287
+num.names$ -- 101
+pop$ -- 275
+preamble$ -- 1
+purify$ -- 342
+quote$ -- 0
+skip$ -- 354
+stack$ -- 0
+substring$ -- 1442
+swap$ -- 50
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 196
+warning$ -- 1
+while$ -- 180
+width$ -- 52
+write$ -- 616
+(There were 3 warnings)

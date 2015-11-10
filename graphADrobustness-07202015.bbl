@@ -1,0 +1,271 @@
+\begin{thebibliography}{10}
+
+\bibitem{Raichle:2005}
+M.~E. Raichle and D.~A. Gusnard, ``Intrinsic brain activity sets the stage for
+  expression of motivated behavior,'' {\em The Journal of Comparative
+  Neurology}, vol.~493, no.~1, pp.~167--176, 2005.
+
+\bibitem{Fransson:2006}
+P.~Fransson, ``How default is the default mode of brain function?: Further
+  evidence from intrinsic {BOLD} signal fluctuations,'' {\em Neuropsychologia},
+  vol.~44, no.~14, pp.~2836--2845, 2006.
+
+\bibitem{kokkonen_preoperative_2009}
+S.-M. Kokkonen, J.~Nikkinen, J.~Remes, J.~Kantola, T.~Starck, M.~Haapea,
+  J.~Tuominen, O.~Tervonen, and V.~Kiviniemi, ``Preoperative localization of
+  the sensorimotor area using independent component analysis of resting-state
+  {fMRI},'' {\em Magnetic resonance imaging}, vol.~27, pp.~733--740, July 2009.
+\newblock {PMID:} 19110394.
+
+\bibitem{damoiseaux_consistent_2006}
+J.~S. Damoiseaux, S.~A. R.~B. Rombouts, F.~Barkhof, P.~Scheltens, C.~J. Stam,
+  S.~M. Smith, and C.~F. Beckmann, ``Consistent resting-state networks across
+  healthy subjects,'' {\em Proceedings of the National Academy of Sciences of
+  the United States of America}, vol.~103, pp.~13848--13853, Sept. 2006.
+\newblock {PMID:} 16945915.
+
+\bibitem{hampson_detection_2002}
+M.~Hampson, B.~S. Peterson, P.~Skudlarski, J.~C. Gatenby, and J.~C. Gore,
+  ``Detection of functional connectivity using temporal correlations in {MR}
+  images,'' {\em Human brain mapping}, vol.~15, pp.~247--262, Apr. 2002.
+\newblock {PMID:} 11835612.
+
+\bibitem{hunter_neural_2006}
+M.~D. Hunter, S.~B. Eickhoff, T.~W.~R. Miller, T.~F.~D. Farrow, I.~D.
+  Wilkinson, and P.~W.~R. Woodruff, ``Neural activity in speech-sensitive
+  auditory cortex during silence,'' {\em Proceedings of the National Academy of
+  Sciences of the United States of America}, vol.~103, pp.~189--194, Jan. 2006.
+\newblock {PMID:} 16371474.
+
+\bibitem{fox_spontaneous_2006}
+M.~D. Fox, M.~Corbetta, A.~Z. Snyder, J.~L. Vincent, and M.~E. Raichle,
+  ``Spontaneous neuronal activity distinguishes human dorsal and ventral
+  attention systems,'' {\em Proceedings of the National Academy of Sciences of
+  the United States of America}, vol.~103, pp.~10046--10051, June 2006.
+\newblock {PMID:} 16788060.
+
+\bibitem{vincent_evidence_2008}
+J.~L. Vincent, I.~Kahn, A.~Z. Snyder, M.~E. Raichle, and R.~L. Buckner,
+  ``Evidence for a frontoparietal control system revealed by intrinsic
+  functional connectivity,'' {\em Journal of neurophysiology}, vol.~100,
+  pp.~3328--3342, Dec. 2008.
+\newblock {PMID:} 18799601.
+
+\bibitem{biswal_functional_1995}
+B.~Biswal, F.~Z. Yetkin, V.~M. Haughton, and J.~S. Hyde, ``Functional
+  connectivity in the motor cortex of resting human brain using echo-planar
+  {MRI},'' {\em Magnetic resonance in medicine: official journal of the Society
+  of Magnetic Resonance in Medicine / Society of Magnetic Resonance in
+  Medicine}, vol.~34, pp.~537--541, Oct. 1995.
+\newblock {PMID:} 8524021.
+
+\bibitem{robinson_resting_2009}
+S.~Robinson, G.~Basso, N.~Soldati, U.~Sailer, J.~Jovicich, L.~Bruzzone,
+  I.~Kryspin-Exner, H.~Bauer, and E.~Moser, ``A resting state network in the
+  motor control circuit of the basal ganglia,'' {\em BMC Neuroscience},
+  vol.~10, p.~137, Nov. 2009.
+
+\bibitem{maldjian_functional_2001}
+J.~A. Maldjian, ``Functional {Connectivity} {MR} {Imaging}: {Fact} or
+  {Artifact}?,'' {\em American Journal of Neuroradiology}, vol.~22,
+  pp.~239--240, Feb. 2001.
+
+\bibitem{fingelkurts_persistent_2011}
+A.~A. Fingelkurts and A.~A. Fingelkurts, ``Persistent operational synchrony
+  within brain default-mode network and self-processing operations in healthy
+  subjects,'' {\em Brain and Cognition}, vol.~75, pp.~79--90, Mar. 2011.
+
+\bibitem{calhoun_review_2009}
+V.~D. Calhoun, J.~Liu, and T.~Adali, ``A review of group {ICA} for {fMRI} data
+  and {ICA} for joint inference of imaging, genetic, and {ERP} data,'' {\em
+  NeuroImage}, vol.~45, pp.~S163--172, Mar. 2009.
+
+\bibitem{biswal_toward_2010}
+B.~B. Biswal, M.~Mennes, X.-N. Zuo, S.~Gohel, C.~Kelly, S.~M. Smith, C.~F.
+  Beckmann, J.~S. Adelstein, R.~L. Buckner, S.~Colcombe, A.-M. Dogonowski,
+  M.~Ernst, D.~Fair, M.~Hampson, M.~J. Hoptman, J.~S. Hyde, V.~J. Kiviniemi,
+  R.~Kötter, S.-J. Li, C.-P. Lin, M.~J. Lowe, C.~Mackay, D.~J. Madden, K.~H.
+  Madsen, D.~S. Margulies, H.~S. Mayberg, K.~McMahon, C.~S. Monk, S.~H.
+  Mostofsky, B.~J. Nagel, J.~J. Pekar, S.~J. Peltier, S.~E. Petersen, V.~Riedl,
+  S.~A. R.~B. Rombouts, B.~Rypma, B.~L. Schlaggar, S.~Schmidt, R.~D. Seidler,
+  G.~J. Siegle, C.~Sorg, G.-J. Teng, J.~Veijola, A.~Villringer, M.~Walter,
+  L.~Wang, X.-C. Weng, S.~Whitfield-Gabrieli, P.~Williamson, C.~Windischberger,
+  Y.-F. Zang, H.-Y. Zhang, F.~X. Castellanos, and M.~P. Milham, ``Toward
+  discovery science of human brain function,'' {\em Proceedings of the National
+  Academy of Sciences of the United States of America}, vol.~107,
+  pp.~4734--4739, Mar. 2010.
+
+\bibitem{fair_functional_2009}
+D.~A. Fair, A.~L. Cohen, J.~D. Power, N.~U.~F. Dosenbach, J.~A. Church, F.~M.
+  Miezin, B.~L. Schlaggar, and S.~E. Petersen, ``Functional brain networks
+  develop from a "local to distributed" organization,'' {\em PLoS computational
+  biology}, vol.~5, p.~e1000381, May 2009.
+
+\bibitem{wang_graph-based_2010}
+J.~Wang, X.~Zuo, and Y.~He, ``Graph-based network analysis of resting-state
+  functional {MRI},'' {\em Frontiers in Systems Neuroscience}, vol.~4, p.~16,
+  2010.
+
+\bibitem{he_graph_2010}
+Y.~He and A.~Evans, ``Graph theoretical modeling of brain connectivity,'' {\em
+  Current opinion in neurology}, vol.~23, pp.~341--350, Aug. 2010.
+\newblock {PMID:} 20581686.
+
+\bibitem{wang_graph_2011}
+J.-H. Wang, X.-N. Zuo, S.~Gohel, M.~P. Milham, B.~B. Biswal, and Y.~He, ``Graph
+  {Theoretical} {Analysis} of {Functional} {Brain} {Networks}: {Test}-{Retest}
+  {Evaluation} on {Short}- and {Long}-{Term} {Resting}-{State} {Functional}
+  {MRI} {Data},'' {\em PLoS ONE}, vol.~6, p.~e21976, July 2011.
+
+\bibitem{yu_altered_2011}
+Q.~Yu, J.~Sui, S.~Rachakonda, H.~He, W.~Gruner, G.~Pearlson, K.~A. Kiehl, and
+  V.~D. Calhoun, ``Altered {Topological} {Properties} of {Functional} {Network}
+  {Connectivity} in {Schizophrenia} during {Resting} {State}: {A}
+  {Small}-{World} {Brain} {Network} {Study},'' {\em PLoS ONE}, vol.~6,
+  p.~e25423, Sept. 2011.
+
+\bibitem{brier_functional_2014}
+M.~R. Brier, J.~B. Thomas, A.~M. Fagan, J.~Hassenstab, D.~M. Holtzman, T.~L.
+  Benzinger, J.~C. Morris, and B.~M. Ances, ``Functional connectivity and graph
+  theory in preclinical {Alzheimer}'s disease,'' {\em Neurobiology of Aging},
+  vol.~35, pp.~757--768, Apr. 2014.
+
+\bibitem{sala-llonch_changes_2014}
+R.~Sala-Llonch, C.~Junquin, E.~M. Arenaza-Urquijo, D.~Vidal-Pineiro,
+  C.~Valls-Pedret, E.~M. Palacios, S.~Domenech, A.~Salv�, N.~Bargalló, and
+  D.~Bartrés-Faz, ``Changes in whole-brain functional networks and memory
+  performance in aging,'' {\em Neurobiology of Aging}, vol.~35, pp.~2193--2202,
+  Oct. 2014.
+
+\bibitem{gazzaniga_new_1999}
+M.~S. Gazzaniga, ed., {\em The New Cognitive Neurosciences: Second Edition}.
+\newblock The {MIT} Press, 2~ed., Nov. 1999.
+
+\bibitem{Fuster:2000}
+J.~Fuster, ``The module: crisis of a paradigm book review, "the new cognitive
+  neurosciences" 2nd edition, m.s. gazzaniga, editor-in-chief, mit press,''
+  {\em Neuron}, no.~26, pp.~51--53, 2000.
+
+\bibitem{bassett_understanding_2011}
+D.~S. Bassett and M.~S. Gazzaniga, ``Understanding complexity in the human
+  brain,'' {\em Trends in cognitive sciences}, vol.~15, pp.~200--209, May 2011.
+\newblock {PMID:} 21497128.
+
+\bibitem{Watts:1998}
+D.~Watts and S.~Strogatz, ``Collective dynamics of 'small-world' networks,''
+  {\em Nature}, vol.~393, pp.~244--442, 1998.
+
+\bibitem{Bassett:2006}
+D.~S. Bassett and E.~Bullmore, ``Small-world brain networks,'' {\em The
+  Neuroscientist}, vol.~12, pp.~512--523, Dec. 2006.
+
+\bibitem{anderson_decreased_2013}
+A.~Anderson and M.~S. Cohen, ``Decreased small-world functional network
+  connectivity and clustering across resting state networks in schizophrenia:
+  an {fMRI} classification tutorial,'' {\em Frontiers in Human Neuroscience},
+  vol.~7, p.~520, 2013.
+
+\bibitem{stam_modern_2014}
+C.~J. Stam, ``Modern network science of neurological disorders,'' {\em Nature
+  Reviews Neuroscience}, vol.~15, pp.~683--695, Oct. 2014.
+
+\bibitem{Supekar:2008}
+K.~Supekar, V.~Menon, D.~Rubin, M.~Musen, and M.~D. Greicius, ``Network
+  analysis of intrinsic functional brain connectivity in alzheimer's disease,''
+  {\em {PLoS} Computational Biology}, vol.~4, June 2008.
+\newblock {PMID:} 18584043 {PMCID:} {PMC2435273}.
+
+\bibitem{liu_disrupted_2008}
+Y.~Liu, M.~Liang, Y.~Zhou, Y.~He, Y.~Hao, M.~Song, C.~Yu, H.~Liu, Z.~Liu, and
+  T.~Jiang, ``Disrupted small-world networks in schizophrenia,'' {\em Brain: a
+  journal of neurology}, vol.~131, pp.~945--961, Apr. 2008.
+\newblock {PMID:} 18299296.
+
+\bibitem{liao_altered_2010}
+W.~Liao, Z.~Zhang, Z.~Pan, D.~Mantini, J.~Ding, X.~Duan, C.~Luo, G.~Lu, and
+  H.~Chen, ``Altered functional connectivity and small-world in mesial temporal
+  lobe epilepsy,'' {\em {PLoS} {ONE}}, vol.~5, p.~e8525, Jan. 2010.
+
+\bibitem{zhang_altered_2011}
+Z.~Zhang, W.~Liao, H.~Chen, D.~Mantini, J.-R. Ding, Q.~Xu, Z.~Wang, C.~Yuan,
+  G.~Chen, Q.~Jiao, and G.~Lu, ``Altered functional–structural coupling of
+  large-scale brain networks in idiopathic generalized epilepsy,'' {\em Brain},
+  vol.~134, pp.~2912--2928, Oct. 2011.
+
+\bibitem{goni_resting-brain_2014}
+J.~Goni, M.~P. v.~d. Heuvel, A.~Avena-Koenigsberger, N.~V.~d. Mendizabal, R.~F.
+  Betzel, A.~Griffa, P.~Hagmann, B.~Corominas-Murtra, J.-P. Thiran, and
+  O.~Sporns, ``Resting-brain functional connectivity predicted by analytic
+  measures of network communication,'' {\em Proceedings of the National Academy
+  of Sciences}, vol.~111, pp.~833--838, Jan. 2014.
+
+\bibitem{irimia_systematic_2014}
+A.~Irimia and J.~D. Van~Horn, ``Systematic network lesioning reveals the core
+  white matter scaffold of the human brain,'' {\em Frontiers in Human
+  Neuroscience}, vol.~8, p.~51, 2014.
+
+\bibitem{latora_efficient_2001}
+V.~Latora and M.~Marchiori, ``Efficient behavior of small-world networks,''
+  {\em Physical Review Letters}, vol.~87, p.~198701, Oct. 2001.
+
+\bibitem{jiao_granger_2011}
+Q.~Jiao, G.~Lu, Z.~Zhang, Y.~Zhong, Z.~Wang, Y.~Guo, K.~Li, M.~Ding, and
+  Y.~Liu, ``Granger causal influence predicts {BOLD} activity levels in the
+  default mode network,'' {\em Human Brain Mapping}, vol.~32, pp.~154--161,
+  Jan. 2011.
+
+\bibitem{tzourio-mazoyer_automated_2002}
+N.~Tzourio-Mazoyer, B.~Landeau, D.~Papathanassiou, F.~Crivello, O.~Etard,
+  N.~Delcroix, B.~Mazoyer, and M.~Joliot, ``Automated anatomical labeling of
+  activations in {SPM} using a macroscopic anatomical parcellation of the {MNI}
+  {MRI} single-subject brain,'' {\em NeuroImage}, vol.~15, pp.~273--289, Jan.
+  2002.
+
+\bibitem{koch_effects_2010}
+W.~Koch, S.~Teipel, S.~Mueller, K.~Buerger, A.~L.~W. Bokde, H.~Hampel,
+  U.~Coates, M.~Reiser, and T.~Meindl, ``Effects of aging on default mode
+  network activity in resting state {fMRI}: does the method of analysis
+  matter?,'' {\em NeuroImage}, vol.~51, pp.~280--287, May 2010.
+
+\bibitem{damoiseaux_reduced_2008}
+J.~S. Damoiseaux, C.~F. Beckmann, E.~J.~S. Arigita, F.~Barkhof, P.~Scheltens,
+  C.~J. Stam, S.~M. Smith, and S.~a. R.~B. Rombouts, ``Reduced resting-state
+  brain activity in the "default network" in normal aging,'' {\em Cerebral
+  Cortex (New York, N.Y.: 1991)}, vol.~18, pp.~1856--1864, Aug. 2008.
+
+\bibitem{salami_elevated_2014}
+A.~Salami, S.~Pudas, and L.~Nyberg, ``Elevated hippocampal resting-state
+  connectivity underlies deficient neurocognitive function in aging,'' {\em
+  Proceedings of the National Academy of Sciences}, vol.~111, pp.~17654--17659,
+  Dec. 2014.
+
+\bibitem{fjell_brain_2015}
+A.~M. Fjell, M.~H. Sneve, A.~B. Storsve, H.~Grydeland, A.~Yendiki, and K.~B.
+  Walhovd, ``Brain {Events} {Underlying} {Episodic} {Memory} {Changes} in
+  {Aging}: {A} {Longitudinal} {Investigation} of {Structural} and {Functional}
+  {Connectivity},'' {\em Cerebral Cortex}, p.~bhv102, May 2015.
+
+\bibitem{dami-2015}
+J.~Damoiseaux, R.~Viviano, P.~Yuan, and N.~Raz, ``Adult age differences in
+  functional connectivity in the default mode network,'' in {\em Organization
+  for Human Brain Mapping}, (Hawaii), June 14-18, 2015.
+
+\bibitem{crossley_hubs_2014}
+N.~A. Crossley, A.~Mechelli, J.~Scott, F.~Carletti, P.~T. Fox, P.~McGuire, and
+  E.~T. Bullmore, ``The hubs of the human connectome are generally implicated
+  in the anatomy of brain disorders,'' {\em Brain}, vol.~137, pp.~2382--2395,
+  Aug. 2014.
+
+\bibitem{whitfield-gabrieli_default_2012}
+S.~Whitfield-Gabrieli and J.~M. Ford, ``Default mode network activity and
+  connectivity in psychopathology,'' {\em Annual Review of Clinical
+  Psychology}, vol.~8, pp.~49--76, 2012.
+
+\bibitem{vergun_characterizing_2013}
+S.~Vergun, A.~S. Deshpande, T.~B. Meier, J.~Song, D.~L. Tudorascu, V.~A. Nair,
+  V.~Singh, B.~B. Biswal, M.~E. Meyerand, R.~M. Birn, and V.~Prabhakaran,
+  ``Characterizing {Functional} {Connectivity} {Differences} in {Aging}
+  {Adults} using {Machine} {Learning} on {Resting} {State} {fMRI} {Data},''
+  {\em Frontiers in Computational Neuroscience}, vol.~7, p.~38, 2013.
+
+\end{thebibliography}

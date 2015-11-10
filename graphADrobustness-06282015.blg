@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.5)
+The top-level auxiliary file: graphADrobustness-06282015.aux
+The style file: ieeetr.bst
+Database file #1: bibliojgr.bib
+Warning--I didn't find a database entry for "robinson_resting_2009"
+Warning--I didn't find a database entry for "fair_functional_2009"
+Warning--I didn't find a database entry for "HERE"
+Warning--I didn't find a database entry for "batagelj_pajek_2004"
+You've used 30 entries,
+            1876 wiz_defined-function locations,
+            684 strings with 11343 characters,
+and the built_in function-call counts, 11075 in all, are:
+= -- 1081
+> -- 609
+< -- 0
++ -- 214
+- -- 184
+* -- 901
+:= -- 1614
+add.period$ -- 42
+call.type$ -- 30
+change.case$ -- 30
+chr.to.int$ -- 0
+cite$ -- 30
+duplicate$ -- 492
+empty$ -- 815
+format.name$ -- 184
+if$ -- 2606
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 30
+newline$ -- 105
+num.names$ -- 31
+pop$ -- 32
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 449
+stack$ -- 0
+substring$ -- 831
+swap$ -- 274
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 103
+width$ -- 32
+write$ -- 325
+(There were 4 warnings)

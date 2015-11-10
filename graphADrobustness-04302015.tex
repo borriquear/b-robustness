@@ -1,0 +1,567 @@
+%%% 30-04-2015 updated from 02-15-2015
+%%% ONLY node and set of nodes robustness measure 
+%Random walk on AD Young vs  Elder
+\documentclass[graybox]{svmult}
+\usepackage[hang]{footmisc}
+\setlength{\footnotemargin}{0pt}
+\usepackage{footmisc,multicol, graphicx,makeidx,courier,helvet}
+\usepackage[latin1]{inputenc}
+\usepackage{amssymb,amsmath,amsthm} 
+%\usepackage{mathptmx}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+% choose options for [] as required from the list
+% in the Reference Guide
+
+\usepackage{mathptmx}       % selects Times Roman as basic font
+\usepackage{helvet}         % selects Helvetica as sans-serif font
+\usepackage{courier}        % selects Courier as typewriter font
+\usepackage{type1cm}        % activate if the above 3 fonts are
+                            % not available on your system
+%
+\usepackage{makeidx}         % allows index generation
+\usepackage{graphicx}        % standard LaTeX graphics tool
+                             % when including figure files
+\usepackage{multicol}        % used for the two-column index
+%\usepackage[bottom]{footmisc}% places footnotes at page bottom
+% see the list of further useful packages
+% in the Reference Guide
+
+\makeindex             % used for the subject index
+                       % please use the style svind.ist with
+                       % your makeindex program
+\begin{document}
+\def\s{\sigma}
+
+\title*{An informational approach to the Network Disease Hypothesis in resting
+state fMRI}
+\author{Jaime Gomez-Ramirez, Yujie Li, Qiong Wu, Xiaoyu Tang, Jinglong Wu}
+\institute{ \at  Biomedical Engineering Laboratory, Okayama University,  Japan
+\\ Autonomous Systems Laboratory, Universidad Politécnica de Madrid, Spain \\
+ \email{jd.gomez@upm.es}}
+ 
+\maketitle
+
+\abstract{Here
+we combine graph and information theory based approaches to understand network
+robustness in resting state-fMRI (R-fMRI). We calculate how the network
+robustness is affected upon the removal of nodes in the functional
+connectivity network in resting state for elder subjects compared to young
+subjects. We provide a measure of network robustness and we show that this
+measure can be used as a predictor of aging. %Areas related bla
+%Then, we study
+%the stochastic process defined by a random walk on the functional connectivity
+%graph, to provide information theoretic measures such as the entropy rate of
+%the stationary Markov chain. We find that the entropy
+%rate of the functional connectivity network modeled as a Markov chain explains
+%why the removal of some nodes increases the efficiency of the informational
+%flow shown in the graph based approach. 
+We argue that the discovery of network
+based biomarkers for neurodegenerative conditions will rely on the combination
+of both graph theoretic and informational approaches in R-fMRI.}
+%We investigate the effects of focal lesions (removing a spatially localized set of nodes and connections) on the endogenous dynamics of the remaining brain. We identify structural measures of brain connectivity that are predictive of the magnitude of the perturbations in the endogenous neural dynamics. We discuss our results in light of known behavioral and cognitive lesion effects.
+\keywords{resting state fMRI, network degeneration hypothesis, Markov chain,
+relative entropy}
+
+\section{Introduction}
+The objective of this work is to study robustness i.e., resiliance to
+perurbations, in resting state functional connectivity networks. 
+%Relevance of RS 
+It has been suggested that fluctuations in the BOLD signal measured
+in humans in resting state, represent the neuronal activity baseline and shape
+spatially consistent patterns \cite{Raichle:2005}, \cite{Fransson:2006}. These
+slow fluctuations in the BOLD signal found in resting subjects, are highly
+coherent within either structural or functional networks in the human brain. Therefore,
+exploring these fluctuations could lead to a better understanding of the
+brain's intrinsic or spontaneous neural activity.
+Functional correlation based on the synchrony of low-frequency blood flow
+fluctuations in resting state, have been identified in the sensorimotor
+\cite{kokkonen_preoperative_2009}, visual \cite{damoiseaux_consistent_2006},
+language \cite{hampson_detection_2002}, auditory
+\cite{hunter_neural_2006}, dorsal and ventral attention
+\cite{fox_spontaneous_2006} and the frontoparietal control system
+\cite{vincent_evidence_2008}.
+The systematic study of those patterns using correlation
+analysis techniques has identified a number of resting state networks, which
+are functionally relevant networks found in subjects in the absence of either
+goal directed-task or external stimuli.
+
+%Seed based versus ICA 
+The visual identification of the
+overall connectivity patters in resting state functional magnetic resonance
+imaging (R-fMRI), has been assessed using either model-based and model-free
+approaches. In the former, statistical parametric maps of brain activation are
+built upon voxel-wise analysis location \cite{biswal_functional_1995}.
+While this approach has been successful in
+the identification of motor networks, it shows important limitations when
+the seed voxel cannot be easily identified \cite{maldjian_functional_2001}.
+For example, in brain areas with unclear boundaries i.e., cognitive networks
+involved for instance, in memory or self processing opertions
+\cite{fingelkurts_persistent_2011}. Independent Component Analysis (ICA), on
+the other hand, is a model-free approach that allows separating resting
+fluctuations from other signal variations, resulting on a collection of spatial
+maps, one for each independent component, that represent functionally relevant networks in the brain
+\cite{calhoun_review_2009}.
+%Bad sentence, improve style
+While ICA has the advantage over model-free methods that it does not need to
+assume a specific temporal model of correlation between regions of
+interest, the functional relevance of the different components is, however,
+computed relative to their resemblance to a number of networks based on
+criteria that are not easily formalized \cite{biswal_toward_2010}.
+ %adv
+Graph-based techniques have proliferated in the last years providing new
+insights into the structure function relationship in the healthy brain, and
+in aging and neuropathological disorders \cite{fair_functional_2009}, 
+\cite{wang_graph-based_2010}, \cite{he_graph_2010}. Prove of the utility of this
+approach is that notable proponents of a modularist vision of brain
+connectivity to understand cognition, such as Gazzaniga
+\cite{gazzaniga_new_1999} (see \cite{Fuster:2000} for an early critic of the
+modularist approach by Fuster who anticipates a shift toward networks) has
+now embraced the complex brain networks approach to understand the interplay
+between structure and function in brain systems \cite{bassett_understanding_2011}.
+ 
+Network-based approaches to R-fMRI data have demonstrated
+non-trivial topological properties of functional networks in the human brain.
+Among these is the knowledge that the brain's intrinsic activity is organized
+as a small-world, highly efficient network, with significant modularity and
+highly connected hub regions. These network properties have also been found to
+change throughout normal development, aging, and in various pathological
+conditions. 
+%Review on GT methods 
+Graph theory provides a
+theoretical framework to investigate the overall architecture of the brain.
+Specifically, the topological organization of brain networks has been recently studied with graph theory. 
+The use of graph theoretic techniques to model brain networks has shifted the 
+emphasis from the identification of local subnetworks -default mode network,
+primary sensory motor network etc.- to the quantitative study of the topological
+and informational characteristics of large-scale brain networks.
+
+The application of graph theoretic analysis has demonstrated non-trivial
+topological properties of functional networks in the human brain. 
+Large-scale anatomical
+connectivity analysis in the mammalian brain, shows that brain topology is
+neither random nor regular. Instead, small world
+architectures \cite{Watts:1998} -highly clustered nodes connected thorough
+relatively short paths- have been identified in brain networks. 
+%\cite{Vaessen:2010}.
+Small world networks are not solely
+structural, functional networks with a small world organization have been
+identified in the mammal brain \cite{Bassett:2006}. 
+These network properties have also been consistently found across different
+conditions, including normal development, aging, and
+in various pathological conditions. For a review of network analysis
+in resting-state functional MRI, see \cite{wang_graph-based_2010}. 
+
+Computational simulations of disruptions in the network
+architecture of resting state can give clues about
+normal development and pathological conditions. For example, Supekar and
+colleagues \cite{Supekar:2008} have shown that the deterioration of small world
+properties such as the lowering of the cluster coefficient, affect local
+network connectivity, which in turn may work as a network biomarker for
+Alzheimer's disease. Abnormalities in small-worldness may also have a
+significant positive correlation in, for example, schizophrenia
+\cite{liu_disrupted_2008} and epilepsy \cite{liao_altered_2010}.
+While
+network-based studies have been successful in delineating generic network properties, such as
+path length or clustering, additional work is needed in order to come to grips
+with the internal working of the systems underlying the network. 
+In this paper we investigate the effects of aging in resting state
+functional connectivity nertworks using a methodology that combines
+graph and information theoretic tools. We systematically study how network
+robustness -functional network invariance under perturbation- is affected upon
+the removal of nodes in the functional connectivity network in resting state
+for both young and elder subjects.
+
+The rest of paper is atructured as follows. In section \ref{mat-methods} the
+methodology followed in the data acquisition and reconstruction, data
+preprocessing, and data connectivity analysis in two conditions -23 young and 19
+elder individuals- is presented. Then, we build a model to study
+quantitatively how network robustness is affected upon the removal of nodes in
+the functional connectivity network in both conditions. We provide a ranking of
+nodes that quantifies the impact of their obliteration using a network
+efficiency measure based on \cite{latora_efficient_2001} that quantifies how the network efficiency in transmitting information deteriorates once a node is removed from the network.
+The empirical and clinical implications of the theoretical model here are
+described in the results section \ref{results}. The paper concludes
+with a discussion section \ref{discussion}.
+
+\section{Materials and Methods}
+\label{mat-methods}
+
+%Materials Experimental (Li)
+\subsection{Data acquisition}
+Fourty-two healthy volunteers separated in two groups, young (ages 21-32; mean
+22.7) and elder (ages 51-59) took part in the fMRI experiment. All subjects had
+normal or corrected-to-normal vision. The study was approved by the ethics
+committee of Okayama University, and written informed consent was obtained before the study. 
+ All subjects were imaged using a 1.5 T Philips scanner vision whole-body MRI
+ system (Okayama University Hospital, Okayama, Japan), which was equipped with
+ a head coil. Functional MR images were acquired during rest when subjects were
+ instructed to keep their eyes closed and not to think of anything in
+ particular. The imaging area consisted of 32 functional gradient-echo planar
+ imaging (EPI) axial slices (voxel size=3x3x4 mm3, TR=3000 ms, TE=50 ms,
+ FA=90º, 64x64 matrix) that were used to obtain T2*-weighted fMRI images in the
+ axial plane. We obtained 176 functional volumes and excluded the first 4 scans
+ from analysis. Before the EPI scan, a T1-weighted 3D magnetization-prepared
+ rapid acquisition gradient echo (MP-RAGE) sequence was acquired (TR=2300 ms,
+ TE=2.98 ms, TI=900 ms, voxel size=1x1x1 mm3).
+
+\subsection{Data preprocessing} 
+Data were preprocessed using Statistical Parametric Mapping software SPM8
+\footnote{http://www.fil.ion.ucl.ac.uk/spm/} and REST v1.7
+\footnote{http://restfmri.net/forum/index.php}. To correct for differences in
+slice acquisition time, all images were synchronized to the middle slice.
+Subsequently, images were spatially realigned to the first volume due to head
+motion. None of the subjects had head movements exceeding 2.5 mm on any axis or
+rotations greater than 2.5º. After the correction,  the imaging data were
+normalized to the Montreal Neurological Institute (MNI) EPI template supplied
+with SPM8 (resampled to 2x2x2 mm3 voxels) \footnote{http://imaging.mrc-cbu.cam.ac.uk/imaging/Templates}. In order to avoid
+artificially introducing local spatial correlation, the normalized images were
+not smoothed. Finally, the resulting data were temporally band-pass filtered
+(0.01-0.08 Hz) to reduce the effects of low-frequency drifts and high-frequency
+physiological noises \cite{jiao_granger_2011}.
+
+\subsection{Anatomical parcellation} 
+Before whole brain parcellation, several sources of spurious variance including
+the estimated head motion parameters, the global brain signal and the average
+time series in the cerebrospinal fluid and white matter regions were removed
+from the data through linear regression. Then, the fMRI data
+were parcellated into 90 regions using an automated anatomical labeling template \cite{tzourio-mazoyer_automated_2002}.
+For each subject, the mean time series of each region was obtained by simply
+averaging the time series of all voxels within that region.
+
+\subsection{Brain network construction} 
+To measure the functional connectivity among regions, we calculated the Pearson
+correlation coefficients between any possible pair of regional time series, and
+then obtained a temporal correlation matrix $(90x90)$ for each subject. We
+applied Fisher's r-to-z transformation to improve the normality of the
+correlation matrix. Then, two-tailed one-sample t-tests were performed for all
+the possible 4005 i.e., $\frac{90x89}{2}$ pairwise correlations across subjects
+to examine whether each inter-regional correlation significantly differed from
+zero. 
+
+\begin{figure}[!h]
+\begin{center}
+\centerline{\includegraphics [scale=0.4]  {figures/Pajek9090.pdf}}
+\caption{Graphic representation of the functional connectivity
+among regions based on the temporal correlation matrix of the twenty-three
+healthy controls, using Pajek software \cite{batagelj_pajek_2004}}
+\label{Fig:Pajek}
+\end{center}
+\end{figure} 
+
+A Bonferroni-corrected significance level of $P<0.001$ was
+further used to threshold the correlation matrix into an adjacency matrix whose
+element was 1 if there was significant correlation between the two brain
+regions and 0 otherwise. Finally, an undirected binary graph was acquired in
+which nodes represent brain regions and edges represent links between regions.
+The study of the connectivity distribution of the resulting adjacency matrix is
+provided in the Appendix \ref{appendix}.
+
+\subsection{Network-based model on robustness}
+\label{ss:nrobeffvul}
+%Distance related measures (Network Efficiency and Network Vulnerability)
+A quantitative understanding of network robustness, that is, functional
+network invariance under perturbation can shed light on 
+the properties that mediate in developmental, aging and pathological processses
+in the human brain. In essence, robustness measures the capacity of the network to
+perform the same function before and after a perturbation. Perturbations are
+events, internal or external, that elicit a change in the network
+configuration, as for example in, to obliterate a node or a change in the
+connectivity between nodes. Thus, for a given network $G(N,E)$ a perturbation
+$\delta$ (e.g., the removal of a set of nodes $M$ from $N$) transforms
+the initial graph $G(N,E)$ into $G(N-M,E-E(M))$, where $N-M$ is the remaining
+set of nodes after having deleted the set $M$ and $E-E(M)$ is the set of edges
+that do not connect any of the deleted nodes in $M$. The robustness of the new
+network $G(N-M,E-E(M))$ resulting of the perturbation $\delta$ can be studied
+as a loss in the network efficiency $\Sigma$ driven by the elimination of a set
+of nodes $M$ and the edges that connect them. 
+The
+efficiency of a network $G$, $\Sigma(G)$, is a network centrality
+measure that quantifies the network's reliability in transmitting information once a
+node or a set of nodes have being removed. One possible measure of network
+efficiency can be calculated using the Latora and Marchiori measure
+\cite{latora_efficient_2001}. Accordingly, the efficiency in the communication
+between any two nodes in a graph G is equal to the inverse of the shortest path that
+connects them or
+\begin{equation}
+\varepsilon_{ij}= \frac{1} {d_{ij}}
+\label{eq:varepsilon}
+\end{equation}
+ 
+The efficiency of the graph is calculated as the average of the efficiency
+between any two nodes $\varepsilon_{ij}$ 
+\begin{equation}
+\Sigma(G)=\frac{\sum_{i \neq j \in G} \varepsilon_{ij}} {N(N-1)}
+=\frac{1}{N(N-1)}\frac{1}{\sum_{i \neq j \in G} d_{ij}}
+\label{eq:latm}
+\end{equation}
+where $N$ is the number of nodes and $d_{ij}$ is the
+shortest path length (the geodesic distance) between nodes $i$ and $j$. 
+Note that when there is no path that connects the nodes i and j, $d_{ij}=
+\infty$, and the efficiency in the communication of the two nodes is zero,
+$\varepsilon_{ij}=0$.
+
+Finally, the robustness measure, $\mathcal{R}$, is
+defined as the relative performance retained or efficiency loss under a network
+insult i.e., a perturbation $\delta$, that transforms the initial network $G$ into $G^{\delta}$.
+\begin{equation}
+\mathcal{R^{\delta}}= \frac {\Sigma(G^{\delta)}} {\Sigma(G)}
+\label{eq:rob}
+\end{equation}
+Thus, from equation \ref{eq:rob}, a network $G$ is considered to be robust to
+a perturbation $\delta$ if the network efficiency $\Sigma(G)$
+stays close to the original value after a perturbation, ideally
+$\mathcal{R^{\delta}}= \frac {\Sigma(G^{\delta)}} {\Sigma(G)}=1$.
+%According to equation \ref{eq:latm}, the efficiency of a graph, $\Sigma(G)$, is
+%defined in the range $[0,1]$ and measures the mean flow-tare of information
+%over G. Thus, a graph G with $\Sigma(G)=l$ is more efficient than a graph $H$
+%with $\Sigma(H)=m$, if and only if $l > m$.
+ %The dual of
+ %robustness is vulnerability. Therefore, Vulnerability $\mathcal{V}$ is here
+ %used as the complementary of robustness, therefore $\mathcal{V^{\delta}}+
+ %\mathcal{R^{\delta}}=1$
+ 
+We can, in addition to robustness and efficiency of any given graph G, calculate
+the information centrality $C$ of any node i in the network G as the variation
+in the network efficiency caused by the removal of the edges incident in i. The
+centrality of a node i, $C_i$, is calculated as the difference between the
+efficiency of the original graph G with N nodes and E edges , G(N,E), and the
+efficiency of the resulting graph $G_i$ with N nodes and $E-k_i$ edges, where
+$k_i$ denotes the set of edges incident to node i. Thus, the centrality of a
+node is a normalized measure of the loss in network efficiency caused by the isolation of a node in G.
+\begin{equation}
+C_i=\frac {\Sigma(G(N,E)) - \Sigma(G(N,E-k_i))} {\Sigma(G(N,E))} 
+\label{eq:centr}
+\end{equation}
+By the same token, the information centrality of a set of nodes $S$ can be
+calculated as normalized measure of the loss in network efficiency caused by the isolation of
+a set of nodes S in G.
+\begin{equation}
+C_S=\frac {\Sigma(G(N,E)) - \Sigma(G(N,E-k_S)) } {\Sigma(G(N,E))} 
+\label{eq:centrS}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\label{results}
+We build a population of perturbation $P$ which contains all possible
+combination of nodes that can be deleted in a graph. For a graph of N nodes,
+the set P contains a number of elements equal to
+\begin{equation}
+|P| = \sum_{i=1}^{N} C(N,i) = \frac{N!} {(i!)(N-i)!}
+\label{eq:perurb}
+\end{equation}
+
+For the sake of analysis efficiency, we delete sets of nodes up to 6 nodes.
+Thus, the set of perturbation P contains networks perturbed in all
+possible ways of deleting subsets of 1,2,3,4,5 and 6 nodes. 
+In this population of networks, we build a distribution of efficiency measures
+for both young and elder condition.
+
+%Results
+%1. uperturbed
+ The global network efficiency for unperurbed networks is
+ 0.3678 for young subjects and 0.1144 for elder subjects. Thus, young subjects
+ connectivity network is three times more efficient in terms of the shortest
+ path distance between any two nodes.
+ 
+%2.perturbation analysis. Random random node deletion
+ We perturn the resting state nework in two ways. First using random node
+ deletion and secong targeting specific networks. In the random node
+ deletion case we build a population of networks perturbed by deleting subsets
+ of one and two nodes in all possible combinations.
+ The population $P$ of perturbed network contains $ \sum_{i=1}^{2} C(90,i) =
+ \frac{90!} {(i!)(90-i)!} = 4095$ networks, of which 90 have one node deleted
+ and $4095 -90$ networks two nodes.
+The maximum eficiency of the population of perturbed networks $P$ is 0.3594 for
+the removal of node 1 or Precental gyrus. the minimum efficiency is 0.3057 for the deletion of two
+nodes (occurs for index 3943 AREAS?). The mean is 0.3420 and the standard
+deviation 0.0042. 
+For $P$ of only omne node removal  $ \sum_{i=1}^{1}
+C(90,i) = \frac{90!} {(i!)(90-i)!} = 89$
+The efficiency measure mean is 0.3506 the standard deviation is 0.0028 and the
+maximum is 0.3594 (for node 1). Maximum centrality value for a single node is 0.0695 for Node 74
+or region Putamen_R. This are has a efficiency value of 0.3423. The minimum
+centrality 0.0230 correspods to node 1 (Precentral_L) the same node that has
+the least impact on the network efficiency upon its removal.
+Thus, in random targetting of one or two nodes we
+observe on average as expected a lower value for efficiency but small variance in the
+values of efficiency. It is expected that for more drastic removal of nodes the
+variation of efficiency will reduce in more clearly.
+%% The same for elder, glo_y tine q incluir los nodos q borro
+%%Elder, random node deletion
+For the elder condition,  maximum eficiency is also for 
+the removal of node 1 or Precental gyrus, with gives an efficiency value of 
+0.1118. The minimum efficiency is 0.0748 for the removal of node 62 which
+corresponds to the region Parietal_Inf_R. The mean efficiency value is  0.1067
+less than the 0.1144 for the unperturbed network.
+The most central node is 62 (Parietal_Inf_R) with centrality value equal to
+3462,  this same node has the biggest impact on efficiency upon its
+removal. The less central node is node 1 (Precental gyrus) with centrality
+value equal to 0.0230 which also corresponds with the node with the node the
+the node with the least efficiency impact upon its removal. 
+
+%%
+%%
+%%
+%%Perturbation analysis. Targeted networks 
+ Here we also perturb the resting state network in specific ways by targeting
+ networks of interest comparing the robustness in both conditions. In 
+  \cite{alstott_modeling_2009} it was shown that 
+focal lesions located in the precuneus, medial anterior
+cingulate cortex, temporo-parietal junction, or superior
+frontal cortex produced substantial
+changes in functional connectivity. We investigate whether this is also
+reflected in changes in the efficiency measure.
+ In the same study, lesions to the
+visual or motor cortices had restricted effects on global connectivity
+ %%Hypothesis testing
+ MN is commonly considered to consist of medial prefrontal cortex
+(AAL 23, 24, 25, 26), posterior cingulate cortex/precuneus (AAL 35, 36/67 68)
+and bilateral inferior parietal lobule (AAL 61, 62). The removal of the DMN in
+young adults gives efficiency= 0.2955. In the elder conditions the efficiency
+upon the removal of the DMN is 0.0439. Thus, for young adults the attack of the
+DMN represents a loss of a 15 per cent in efficiency respect to the media $(1-
+\frac{0.2955} \frac{0.3506} = 0.15$, while for the elder condition, the
+suppression of the DMN produces a loss of 58 per cent in efficiency respect to
+the media, $(1-
+\frac{0.0439} \frac{0.1067} = 0.5886$. 
+ 
+ %Candidates for removal
+%LI: Do you think is a good idea to remove entire networks , e.g., DMN (AAL 23,
+%24, 25, 26) rather than single nodes as I did ?
+%For example, DMN is commonly considered to consist of medial prefrontal cortex
+%(AAL 23, 24, 25, 26), posterior cingulate cortex/precuneus (AAL 35, 36/67 68)
+%and bilateral inferior parietal lobule (AAL 61, 62)
+%'' The investigators showed that
+%focal lesions located in the precuneus, medial anterior
+%cingulate cortex, temporo-parietal junction, or superior
+%frontal cortex produced widespread and substantial
+%changes in functional connectivity with intrahemispheric
+%and contralateral regions. Conversely, lesions to the
+%visual or motor cortices had restricted effects on global
+%connectivity.49  Alstott J, Breakspear M, Hagmann P, Cammoun L, Sporns O.
+%Modeling the impact of lesions in the human brain.
+%PLoS Comput Biol 2009; 5: e1000408.
+
+%Use ``graphshortestpath'' to calculate shortest path problem in 
+%from http://www.mathworks.es/es/help/bioinfo/network-analysis-and-visualization.html
+
+%translation of regions
+%http://www.restfmri.net/forum/DPARSF_V1_0
+
+
+We have analyzed the functional connectivity in resting state of both young and
+elder individuals. The nodes representing the ninety brain regions based on the
+AAL parcelation have been ranked in terms of their impact in terms of network
+robustness upon removal. Interestingly we find that in both elder and young
+groups the removal of certain nodes does not necessarily triggers a
+decrease in network robustness, the obliteration of certain nodes may also 
+produces a positive impact in the network function, increasing the  network
+robustness  when the node is removed.
+We study network robustness based on the new network efficiency/performance
+ measure (equation \ref{eq:latm}) to investigate the network
+ functionality when a set of nodes are obliterated. 
+The results show that in young subjects, the nodes with a positive impact
+are \ldots TO DO LI/JAIME compared with elder subjects \ldots TO DO LI/JAIME.
+
+
+The results show that in young subjects, after he removal of the nodes with
+a positive impact the entropy rate is $> <?$ TO DO JAIME than in the case of
+elder subjects.
+
+
+\section{Discussion}
+\label{discussion}
+Researchers using graph-theory based methods have been able to
+not only visualize brain networks, but to quantify their topological properties. 
+Graph theory provides a geometric representation to
+ visualize brain connectivity patterns and an analytic toolbox to
+ quantitatively characterize the overall topological organization.   
+A new theoretical framework to investigate network robustness and how it is
+affected by internally drive processes such as aging is provided.
+
+The first part of our study involved random node deletion constituting a
+population set of perurbation of oerturbed networks with one and two nodes
+deleted in all possible combinations. In the second part the study
+focuses on targeted removal of specific network.We study the impact on the
+efficiency of the resulting network by means of metrics such as efficiency and
+centrality. Our results expand previous works on the study of robustness of
+structural brain networks.
+The functional resting state network in young adults is more robust than for
+elder subjects. The young adults  is more/less robust to random deletion of
+nodes and or to targeted removal of networks on the basis of the efficiency
+metric here proposed.
+%relate  centrality 
+However, young adult networks is more/less protected  against nodes/networks
+that are hihly central (centrality measure). This finding is consistent with
+\cite{HERE}
+We
+hypothesize that involve the removal of network componets \ldots
+
+For the future we expect to establish a link between pathological lesions and
+the topological centrality and the efficiency of of nodes studied here , and
+replicate our results with different imaging techniques. We intend to
+investigate whether, as postulated in \cite{crossley_hubs_2014} hubs of human
+brain networks are more likely to be anatomically abnormal than non-hubs in many brain
+ disorders.
+
+ 
+
+
+
+The literature reviewed here suggests that graph-based network
+analyses are capable of uncovering system-level changes associated with
+different processes in the resting brain, which could provide novel insights
+into the understanding of the underlying physiological mechanisms of brain
+function. We also highlight several potential research topics in the future.
+Graph theory-based approaches model the brain as
+ a complex network in which nodes represent brain regions of interest and the
+ edges connecting nodes represent relationship between nodes e.g., functional
+ connectivity. 
+ 
+ %http://brain.oxfordjournals.org/content/137/8/2382.short
+ %pathological brain lesions would be concentrated in hub regions. To test this
+ %general hypothesis, we first identified the hubs of rs-functional connectivity
+ %based on our centrality measure, how they correspond to anatomical?
+ % TEST if as in their study: showed that computational attacks targeted on hubs
+ % disproportionally
+ % degraded the efficiency of brain networks compared to random attacks.
+ 
+ 
+%http://www.ncbi.nlm.nih.gov/pubmed/20885292
+%What can
+%we say about this vulnerability ranking and the robustness of RSNs and the NDH
+%Our results shed light on the functional significance of spontaneous brain
+%activity fluctuations observed in functional magnetic resonance imaging. They
+%suggest that propofol-induced unconsciousness could be linked to a breakdown
+%of cerebral temporal architecture that modifies both within- and
+%between-network connectivity and thus prevents communication between low-level
+%sensory and higher-order frontoparietal cortices, thought to be necessary for
+%perception of external stimuli. They emphasize the importance of
+%thalamocortical connectivity in higher-order cognitive brain networks in the
+%genesis of conscious perception.
+\section{Appendix}
+\label{dse:appe}
+\bibliographystyle{ieeetr}
+%\bibliography{~/Eclipse/workspace/BiblioTex/bibliojgr}
+%\cite{florescu_probability_2014}
+
+\bibliography{bibliojgr}
+
+\end{document}
+
+% GT
+Until the recent advent of graph theoretic methods in R-fMRI, the focus was
+put on the identification of anatomically separated regions that show a
+high level of functional correlation during rest. 
+The tools we use to model a system may also convey an ontological
+version of it, that is to say, the system under study is seen through the
+lens of a specific approach that necessarily shapes the observability domain. 
+Thus, the identification of different subnetworks during rest can be seen as a
+ by-product of the techniques used, for example identification component
+ analysis (ICA) or clustering. 
+
+%%%%%% BIBLIO

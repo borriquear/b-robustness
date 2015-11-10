@@ -1,0 +1,180 @@
+
+R version 2.15.0 (2012-03-30)
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: i386-apple-darwin9.8.0/i386 (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+During startup - Warning messages:
+1: Setting LC_CTYPE failed, using "C" 
+2: Setting LC_COLLATE failed, using "C" 
+3: Setting LC_TIME failed, using "C" 
+4: Setting LC_MESSAGES failed, using "C" 
+5: Setting LC_PAPER failed, using "C" 
+[R.app GUI 1.51 (6148) i386-apple-darwin9.8.0]
+
+WARNING: You're using a non-UTF8 locale, therefore only ASCII characters will work.
+Please read R for Mac OS X FAQ (see Help) section 9 and adjust your system preferences accordingly.
+[Workspace restored from /Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/.RData]
+[History restored from /Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/.Rapp.history]
+
+> 
+> 
+> pwd
+Error: object 'pwd' not found
+> ls
+function (name, pos = -1, envir = as.environment(pos), all.names = FALSE, 
+    pattern) 
+{
+    if (!missing(name)) {
+        nameValue <- try(name, silent = TRUE)
+        if (identical(class(nameValue), "try-error")) {
+            name <- substitute(name)
+            if (!is.character(name)) 
+                name <- deparse(name)
+            warning(sQuote(name), " converted to character string")
+            pos <- name
+        }
+        else pos <- nameValue
+    }
+    all.names <- .Internal(ls(envir, all.names))
+    if (!missing(pattern)) {
+        if ((ll <- length(grep("[", pattern, fixed = TRUE))) && 
+            ll != length(grep("]", pattern, fixed = TRUE))) {
+            if (pattern == "[") {
+                pattern <- "\\["
+                warning("replaced regular expression pattern '[' by  '\\\\['")
+            }
+            else if (length(grep("[^\\\\]\\[<-", pattern))) {
+                pattern <- sub("\\[<-", "\\\\\\[<-", pattern)
+                warning("replaced '[<-' by '\\\\[<-' in regular expression pattern")
+            }
+        }
+        grep(pattern, all.names, value = TRUE)
+    }
+    else all.names
+}
+<bytecode: 0x117c910>
+<environment: namespace:base>
+> dir
+function (path = ".", pattern = NULL, all.files = FALSE, full.names = FALSE, 
+    recursive = FALSE, ignore.case = FALSE, include.dirs = FALSE) 
+.Internal(list.files(path, pattern, all.files, full.names, recursive, 
+    ignore.case, include.dirs))
+<bytecode: 0x1793a478>
+<environment: namespace:base>
+> getwd()
+[1] "/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources"
+> cd MatLabLib
+Error: unexpected symbol in "cd MatLabLib"
+> cd "MatLabLib"
+Error: unexpected string constant in "cd "MatLabLib""
+> chhangewd(MatLabLib)
+Error: could not find function "chhangewd"
+> changewd(MatLabLib)
+Error: could not find function "changewd"
+> setwd(setwd(dir))
+Error in setwd(dir) : character argument expected
+> setwd(MatLabLib)
+Error in setwd(MatLabLib) : object 'MatLabLib' not found
+> setwd('MatLabLib')
+> getwd()
+[1] "/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/MatLabLib"
+> mydata <_ read.csv("FinaleRZ23-HOLM.csv",header=T)
+Error: unexpected input in "mydata <_"
+> mydata <- read.csv("FinaleRZ23-HOLM.csv",header=T)
+> attach(mydata)
+> TOTAL
+ [1] 28 28 30 33 28 31 36 37 31 33 37 38 33 35 42 38 37 34 55 52 32 35 37 38
+[25] 25 27 24 22 49 49 49 47 33 44 28 33 25 29 27 29 32 39 53 53 43 51 56 56
+[49] 49 56 46 50 34 44 38 42 29 26 28 33 38 29 39 35 39 36 38 42 26 22 34 33
+[73] 46 51 38 47 36 41 38 33 46 37 41 38 23 16 26 23 17 20
+> mean(TOTAL)
+[1] 36.48889
+> barplot(TOTAL)
+> hist(TOTAL)
+> max_nb<-max(mydata)
+> hist(mydata, 
++    xlim=c(0,max_num), right=F, main="Probability Density", 
++    las=1, cex.axis=0.8, freq=F)
+Error in hist.default(mydata, xlim = c(0, max_num), right = F, main = "Probability Density",  : 
+  'x' must be numeric
+> stripchart(TOTAL)
+> method="stack",method="stack"
+Error: unexpected ',' in "method="stack","
+> stripchart(TOTAL, method="stack")
+> stripchart(TOTAL, method="jitter")
+> 
+> hist(TOTAL)
+> hist(TOTAL, breaks=1)
+> hist(TOTAL, breaks=2)
+> hist(TOTAL, breaks=20)
+> hist(TOTAL, breaks=90)
+> hist(TOTAL, breaks=30)
+> hist(TOTAL, xlim=0,max_nb)
+Error in plot.window(xlim, ylim, "") : invalid 'xlim' value
+> 
+> hist(TOTAL, xlim=c(0,max_nb))
+> hist(TOTAL, xlim=c(0,max_nb))
+> max_nb
+[1] 56
+> hist(TOTAL, xlim=c(0,max_nb+1))
+> max(TOTAL)
+[1] 56
+> hist(TOTAL, main= "connections per node", xlab="Connections", ylim= "Frequency connections per AALi", xlim=c(0,max_nb+1))
+Error in plot.window(xlim, ylim, "") : invalid 'ylim' value
+> hist(TOTAL, main= "connections per node", xlab="Connections", ylim= "Frequency connections per AALi", xlim=c(0,max_nb))
+Error in plot.window(xlim, ylim, "") : invalid 'ylim' value
+> hist(TOTAL, main= "connections per node", xlab="Connections", ylim= "Frequency connections per AALi", xlim=c(0,max_nb))
+Error in plot.window(xlim, ylim, "") : invalid 'ylim' value
+> hist(TOTAL, main= 'connections per node', xlab='Connections', ylim= 'Frequency connections per AALi', xlim=c(0,max_nb))
+Error in plot.window(xlim, ylim, "") : invalid 'ylim' value
+> hist(TOTAL, main= 'connections per node', xlab='Connections', ylim= c(1,50), xlim=c(0,max_nb))
+> boxplot(TOTAL)
+> boxplot(TOTAL,main ='OKACOGNET', ylab='Frequencia edges/node')
+> boxplot(TOTAL,main ='OKACOGNET', ylab='Frequency edges/node')
+> boxplot(TOTAL,main ='OKACOGNET', ylab='Frequency edges/node', horizontal=TRUE)
+> boxplot(TOTAL,main ='OKACOGNET', ylab='Frequency edges/node')
+> qqnorm(TOTAL)
+> qqline(TOTAL)
+> qqplot(TOTAL)
+Error in sort(y) : argument "y" is missing, with no default
+> shapiro.test(TOTAL)
+
+	Shapiro-Wilk normality test
+
+data:  TOTAL 
+W = 0.9786, p-value = 0.1437
+
+> qqplot(TOTAL)
+Error in sort(y) : argument "y" is missing, with no default
+> boxplot(TOTAL,main ='OKACOGNET', ylab='Frequency edges/node')
+> boxplot(TOTAL,main ='OKACOGNET', ylab='Frequency edges/node')
+> boxplot(TOTAL,main ='OKACOGNET', ylab='Frequency edges/node')
+> 
+> 
+> 
+> qqplot(TOTAL)
+Error in sort(y) : argument "y" is missing, with no default
+> qqnorm(TOTAL)
+> qline(TOTAL)
+Error: could not find function "qline"
+> qline(TOTAL)
+Error: could not find function "qline"
+> 
+> 
+> qqline(TOTAL)
+> 

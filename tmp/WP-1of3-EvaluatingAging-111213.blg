@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.5)
+The top-level auxiliary file: WP-1of3-EvaluatingAging-111213.aux
+The style file: ieeetr.bst
+Database file #1: bibliojgr.bib
+Warning--I didn't find a database entry for "REF"
+You've used 22 entries,
+            1876 wiz_defined-function locations,
+            636 strings with 8326 characters,
+and the built_in function-call counts, 7695 in all, are:
+= -- 796
+> -- 344
+< -- 0
++ -- 122
+- -- 100
+* -- 585
+:= -- 1087
+add.period$ -- 35
+call.type$ -- 22
+change.case$ -- 22
+chr.to.int$ -- 0
+cite$ -- 22
+duplicate$ -- 366
+empty$ -- 606
+format.name$ -- 100
+if$ -- 1854
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 22
+newline$ -- 82
+num.names$ -- 25
+pop$ -- 23
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 327
+stack$ -- 0
+substring$ -- 585
+swap$ -- 200
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 74
+width$ -- 24
+write$ -- 249
+(There was 1 warning)

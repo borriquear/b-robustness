@@ -1,0 +1,357 @@
+\documentclass{pnastwo}
+%% ADDITIONAL OPTIONAL STYLE FILES
+\usepackage[dvips]{graphicx}
+\usepackage{pnastwoF}
+%\usepackage{article}
+\usepackage{amssymb,amsfonts,amsmath}
+%% OPTIONAL MACRO DEFINITIONS
+\def\s{\sigma}
+
+\begin{document}
+
+\title{Understanding network adaptation in Resting-State fMRI: a information theoretic approach }
+\author{Jaime Gomez-Ramirez\affil{1}{Okayama University, Okayama,
+Japan}}
+
+\maketitle
+
+\begin{article}
+
+\begin{abstract}
+Network theory approaches to brain connectivity in Resting-State fMRI have been
+mainly focused on the study of topological properties and network motifs that
+characterize the network structure. Small world architectures -highly clustered
+nodes connected thorough relatively short paths- have been identified in
+healthy and functional brain networks. It has been suggested that the
+disruption of normal brain function in diseases such as Schizophrenia and
+Alzheimer's disease, can be observed and measured in terms of variations in the
+network topology. For example, the reshaping of small-worldness into randomness
+in functional connectivity networks. This posits new venues to the study of
+brain disease prognosis in terms of network-based biomarkers. However, a formal
+understanding of the interplay between brain disease and network connectivity
+is still missing. Here we build a information based theory of robustness, in
+which rather than quantify how global graph properties -efficiency, global cost
+etc.- are modified upon node removal, we study how network connectedness is
+altered by biased random walks, that is random walks that follow a given
+strategy, for example, favor the visit of nodes with high betweenness
+centrality. Thus, each strategy -a vector containing nodes weights- produces a
+new network in response of an insult. We calculate then the Kullback-Leibier
+distance between these networks that represent different adaptive strategies
+and the pre-disturbance network. A new approach for network robustness in
+Resting-State fMRI and how it compares to traditional vulnerability-based studies is provided.
+\end{abstract}
+
+\keywords{brain function|bias | decision making | subjective value | utility
+function}
+
+
+\section{Introduction}
+\dropcap{T}
+The method that study BOLD fluctuations that spontaneously emerge during
+awake rest is called resting state fMRI (R-fMRI), and the networks that are
+identified with such a methodology are resting state networks (RSNs). Resting
+state networks have been identified in a panoply of imaging techniques
+including fMRI \cite{biswal_functional_1995}, PET \cite {raichle_default_2001}
+(first identification of the Default Mode Network), near-infrared spectroscopy
+(NIRS) \cite{sasai_nirs-fmri_2012}, EEG
+\cite{mantini_electrophysiological_2007}, \cite{boersma_network_2011} and fMRI
+combined with diffusion-based studies -diffusion tensor imaging (DTI)
+\cite{van_den_heuvel_functionally_2009} and high angular resolution diffusion
+imaging (HARDI) \cite{lowe_resting_2008}. Data analysis of resting state data
+falls into two gropus: seed-based and model-free methods. In the former, a
+functional connectivity map of regions of interest or seeds is obtained. The
+map represents the correlation between the resting-state time-series of the
+different seeds, which have been a priori selected \cite{cordes_mapping_2000},
+\cite{fransson_spontaneous_2005}, \cite{buckner_unrest_2007},
+\cite{bluhm_resting_2009}. Model-free methods also provide a connectivity map across brain
+regions, but here the regions of interest are obtained through statistical
+analysis, rather than defined a priori as in the mode-based approach. 
+A number of model-free computational tools exist to analyse
+resting-state time series, including independent component analysis
+\cite{beckmann_investigations_2005} , \cite{de_luca_fmri_2006}, ,
+clustering  \cite{thirion_detection_2006},
+\cite{van_den_heuvel_normalized_2008} and machine learning techniques such as
+support vector machines \cite{lord_changes_2012}, \cite{zeng_identifying_2012}.
+For a critique on the use of the ``minimal assumption'' adopted in model-free
+approaches such as ICA in neuroimage data analysis, see
+\cite{friston_modes_1998}.
+
+Seed-based methods are relatively straight forward to use and conteptually
+simple. A disadventage is that the functional connectivity map here obtained is 
+strictely dependent on the regions of interest previosly selected, overlooking
+the rest of brain areas and therefore falling to notice potentially
+relevant functional connection patterns. Model-free methods, on the other hand,
+explore functional connectivity at whole-brain scale. Independent component
+analysis allows direct comparison between subject groups
+\cite{chen_group_2008}, but presents the disadventage that it provides a number
+of different networks (components) whose biological relevance and consistency
+with previous findings need to be validated by other means. Note that
+model-based approaches avoid this dificulty by adopting the seeds or regions of
+interest a priori, either by selecting the relevant regions from a separate
+fMRI in a task experiment, or using a brain atlas in rest activity studies
+\cite{wang_parcellation-dependent_2009}, \cite{faria_atlas-based_2012}.
+
+
+Clustering and machine learning methods e.g., SVM, allow individual-based
+classification analysis. This is an important advantage to traditional group
+analyses of variance, and may bring important insights into disease onset
+prediction on individual subject basis \cite{wang_high-dimensional_2010}.
+Importantly, the above described approaches taken together show consistency in
+their results, that is, the functional maps tend to overlap across
+resting-state studies in the human brain \cite{van_den_heuvel_exploring_2010}.
+
+
+It is important to realize that resting state networks are not
+the same as intrinsic connectivity networks (ICNs), which refer to network or components
+identified through multivariate decomposition statistical analysis e.g.,
+independent component analysis (ICA), that show synchronous
+fluctuations during task performance. Therefore, RSNs are a sub
+class of ICNs which comprehend a set of large-scale functionally connected brain
+networks not only in resting state but also in task-based neuroimaging data.
+
+It has been suggested that fluctuations in the BOLD signal measured
+in humans in resting state, represent the neuronal activity baseline and shape
+spatially consistent patterns \cite{Raichle:2005}, \cite{Fransson:2006}.
+Functional correlation based on the synchrony of low-frequency blood flow
+fluctuations in resting state, have been identified in the sensorimotor
+\cite{kokkonen_preoperative_2009}, visual \cite{damoiseaux_consistent_2006},
+language \cite{hampson_detection_2002}, auditory
+\cite{hunter_neural_2006}, dorsal and ventral attention
+\cite{fox_spontaneous_2006} and the frontoparietal control system
+\cite{vincent_evidence_2008}.
+
+%%%% Review on NDHyp Robustness  on
+% R-fmri to give insight on the mechanisms that mediate in
+% the NDH
+
+
+The systematic study of those patterns using correlation
+analysis techniques has identified a number of resting state networks, which
+are functionally relevant networks found in subjects in the absence of either
+goal directed-task or external stimuli. 
+The visual identification of the
+overall connectivity patters in resting state functional magnetic resonance
+imaging (R-fMRI), has been assessed using either model-based and model-free
+approaches. In the former, statistical parametric maps of brain activation are
+built upon voxel-wise analysis location. This approach has been successful in
+the identification of motor networks, but it shows important limitations when
+the seed voxel cannot be easily identified. For example, in brain areas with
+unclear boundaries; i.e. cognitive networks involved for instance, in language
+or memory. Independent Component Analysis (ICA), on the other hand, is a
+model-free approach that allows separating resting fluctuations from other
+signal variations, resulting on a collection of spatial maps, one for each
+independent component, that represent functionally relevant networks in the
+brain. While ICA has the advantage over model-free methods that it is unbiased,
+(that is, it does not need to posit a specific temporal model of correlation
+between ROIs), the functional relevance of the different components is,
+however, computed relative to their resemblance to a number of networks based
+on criteria that are not easily formalized. More recently, researchers using
+graph-theory based methods have been able to not only visualize brain networks,
+but to quantify their topological properties. Large-scale anatomical
+connectivity analysis in the mammalian brain, shows that brain topology is
+neither random nor regular. Instead, it is organized in small world
+architectures \cite{Watts:1998}, \cite{Vaessen:2010}, characterized by high
+clustering and short path lengths. Small world networks are not solely
+structural, functional networks with a small world organization have been
+identified in the mammal brain \cite{Bassett:2006}. In addition to
+this, disruptions in the small world organization can give clues about normal
+development and pathological conditions. For example, Supekar and colleagues
+\cite{Supekar:2008} have shown that the deterioration of small world
+properties such as the lowering of the cluster coefficient, affect local
+network connectivity, which in turn may work as a network biomarker for
+Alzheimer's disease. Abnormalities in small-worldness may also have a
+significant positive correlation in for example, schizophrenia
+\cite{liu_disrupted_2008} and epilepsy \cite{liao_altered_2010}  (Y. Li More
+refs here). While network-based
+studies have been successful in delineating generic network properties, such as
+path length or clustering, additional work is needed in order to come to grips
+with the internal working of the systems underlying the network. Robustness in
+brain connectivity has been typically approached in terms of the impact that
+the complete disruption and/or removal of a network component has in the
+network topology \cite{Kaiser:2007}. However, by focusing on the topology
+of the network, factors that may play a key role in the network's vulnerability to
+failures can be neglected. For example, it has been suggested that patients
+with Alzheimer's disease show an increment in brain activity in certain areas
+relative to healthy subjects that compensates for the disease related atrophy
+of other regions \cite{Sanz-Arigita:2010}. In this paper we explore the network
+degeneration hypothesis \cite{Seeley:2009}, \cite{Mesulam:2009}, which states
+that neurological diseases target functional neural networks modifying its topological properties, using a
+methodology that combining graph theoretic tools and information theory may
+rigorously address robustness and its interplay in aging and pathological
+conditions. This approach posits a new theoretical framework to investigate
+network  robustness and how it is affected by ``internal perturbations" such as
+aging and neurological disorders.
+
+Despite the variability in the data acquisition protocols,
+statistical data analysis and gropus of subjects employed by different
+researchers, the litterature consistenly shows an overlap of functionally linked
+networks in the brain during resting state. The most commonly reported resting
+state networks are at least eight:  the primary sensorimotor network, the primary visual and extra-striate visual
+network, bilateral temporal/insular and anterior cingulate cortex regions, left and right lateralized networks
+consisting of superior parietal and superior frontal regions, and the 
+default mode network \cite{van_den_heuvel_exploring_2010}.
+ 
+
+
+
+\subsection{Graph Theory:a brain-scale approach}
+Until the recent advent of graph theoretic methods in RS-fMRI, the focus was
+put on the identification of anatomically separated regions that show a
+high level of functional correlation during rest. Grapth theory provides a
+theoretical framework to investigate the overall architecture of the brain.
+Thus, the emphasis has shifted from the identification of local subnetworks
+-default mode network, primary sensory motor network etc.- to the assesment of
+the topological and informational characteristics of a brain-scale complex
+network. The tools we use to model a system may also convey an ontological
+version of it, that is to say, the system under study is seen through the
+lens of a specific approach that necessarly shapes the observability domain.
+Thus, the identification of different subnetworks during rest can be seen as a
+ by-product of the techniques used, for example identification component
+ analysis (ICA) or clustering. On the other hand, the emphasis on the overall
+ brain functional architecture might not suprised when using graph
+ theoretic methods. Notable proponents of a modularist vision of brain
+ connectivity to understand cognition -\cite{gazzaniga_new_1999}, \cite{Fuster:2000}- have
+ shifted toward a network-based approach- \cite{bassett_understanding_2011}.
+
+
+\subsection {Clinical applications of RS-fMRI}
+ Functional connnectivity studies of neurological and neuropsychitatric
+ disorders are being copiously produced. Resting-state functional magnetic
+ resonance imaging experiments are considerably less demanding in terms of
+ subject oparticipation than performace studies.This is of the outmost
+ importance in dealing with subjects (patients) with their cognitive or motor
+ capabilities reduced due pathological conditions.
+ Altered resting-state functional connectivity patterns have been shown in an
+ impressive range of pathologies and conditions - Alzheimer's disease,
+ schizophrenia, multiple sclerosis, Parkinson's disease, depression,
+ autism, and even attention deficit/ hyperactivity disorder. See
+ \cite{lee_resting-state_2012} for a review on clinical applications of rs-fMRI at the single subject level.
+ 
+ RS- fMRI have been successfully used in classification of subjects with AD
+ and MCI versus healthy controls. Connectivity changes in the default mode
+ network can be used as markers of pathological conditions. For example,
+ patients with tivity in the salience network. Alzheimer disease demonstrated
+ decreased connectivity in the default mode network but increased connectivity
+ in the salience network.
+ Other studies rather than focusing on specific RSNs -default mode network-
+ investigate altered connectivity patterns at a brain-wide level. The
+ hypothesis that neurological disorders target large-scale
+ functional and structural networks \cite{Seeley:2009} rather than specific
+ loci or sub-networks, calls for an integrative network-based approach.
+ 
+ Schizophrenia patients show a decreased functional connectivity during rest
+ \cite{liang_widespread_2006} suggesting a suboptimal information integration
+ between regions of the brain network \cite{micheloyannis_small-world_2006}
+ AD patients show clustering coefficients significantly lower in patients compared with
+controls. 
+
+
+
+\subsection{Network Degeneration Hypothesis in ICN(state of the art)}
+ 
+
+R-fMRI studies avoids the problem of task-evoked BOLD
+fluctuations and is easier to implement in subjects with their cognitive or
+motor capabilities reduced as in Alzheimer's or Parkinsons's disease.
+
+The network degeneration hypothesis -disease starts in small
+network assemblies, to progressively spread to connected areas of the initial
+locus- has been investigated in a number of brain pathologies including
+Alzheimer's disease \cite{Buckner:2009}, epilepsy
+\cite{liao_altered_2010}, schizophrenia \cite{liu_disrupted_2008} and unipolar
+depression \cite{lord_changes_2012}.
+%http://www.alzforum.org/new/detail.asp?id=2106
+The NDH encompasses the idea that
+neurodegeneration can be studied as a network dysfunction process, in which
+changes in the network organization are informative about the progression of
+the disease. This paves the way for a network-based approach to diagnosis of neural disorders, and the
+discovery of network biomarkers in early disease detection. To our knowledge,
+the first attempt to systematically test the NDH is in \cite{Seeley:2009},
+in which Seeley and colleagues use functional and structural network mapping 
+approaches to characterize five distinct neurodegenerative syndromes. 
+There is a growing body of evidence that neurodegenerative disease targets
+specific large-scale brain networks, and clinical applications  
+
+
+
+
+However, it might be emphasized that the  
+empirical validation of the network degeneration hypothesis does not tell us
+much about the mechanisms that mediate in the alleged network connectivity
+sensitivity to neuropathological syndromes. 
+A critical aspect is to understand network robustness, that is, functional
+network invariance under perturbation. In essence, robustness measures the
+capacity of the network to perform the same function before and after a
+perturbation. Perturbations are events, internal or external, that elicit a
+change in the network configuration, as for example in, to obliterate a node or
+a change in the connectivity between nodes. 
+Thus, for a given network  $G(V,E)$ with an adjacency matrix $T$, a perturbation
+$d_{A}$ that transforms $T$ into a new adjacency matrix $T_{A}$ is given by the
+stochastic map $d_A: T \to T_A$. Here, we assume that the perturbation $d_A$
+refers to the set of nodes that remained after having deleted the set of nodes
+$V-A$. Therefore, originally the network $G(V,E)$ is transformed into
+$G(A,E^{A})$, where $E^{A}$ are the remaining edge that results of eliminate the
+nodes $V-A$ from $V$. Contrary to standard robustness studies reviewed in section 
+\ref{} that measure the effect of network insults -typically node removal-  
+in terms of macroscopic properties such as cost, efficiency or entropy, here we
+focus on the different adaptive processes that may follow the network
+disruption, and we are able to identify the strategies that promote function
+invariance. The Kullback-Leibler distance allows to answer the question of which
+of a set of approximating models is closest to the original model $f$. This
+is a classical problem of model selection in which the Kullback-Leibler distance
+allows elucidate which model in a set of candidate models, $g(x|\theta)$, is the
+closest to the true model $f(x)$. Accordingly, the best candidate is that
+with minimum distance. Thus, the minimum distance between $f$ and $g$ in the
+case of discrete distributions is given by:
+
+\begin{equation}
+KL(f,g)= \sum_{i=1} ^{n} p_i \log(\frac{p_i}{q_i})
+\end{equation}
+where $n$ is the number of possible outcomes of the underlying random
+variable, $p_i$ is the probability distribution of the ith outcome and $q_i$ is
+the approximating probability distribution.
+The KL distance is not a true metric since is not symmetric, as the distance is
+different from the distance. For a more in detailed description of KL, see
+\cite{Cover:1991}
+
+It is important to note that KL cannot be computed unless we have a full
+knowledge of both the true model $f$ and the parameters $\theta$ in $g_\theta$.
+While this requirement is often unrealistic for observational studies,
+specially in biology, it holds in the present case \cite{Burnham:2010}. The
+applicability of this approach relies upon the fact that ``true model'' $f$ is given by the network
+adjacency matrix $T$ prior to the insult $d_A$ and the parameters $\theta$ in
+$g_\theta$ can be assigned to a vector $b_i={b_{i1},\ldots,b_{i |A|}}$ that
+assigns specific weights to each node in $T_A$, the resulting adjacency matrix
+of the perturbation $d_A$ readjusted with a bias or strategy $b_i$, in which the
+passage through certain nodes are favored related to others. For example, a
+bias or adaptive strategy in which random walkers are more likely to visit nodes
+with highest betweenness centrality can be constructed straight forward by
+increasing the weight of the edges that lead to those nodes.
+
+
+
+
+
+
+\subsection{Network Robustness}
+
+network topology that promotes Functional invariance
+Figure
+
+\subsection{Model selection}
+which probability distribution
+\section{Methods}
+\section{Results}
+\section{Discussion}
+
+
+\begin{acknowledgments}
+This work was partially supported by 
+
+\end{acknowledgments}
+
+\bibliographystyle{abbrv}
+%\bibliography{~/Eclipse/workspace/BiblioTex/bibliojgr}
+\bibliography{bibliojgr}
+\end{article}
+\end{document}

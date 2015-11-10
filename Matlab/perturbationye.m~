@@ -1,0 +1,711 @@
+%HOLMES correction
+% p0 0.001 50% 1s
+%23 YOUNG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% JGR06-30-2015
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function perturbationye()
+nodes_list=[1:90]
+date_is = date %current date
+nb_young = 23
+%19 ELDER
+nb_elder = 19
+path_young_individuals =  '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/FunImgFC_AALTC/'
+path_elder_individuals =  '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/'
+matfiledir = '/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/'
+is_young = 0
+%is_elder = is_young - 1
+%NT number of nodes to be deleted, max NT = 90
+NT = 1
+% 1=perturbation is random, delete exhaustively NT nodes, 0 = targeted
+% networks
+random_perturb = 0
+%pert_edges =1 when delete edges, 0 for delete nodes
+pert_edges = 1 
+if is_young == 1
+    disp('running Simulation for YOUNG condition\n\n\n')
+    nb_indivs = nb_young
+    path_individuals = path_young_individuals
+    pajek_dest_file = '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/PajekYoungRZ23sub.net'
+    xls_rzcor_file = '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/YoungRZ23-HOLM.xls'
+    xls_dest_file = strcat('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/Cent-Eff-Young-', date_is)
+    xls_dest_file = strcat(xls_dest_file,'.txt')
+    matfile = 'youngdata.mat'
+    %results file architecture
+    % matfiledir/young/randomp/N1/ 1 file 90 rows
+    %                         /N2 1 file C(90,2) rows
+    %                         /N3 .. 1 file C(90,3) rows
+    %           /old
+    %
+    % matfiledir/young|old/perturb/DMN/  1 file 90 rows
+    %                              /Visual  1 file 90 rows
+    young_results_dir = strcat(matfiledir, 'young/')
+    if random_perturb == 1
+        young_results_dir = strcat(young_results_dir, 'randomp/')            
+    else 
+        young_results_dir = strcat(young_results_dir, 'targeted/')
+    end
+    tmp_results_dir = young_results_dir
+    results_dir = young_results_dir        
+else
+    disp('running Simulation for OLD condition\n\n\n')
+    nb_indivs = nb_elder
+    path_individuals = path_elder_individuals 
+    pajek_dest_file = '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/PajekElderRZ19sub.net'
+    xls_rzcor_file ='/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/ElderRZ19-HOLM.xls' 
+    xls_dest_file = strcat('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/Cent-Eff-Elder-', date_is)
+    xls_dest_file = strcat(xls_dest_file,'.txt')
+    matfile = 'elderdata.mat'
+    old_results_dir = strcat(matfiledir, 'old/')
+    if random_perturb == 1
+        old_results_dir = strcat(old_results_dir, 'randomp/')
+    else 
+        old_results_dir = strcat(old_results_dir, 'targeted/')
+    end
+    tmp_results_dir = old_results_dir
+    results_dir = old_results_dir
+    
+end
+
+
+matfile = strcat(matfiledir, matfile)
+
+Msub = zeros(nb_indivs, 90)
+postfix_i = '_AALTC.mat'
+MsubAll=zeros(172,90,nb_indivs);
+for i=1:nb_indivs
+    i
+    if (i < 10)
+        prefix_i = strcat('00',num2str(i))
+    elseif (i >= 10)
+        prefix_i = strcat('0',num2str(i))
+    end
+    prefix_i = strcat('sub_', prefix_i)     
+    local_mat = strcat(path_individuals, prefix_i)
+    indiv_mat_file = strcat(local_mat, postfix_i)
+    load(indiv_mat_file)
+    Msub=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+    %Create the 3D matrix MsubAll properly 
+    %MsubAll=[Msub1,Msub2, Msub3,Msub4,Msub5,Msub6,
+    %Msub7,Msub8,Msub9,Msub10 ... Msub[nb_indivs]
+    MsubAll(:,:,i)= Msub;
+    
+end
+
+%Calculate correlation coefficient matrix for each subject
+%RsubAll array of 23 elements each is the R corr coef matrix returned by
+%'corrcoef' for each subject
+%initialize RsubAll to 0
+RsubAll=zeros(90,90,nb_indivs);
+N=nb_indivs;
+
+for i=1:nb_indivs
+    RsubAll(:,:,i)= corrcoef(MsubAll(:,:,i));
+end
+%Calculate Z transform
+%tz= 0.5*(log((1+RsubAll(i,j,k))/(1-RsubAll(i,j,k))))
+%0.5*log(1+p)/(i-p)
+RsubAllZ=RsubAll;
+for k=1:nb_indivs
+    for i=1:90
+        for j=1:90
+            p1=1+RsubAll(i,j,k);
+            p2=1-RsubAll(i,j,k);
+            tz= 0.5*(log(p1/p2));
+            RsubAllZ(i,j,k)= tz;
+        end   
+    end
+end
+
+RZ=zeros(90:90);
+PS=zeros(90:90);
+RZcor=zeros(90:90);
+PScor=zeros(90:90);
+%Note that the z-test (ztest) and the t-test (ttest) both assume that the
+%data are independently sampled from a normal distribution.
+%Statistics Toolbox functions are available for testing this assumption, such as chi2gof, jbtest, lillietest, and normplot.
+%Both the z-test and the t-test are relatively robust with respect to
+%departures from this assumption, so long as the sample size n is large enough. Both tests compute a sample mean , which, by the Central Limit Theorem, has an approximately normal sampling distribution with mean equal to the population mean ?, regardless of the population distribution being sampled.
+%The difference between the z-test and the t-test is in the assumption of the standard deviation ? of the underlying normal distribution. A z-test assumes that ? is known; a t-test does not. As a result, a t-test must compute an estimate s of the standard deviation from the sample.
+for i=1:90
+    for j=1:90        
+         [h p]=ttest(RsubAllZ(i,j,:),0.001);
+         PS(i,j)=p;
+         RZ(i,j)=h;
+         %[cor_p, hcor]=bonf_holm(p,.001);    
+         %PScor(i,j)=cor_p;
+         %RZcor(i,j)=hcor;
+        % 2 steps, Bonf Holmes
+    end
+end
+%[corrected_p, h]=bonf_holm(pvalues,alpha)
+%RZ is adjacency matrix, RZ(i,j) = 1 is i?nodes i j are correlated, 0
+%otherwise
+%RZcor is RZ correted with Bonferroni
+[PScor, RZcor]=bonf_holm(PS,0.001);
+
+
+%% Export Matrix RZ to Pajek and csv 
+coords = rand(90,3)
+%% write Adjacency matrix RZcor
+edgefile = '/Users/jagomez/Documents/MATLAB/BrainNetViewer_20150414/Data/Custom/'
+if is_young ==1
+    edgefile = strcat(edgefile, 'Young')
+    edgefile = strcat(edgefile, 'AAL90_Binary.edge')
+else
+    edgefile = strcat(edgefile, 'Old')
+    edgefile = strcat(edgefile, 'AAL90_Binary.edge')
+
+end
+
+fileID = fopen(edgefile, 'w')
+if fileID > -1
+    fprintf(fileID,'#AAL90\n');
+else
+    error('Adjacency matrix could not be saved')
+end
+
+for i=1:size(RZcor,1)
+   fprintf(fileID, '%d\t', RZcor(i,:));
+   fprintf(fileID, '\n');
+end
+fclose(fileID);
+
+
+
+
+
+
+write_matrix_to_pajek(RZ, pajek_dest_file ,'weighted',false,'directed',false,'coords', coords);
+xlswrite(xls_rzcor_file,RZcor, 'A1:CL90')
+
+%Calculate graph properties
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+degree_vec=degrees(RZcor);
+
+% Add plfit to Matlab http://tuvalu.santafe.edu/~aaronc/powerlaws/plfit.m
+[alpha, xmin, L] = plfit(degree_vec);
+
+h = plplot(degree_vec,xmin,alpha);
+title('Power-law distributional fit to degree distribution data')
+
+%[p,gof]=plpva(degree, xmin);
+%%%%
+%%%%  BCT Toolbox
+
+ 
+ 
+ % Network Identification
+ %%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%% Reny-Erdos model
+ % number of random matrix to be generated
+ M=100;
+ randomgraphs=zeros(90,90,M);
+ RZnumnodes =numnodes(RZcor);
+ RZnumedges =numedges(RZcor);
+% number of random matrix to be generated
+ for i= 1:M
+    randomgraphs(:,:,i)=random_graph(RZnumnodes,[ ],RZnumedges);
+ end
+
+%% CLUSTERING COEFFICIENT 
+%C = clustering_coef_bu(A);
+%The clustering coefficient is the fraction of triangles around a node
+%(equiv. the fraction of nodes neighbors that neighbors of each other).
+%Input:      A,      binary undirected connection matrix
+%Output:     C,      clustering coefficient vector
+Cpsw= clustering_coef_bu(RZcor);
+cpsw= mean(Cpsw);
+%Transitivity: The transitivity is the ratio of triangles to triplets in
+%the network and is an alternative to the clustering coefficient.
+transitivity_bu(RZcor)
+%Characteristic path length, global efficiency, eccentricity, radius,
+%diameter: The characteristic path length is the average shortest path length in the network. 
+%The global efficiency is the average inverse shortest path length in the network. The node eccentricity is the maximal shortest path length between a node and any other node. The radius is the minimum eccentricity and the diameter is the maximum eccentricity.
+ Lp=charpath(RZcor)
+ %genertae clustering and path for random networks
+ Cprd=zeros(90,1,M);
+ cprdi_mean=zeros;
+ Lpran=zeros;
+ cprdglob_mean=0;
+ for i= 1:M
+     Cprd(:,:,i)= clustering_coef_bu(randomgraphs(:,:,i));
+     cprdi_mean(i)=mean(Cprd(:,:,i));
+     Lpran(i)=charpath(randomgraphs(:,:,i));
+
+ end
+ 
+ %%%SMALL WORLD
+ 
+cprdglob_mean= mean(cprdi_mean);
+lpranmean=mean(Lpran);
+
+ %%% gamma, local clustering, if mygamma >1 higher clustering than in
+ %%% random network
+ mygamma=cpsw/cprdglob_mean;
+ 
+ %%% lambda, global path distance
+ 
+ mylambda= Lp/lpranmean;
+
+ % if smallw > 1 likely small world
+ mysmallw=mygamma/mylambda
+ sprintf('Small World parameters')
+ msg = sprintf('Gamma or local clustering is: %f .',mygamma)
+ 
+ msg = sprintf('Lambda or global path distance is: %f .',mylambda)
+ 
+ 
+
+ %%% Maslov Model
+ %Maslovresults=sym_correlation_profile(RanMaslov,1000)
+  % Nertwork Identification
+ %%%%%%%%%%%%%%%%%%%%%%%%%%
+ %RanMaslov = sym_generate_srand(RZcor); % just one simulation
+ %for N=1000 synthetically generated random networks
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%% Network vulnerability %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ %Measures related with distance : The geodesic path between two nodes i.e. 
+ %the shortest path using Floyd?s algorithm (ojo para weighted directed graph) 
+ %(OKACOGNET/software/MITNetwork/FloydSPR.m)
+ %graphshortestpath solves  the shortest path problem
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %% Equation 2 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % invoke eff_graph.m a function that calculates efficiency of graph based
+ % on formula 2 PRIOR to perturbation
+ %Formula 2, input: graph with N nodes, output: 1/(N(N-1)\sum dij) 
+ G_y=sparse(RZcor);
+ [G_yrow,G_ycol]=size(G_y)
+ glob_n_effic = eff_graph(G_y, G_yrow)
+ glob_unperturbed_effic = glob_n_effic
+ 
+ %ojo global no average, for the entire matrix not perturbation
+ 
+%%%% eff_graph has replaced graph_efficiency %%%%%
+%I created graph_efficiency.m in OKACOGNET/software/MITNetwork to get the
+%vulnerability value
+%% Jaime algorithm
+%function [eff_value]=graph_efficiency(AdjMax)
+% *INPUT:* 
+% AdjMax: Adjacent matrix that represents a sparse graph
+%
+% *OUTPUT:*
+% S: eficiency value calculated based on Latora-Melchiori genios
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%Equation 3. PERTURBATION
+%% Get all the perturbed matrixes for deleting one element,make all incidents links to nodei i =0.
+%G_per(i) = is the original matrix in which node i is a separate component
+%initialize array of matrix 90x90 for each of the perturbed graphs (links to node i =0)
+% Note that if we perturb in all possible ways we have
+%%
+G_zrow = Cnr(90)
+G_zrow = G_yrow 
+G_y_per=zeros(G_yrow, G_yrow, G_zrow); %array of matrixes with C(n,r) perturbed matrixes
+
+%glob_per_effic=zeros(G_yrow);
+%centrality=zeros(G_yrow);
+% array of reals that contain the measures for each matrix
+glob_per_effic=zeros(G_zrow);
+centrality=zeros(G_zrow);
+indexz=1
+% Initialize vectr to write results
+glob_eff_original = zeros(NT, 90)
+glob_eff_per = zeros(NT, 90)
+glob_centrality = zeros(NT, 90)
+
+if random_perturb == 1
+ for i= 1:NT
+    counter = i
+    %obtain the perturbed matrix
+    %G_y_per(:,:,i)= G_y; % 
+    % combos contains a matrix with all the subsets in the set of numbers between 1 and 90
+    combos = combntns(1:90,i)
+    %size(combos,1) gives the number of rows or perurbations
+    %Perturb G_y as specified by combos
+    %return arrray(size(combos,1) of matrix perturbed, each row of combos is a perurbation that correspnds to a new matrix, counter is the number of nodes that are deleted
+    nbpert = size(combos,1)
+    eff_original = eff_graph(G_y, G_yrow);
+    glob_centrality(i,1:nbpert) = 0;
+    glob_eff_per(i,1:nbpert) = eff_original;
+    for j= 1:nbpert
+        glob_eff_original(j,1:nbpert) = eff_original;
+        %Function that perturb the original network by deleting the node in
+        %curr_ntw
+        G_y_per(:,:,j)= perturb_set_cell(G_y, j, i); %
+        % Calculate the results for the old and the new network        
+        %centrality is the loss in normalized efficiency when nodes are
+        %removed, it is expected that if gradient is big centrality big too 
+        %gradient is 0 centrality zero, removing nodes does not affect
+        %efficiency
+        eff_per = eff_graph(sparse(G_y_per(:,:,j)), G_yrow);
+        glob_eff_per(i,j) = eff_per;
+        centrality = (eff_original-eff_per)/eff_original;
+        glob_centrality(i,j) = centrality;
+        sprintf ('Running perturbation number %d out of %d', j, nbpert)          
+    end
+    
+    %write results for NT perturbation
+    %results dir results_dir/NT
+    %results_dir = strcat(tmp_results_dir, 'N')
+    %results_dir = strcat(results_dir, num2str(i))
+    curr_ntw = []
+    %writeresults(is_young, random_perturb, curr_ntw, results_dir,xls_dest_file, nodes_list, degree_vec, glob_eff_original(j,1:90), glob_eff_per(j,1:90), glob_centrality(j,1:90))
+    name = num2str(i)
+    name = strcat('N',name)
+    xls_dest_file = strcat(results_dir, name)
+    matfile = xls_dest_file
+    matfile = strcat(xls_dest_file, '.mat')
+    xls_dest_file = strcat(xls_dest_file, '.txt')
+    disp('Saving mat results and txt file')
+    save(matfile, 'mygamma','mylambda')
+    eff_o = glob_eff_original(i,1:90)
+    eff_p = glob_eff_per(i,1:90)
+    cent = glob_centrality(i,1:90)
+    writeresults(is_young, random_perturb, curr_ntw, results_dir,xls_dest_file, matfile, nodes_list, degree_vec, eff_o, eff_p, cent)
+ end
+else 
+    %if delete edges rather than areas pert_edges == 1
+   if pert_edges == 1
+       %targetcombos ={[or1][dest1] [or2][dest2] ...} disconnect or1 with
+       %dest1, or2 with dest2 ...
+       %DMN-DMN (disconnect the DMN inside)
+       %DMN-DMN-LeftRight (disconnect lefts from rights in the DMN)
+       %HC-DMN disconnect Hippocampus from DMN
+       
+       targetcombos = {[23 24 25 26 35 36 37 68 61 62]; %DMN desconnect connection between origen and 
+           [23 24 25 26 35 36 37 68 61 62] %DMN dest
+           [23 25 35 37 61]; %desconnect DMN left Right 
+           [24 26 36 68 62] % Right DM
+           [23 24 25 26 35 36 37 68 61 62]; %desconnect DMN and HC 
+           [37 38 39 40] % HC, parahippocampus 39,40
+           [38 40]; %desconnect HC left from right 
+           [37 39] % HC, parahippocampus 39,40
+       
+       };
+       num_pairs = size(targetcombos,1) %number of perturbations, or pairs of networks to disconnect
+       num_pairs = num_pairs/2
+       orig_nodes = targetcombos{1}
+       dest_nodes = targetcombos{2}
+       counter_orig = size(orig_nodes,2) 
+       counter_dest = size(dest_nodes,2)
+       for j= 1:num_pairs 
+            combos_orig = targetcombos{j*2 -1}
+            combos_dest = targetcombos{j*2}
+         
+            G_y_per(:,:,j)= perturb_set_edges(G_y, combos_orig, combos_dest, counter_orig, counter_dest)
+            
+            eff_original = eff_graph(G_y, G_yrow);
+            glob_eff_original(j,1:90) = eff_original
+            
+            glob_eff_per(j,1:90) = eff_original
+            eff_per = eff_graph(sparse(G_y_per(:,:,j)), G_yrow);
+            glob_eff_per(j,combos_orig) = eff_per
+            glob_centrality(j,1:90) = 0
+            centrality = (eff_original-eff_per)/eff_original;
+            glob_centrality(j,combos_orig) = centrality
+            sprintf ('Running perturbation PAIR number %d out of %d', j, num_pairs) 
+            if j == 1         
+                %DMN-DMN
+                name = 'Edges-DMN-DMN'
+                results_dir = strcat(tmp_results_dir, 'Edges-DMN-DMN');
+                
+            elseif j == 2
+            %HC-DMN
+                name = 'Edges-DMN-DMN'
+                results_dir = strcat(tmp_results_dir, 'Edges-HC-DMN');
+                
+            elseif j == 3
+                %HC-DMN
+                name = 'Edges-HC-DMN'
+                results_dir = strcat(tmp_results_dir, 'Edges-HC-DMN');
+                
+            elseif j == 4
+                %HC-DMN
+                name = 'Edges-HC-DMN'
+                results_dir = strcat(tmp_results_dir, 'Edges-HC-DMN');
+                
+                
+                
+                
+                
+            end
+            
+            xls_dest_file = strcat(results_dir, '/')
+            if ~exist(xls_dest_file, 'dir')
+                mkdir(xls_dest_file);
+            end
+            xls_dest_file = strcat(xls_dest_file, name)      
+            matfile = xls_dest_file
+            matfile = strcat(xls_dest_file, '.mat')
+            xls_dest_file = strcat(xls_dest_file, '.txt')
+            %save variables in a mat file
+            save(matfile, 'mygamma','mylambda') 
+            eff_o = glob_eff_original(j,1:90)
+            eff_p = glob_eff_per(j,1:90)
+            cent = glob_centrality(j,1:90)
+            writeresults(is_young, random_perturb, combos_orig, results_dir,xls_dest_file, matfile, nodes_list, degree_vec, eff_o, eff_p, cent)
+     
+       end
+       
+   else
+    %target networks to delete
+    disp('Targeted Perturbation\n')
+    %perturbation targeted
+    %list or networks that will be deleted
+    %DMN = [23 24 25 26 35 36 37 68 61 62]
+    %Visual related brain areas
+    %targetcombos(2,:) = [43 44 45 46 47 48 49 50 51 52 53 54 55 56 59 60
+    %89 90]
+    %Disconection fronto parietal sensory cortex 
+    %Disconection thalamocortical
+    targetcombos = {[23 24 25 26 35 36 37 68 61 62]; %DMN
+    [43 44 45 46 47 48 49 50 51 52 53 54 55 56 59 60 89 90]; %Visual
+    [37 38 39 40 41 42 55 56 79 80 81 82 83 84 85 86 87 88 89 90]; %Temporal Lobe
+    [29 30 31 32 33 34 35 36]; %Insula
+    [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 51 52]; % Frontal
+    [43 44 45 46 47 48 49 50 51 52 53 54]; %Occipital Lobe
+    [57 58 59 60 61 62 63 64 65 66 67 68]; %Parietal Lobe
+    [71 72 73 74 75 76 77 78]; %Central structures: Caudate nucleus Putamen Pallidum thalamus
+    [37 38 39 40 41 42]; %Limbic: hippocampus, parahippocampus, amygdala 
+    [1 3 5 7 9 11 13 15 17 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49 51 53 55 57 59 61 63 65 67 69 71 73 75 77 79 81 83 85 87 89]; %Left gone
+    [2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90]; %Right gone
+    [23 25 35 37 61]; %DMN left gone
+    [24 26 36 68 62]; %DMN right gone gone
+    };     
+    nbpert = size(targetcombos,1) %nb of rows of targetednetworks to be removed
+    for j= 1:nbpert
+        %indexz = j
+        curr_ntw = targetcombos{j}
+        [curr_ntw_rows, curr_ntw_cols] = size(curr_ntw)
+        %Function that perturb the original network by deleting the node in
+        %curr_ntw
+        G_y_per(:,:,j)= perturb_set_cell(G_y, curr_ntw, curr_ntw_cols); %
+        % Calculate the results for the old and the new network
+        eff_original = eff_graph(G_y, G_yrow);
+        glob_eff_original(j,1:90) = eff_original
+        %centrality is the loss in normalized efficiency when nodes are
+        %removed, it is expected that if gradient is big centrality big too 
+        %gradient is 0 centrality zero, removing nodes does not affect
+        %efficiency
+        glob_eff_per(j,1:90) = eff_original
+        eff_per = eff_graph(sparse(G_y_per(:,:,j)), G_yrow);
+        glob_eff_per(j,curr_ntw) = eff_per
+        glob_centrality(j,1:90) = 0
+        centrality = (eff_original-eff_per)/eff_original;
+        glob_centrality(j,curr_ntw) = centrality
+        sprintf ('Running perturbation number %d out of %d', j, nbpert) 
+        %results dir results_dir/nbpert with names DMN, Visual etc      
+        if j == 1         
+            %DMN network deleted
+            %output directory results in /DMN
+            name = 'DMN'
+            results_dir = strcat(tmp_results_dir, 'DMN');
+        elseif j == 2   
+            name = 'Visual'
+            results_dir = strcat(tmp_results_dir, 'Visual');
+        elseif j == 3  
+            name = 'Temporal'
+            results_dir = strcat(tmp_results_dir, 'Temporal');
+        elseif j == 4   
+            name = 'Insula'
+            results_dir = strcat(tmp_results_dir, 'Insula');
+        elseif j == 5   
+            name = 'Frontal'
+            results_dir = strcat(tmp_results_dir, 'Frontal');
+        elseif j == 6   
+            name = 'Occipital'
+            results_dir = strcat(tmp_results_dir, 'Occipital');            
+        elseif j == 7   
+            name = 'Parietal'
+            results_dir = strcat(tmp_results_dir, 'Parietal');
+        elseif j == 8   
+            name = 'Central'
+            results_dir = strcat(tmp_results_dir, 'Central');
+        elseif j == 9   
+            name = 'HippAmyg'
+            results_dir = strcat(tmp_results_dir, 'HippAmyg');  
+        elseif j == 10   
+            name = 'LeftGone'
+            results_dir = strcat(tmp_results_dir, 'LeftGone'); 
+        elseif j == 11   
+            name = 'RightGone'
+            results_dir = strcat(tmp_results_dir, 'RightGone');
+        elseif j == 12   
+            name = 'DMNRightGone'
+            results_dir = strcat(tmp_results_dir, 'DMNRightGone');
+        elseif j == 13   
+            name = 'DMNLeftGone'
+            results_dir = strcat(tmp_results_dir, 'DMNLeftGone');
+        end
+        %[pathstr,name,ext,versn] = fileparts(results_dir)
+        xls_dest_file = strcat(results_dir, '/')
+        %Create directory if does not exist
+        if ~exist(xls_dest_file, 'dir')
+            mkdir(xls_dest_file);
+        end
+        xls_dest_file = strcat(xls_dest_file, name)      
+        matfile = xls_dest_file
+        matfile = strcat(xls_dest_file, '.mat')
+        xls_dest_file = strcat(xls_dest_file, '.txt')
+        %save variables in a mat file
+        save(matfile, 'mygamma','mylambda') 
+        eff_o = glob_eff_original(j,1:90)
+        eff_p = glob_eff_per(j,1:90)
+        cent = glob_centrality(j,1:90)
+        writeresults(is_young, random_perturb, curr_ntw, results_dir,xls_dest_file, matfile, nodes_list, degree_vec, eff_o, eff_p, cent)
+     end
+   end
+end
+
+
+%nodes_central=[];
+%central_list_y=[];
+%for i=1:G_yrow
+%    nodes_central=i;
+%    central_list_y= horzcat(centrality(i), central_list_y);
+%end
+%Order central nodes in order
+%[B_y,IX_y]=sort(central_list_y);
+%probplot(B_y);
+%histfit(B_y);
+
+%markovcalculus(G_yrow, RZcor) 
+end
+
+
+function markovcalculus(G_yrow, RZcor) 
+
+sumr_y=zeros(G_yrow);
+%array with the sum of each row to build T 
+%sumy_r(k) is the number of ones in row k
+%Calculate the stationary distribution
+%stat_dis= k_i/"E
+stat_dis=zeros(1,G_yrow);
+for k=1:G_yrow
+    sumr_y(k)=0;
+    for l=1:G_yrow
+     sumr_y(k)= sumr_y(k) + RZcor(k,l);
+    end
+end
+%Calculate T=Aij/(sumj)Aij
+TG_y=zeros(G_yrow,G_yrow);
+for i= 1:G_yrow
+    for j= 1:G_yrow
+       TG_y(i,j)= RZcor(i,j)/sumr_y(i); 
+    end
+    stat_dis(i)=sum(RZcor(i,:));
+end
+
+%G_eper -> TG_eper
+
+TG_y_per=zeros(G_yrow, G_yrow, G_yrow);
+for i= 1:G_yrow
+    %obtain the perturbed transition matrix
+    TG_y_per(:,:,i)= TG_y;
+    TG_y_per(i,:,i)= 0;
+    TG_y_per(:,i,i)= 0; 
+end
+
+%Calculate the stationary distribution for each perturbed markov chain 
+stat_dis_per=zeros(G_yrow,G_yrow);
+
+
+%2. calculate entropy rate H(T) for each Markov process (TG_y, TG_y_per (ki=0))
+%from WSD toolbox
+
+hr_y=zeros(1,G_yrow);
+%initialize array of entropy rates
+alpha=0;
+% alpha=0 unbiased Markov process
+for i= 1:G_yrow
+    [hr_y(1,i) alpha] =entropy_rate(TG_y_per(:,:,i),alpha); 
+end
+
+%Draw distribution of entropy rate
+
+probplot(hr_y);
+histfit(hr_y);
+
+%3. calculate distance to each Markov process
+
+%[hr_unper alpha] =entropy_rate(RZcor,alpha);
+[hr_unperyoung alpha] =entropy_rate(TG_y,alpha);
+%hr_unper=2.1951
+%Note we have negative distance!
+for i= 1:G_yrow
+   disthr_y(i)= (hr_unperyoung-hr_y(1,i))/(hr_unperyoung);
+end
+
+probplot(disthr_y);
+histfit(disthr_y);
+end
+
+
+
+function writeresults(is_young, random_perturb, curr_ntw, results_dir, xls_dest_file, matfile, nodes_list, degree_vec, eff_o, eff_p,cent)
+
+% create directory is doesnt exist
+
+if ~exist(results_dir, 'dir')
+  mkdir(results_dir);
+end
+%delete mat file if it exists
+%if exist(matfile, 'file')==2
+%            delete(matfile);
+%end 
+
+if is_young == 1
+    
+    degree_vec_y = degree_vec
+    eff_o_y = eff_o;
+    eff_p_y = eff_p
+    cent_y = cent
+    if random_perturb == 0
+        curr_ntw_y = curr_ntw
+        save(matfile, 'nodes_list', 'degree_vec_y', 'curr_ntw_y', 'eff_o_y', 'eff_p_y', 'cent_y', '-append')
+    else
+        save(matfile, 'nodes_list', 'degree_vec_y', 'eff_o_y', 'eff_p_y', 'cent_y', '-append')
+    end
+else
+    degree_vec_o = degree_vec
+    eff_o_o = eff_o;
+    eff_p_o = eff_p
+    cent_o = cent
+    if random_perturb == 0
+        curr_ntw_o = curr_ntw
+        save(matfile, 'nodes_list', 'degree_vec_o', 'curr_ntw_o', 'eff_o_o', 'eff_p_o', 'cent_o', '-append')
+    else
+        save(matfile, 'nodes_list', 'degree_vec_o', 'eff_o_o', 'eff_p_o', 'cent_o', '-append')
+    end
+end
+%write output in txt file, xlswrite sucks
+fileID = fopen(xls_dest_file, 'w')
+if fileID > -1
+    if is_young == 1
+        fprintf(fileID,'YOUNG\t');
+    else
+        fprintf(fileID,'ELDER\t');
+    end
+    if random_perturb == 1 
+            fprintf(fileID,'RANDOM\n');
+    else
+            fprintf(fileID,'TARGETED\t');
+            size_curr_ntw = size(curr_ntw)
+            str_cn = sprintf('%d ', curr_ntw); 
+            fprintf(fileID,'REMOVED Target: %s\n', str_cn)
+    end            
+    fprintf(fileID,'ID\t Degree(i)\t Efficiency_Original\t Efficiency_Perturbed\t Centrality_LesionedNodes\t\n');
+    fprintf(fileID,'%d\t%d\t%1.4f\t%1.4f\t%1.4f\r\n',[nodes_list;degree_vec;eff_o;eff_p;cent])
+    fclose(fileID);       
+else
+  error('File Elder results output %s could not open', xls_dest_file)  
+end
+
+end
+

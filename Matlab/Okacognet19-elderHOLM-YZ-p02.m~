@@ -1,0 +1,365 @@
+% HOLMES correction
+% p0 0.001 50% 1s
+% 19 subjects Elder
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_001_AALTC.mat')
+Msub1=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_002_AALTC.mat')
+Msub2=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_003_AALTC.mat')
+Msub3=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_004_AALTC.mat')
+Msub4=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_005_AALTC.mat')
+Msub5=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_006_AALTC.mat')
+Msub6=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_007_AALTC.mat')
+Msub7=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_008_AALTC.mat')
+Msub8=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_009_AALTC.mat')
+Msub9=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_010_AALTC.mat')
+Msub10=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_011_AALTC.mat')
+Msub11=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_012_AALTC.mat')
+Msub12=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_013_AALTC.mat')
+Msub13=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_014_AALTC.mat')
+Msub14=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_015_AALTC.mat')
+Msub15=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC];
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_016_AALTC.mat')
+Msub16=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_017_AALTC.mat')
+Msub17=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_018_AALTC.mat')
+Msub18=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+load('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/sub_019_AALTC.mat')
+Msub19=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+
+
+% I create the 3D matrix MsubAll properly 
+%MsubAll=[Msub1,Msub2, Msub3,Msub4,Msub5,Msub6, Msub7,Msub8,Msub9,Msub10,
+%Msub11,Msub12,Msub13,Msub14, Msub15,Msub16,Msub17,Msub18, Msub19,Msub20,Msub21,Msub22, Msub23]
+MsubAllElder=zeros(172,90,19);
+MsubAll(:,:,1)= Msub1;
+MsubAll(:,:,2)= Msub2;
+MsubAll(:,:,3)= Msub3;
+MsubAll(:,:,4)= Msub4;
+MsubAll(:,:,5)= Msub5;
+MsubAll(:,:,6)= Msub6;
+MsubAll(:,:,7)= Msub7;
+MsubAll(:,:,8)= Msub8;
+MsubAll(:,:,9)= Msub9;
+MsubAll(:,:,10)= Msub10;
+MsubAll(:,:,11)= Msub11;
+MsubAll(:,:,12)= Msub12;
+MsubAll(:,:,13)= Msub13;
+MsubAll(:,:,14)= Msub14;
+MsubAll(:,:,15)= Msub15;
+MsubAll(:,:,16)= Msub16;
+MsubAll(:,:,17)= Msub17;
+MsubAll(:,:,18)= Msub18;
+MsubAll(:,:,19)= Msub19;
+%Calculate correlation coefficient matrix for each subject
+%RsubAll array of 19 elements each is the R corr coef matrix returned by
+%'corrcoef' for each subject
+%initialize RsubAll to 0
+RsubAll=zeros(90,90,19)
+N=19;
+for i=1:N
+    RsubAll(:,:,i)= corrcoef(MsubAll(:,:,i));
+end
+%Calculate Z transform
+%tz= 0.5*(log((1+RsubAll(i,j,k))/(1-RsubAll(i,j,k))))
+%0.5*log(1+p)/(i-p)
+RsubAllZ=RsubAll;
+for k=1:N
+    for i=1:90
+        for j=1:90
+            p1=1+RsubAll(i,j,k);
+            p2=1-RsubAll(i,j,k);
+            tz= 0.5*(log(p1/p2));
+            RsubAllZ(i,j,k)= tz;
+        end   
+    end
+end
+
+RZ=zeros(90:90);
+PS=zeros(90:90);
+RZcor=zeros(90:90);
+PScor=zeros(90:90);
+%Note that the z-test (ztest) and the t-test (ttest) both assume that the
+%data are independently sampled from a normal distribution.
+%Statistics Toolbox functions are available for testing this assumption, such as chi2gof, jbtest, lillietest, and normplot.
+%Both the z-test and the t-test are relatively robust with respect to
+%departures from this assumption, so long as the sample size n is large enough. Both tests compute a sample mean , which, by the Central Limit Theorem, has an approximately normal sampling distribution with mean equal to the population mean ?, regardless of the population distribution being sampled.
+%The difference between the z-test and the t-test is in the assumption of the standard deviation ? of the underlying normal distribution. A z-test assumes that ? is known; a t-test does not. As a result, a t-test must compute an estimate s of the standard deviation from the sample.
+for i=1:90
+    for j=1:90
+        
+         [h p]=ttest(RsubAllZ(i,j,:),0.001);
+         PS(i,j)=p;
+         RZ(i,j)=h;
+         %[cor_p, hcor]=bonf_holm(p,.001);    
+         %PScor(i,j)=cor_p;
+         %RZcor(i,j)=hcor;
+        % 2 steps, Bonf Holmes
+    end
+end
+%[corrected_p, h]=bonf_holm(pvalues,alpha)
+[PScor, RZcor]=bonf_holm(PS,0.001);
+% put zeros below the diagonal
+%for j=1:90
+%    for i=j+1:90
+%         RZcor(i,j)=0;
+        % 2 steps, Bonf Holmes
+%    end
+%end
+
+% Save data
+savefile= 'MsubTotalSubjects.mat'
+% data are save and ready to be load for next session in
+% MsubTotalSubjects.mat
+save('MsubTotalSubjects.mat','Msub1','Msub2','Msub3','Msub4','Msub5','Msub6','Msub7','Msub8','Msub9','Msub10','Msub11','Msub12','Msub13','Msub14','Msub15','Msub16','Msub17','Msub18','Msub19','MsubAll', 'RsubAll','RZcor')
+%% Export Matrix RZ to Pajek
+coords = rand(90,3)
+write_matrix_to_pajek(RZ,'/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/MatLabLib/RZ19-Eldersub.net','weighted',false,'directed',false,'coords',coords );
+xlswrite('/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/MatLabLib/FinaleRZ19-Elder-HOLM-YL.xls',RZcor, 'A1:CL90')
+
+
+
+%count the number of edges per node in order to calculate the degree
+%distribution
+%degree=zeros(90,1)
+%for i=1:90
+%    count =0;
+%    for j=1:90
+%        count=RZcor(i,j)+ count
+%    end
+%    degree(i)=count
+%end
+
+%call to degress(adj), take into cc. that the result with this function is
+%identical to the above loop +1 (the diagonal)
+degree_vec=degrees(RZcor);
+
+% Add plfit to Matlab http://tuvalu.santafe.edu/~aaronc/powerlaws/plfit.m
+[alpha, xmin, L] = plfit(degree_vec);
+h = plplot(degree_vec,xmin,alpha);
+%[p,gof]=plpva(degree, xmin);
+%%%%
+%%%%  BCT Toolbox
+
+ 
+ 
+ % Nertwork Identification
+ %%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%% Reny-Erdos model
+ % number of random matrix to be generated
+ M=100;
+ randomgraphs=zeros(90,90,M);
+ RZnumnodes =numnodes(RZcor);
+ RZnumedges =numedges(RZcor);
+% number of random matrix to be generated
+ for i= 1:M
+    randomgraphs(:,:,i)=random_graph(RZnumnodes,[ ],RZnumedges);
+ end
+
+%% CLUSTERING COEFFICIENT 
+%C = clustering_coef_bu(A);
+%The clustering coefficient is the fraction of triangles around a node
+%(equiv. the fraction of nodes neighbors that neighbors of each other).
+%Input:      A,      binary undirected connection matrix
+%Output:     C,      clustering coefficient vector
+Cpsw_e= clustering_coef_bu(RZcor);
+cpsw_e= mean(Cpsw_e);
+%Transitivity: The transitivity is the ratio of triangles to triplets in
+%the network and is an alternative to the clustering coefficient.
+transitivity_bu(RZcor)
+%Characteristic path length, global efficiency, eccentricity, radius,
+%diameter: The characteristic path length is the average shortest path length in the network.
+%The global efficiency is the average inverse shortest path length in the network. 
+%The node eccentricity is the maximal shortest path length between a node and any other node. 
+%The radius is the minimum eccentricity and the diameter is the maximum eccentricity.
+ Lp=charpath(RZcor)
+ %genertae clustering and path for random networks
+ Cprd=zeros(90,1,M);
+ cprdi_mean=zeros;
+ Lpran=zeros;
+ cprdglob_mean=0;
+ for i= 1:M
+     Cprd(:,:,i)= clustering_coef_bu(randomgraphs(:,:,i));
+     cprdi_mean(i)=mean(Cprd(:,:,i));
+     Lpran(i)=charpath(randomgraphs(:,:,i));
+  
+ end
+cprdglob_mean= mean(cprdi_mean);
+lpranmean=mean(Lpran);
+
+ %%% gamma, local clustering, if mygamma >1 higher clustering than in
+ %%% random network
+ mygamma_e=cpsw_e/cprdglob_mean;
+ 
+ %%% lambda, global path distance
+ 
+ mylambda_e= Lp/lpranmean;
+
+ % if smallw > 1 likely small world
+ mysmallw=mygamma_e/mylambda_e
+
+ 
+ %%% Maslov Model
+ %Maslovresults=sym_correlation_profile(RanMaslov,1000)
+  % Nertwork Identification
+ %%%%%%%%%%%%%%%%%%%%%%%%%%
+ RanMaslov = sym_generate_srand(RZcor) % just one simulation
+  %% Equation 1 and 2 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % invoke eff_graph.m a function that calculates efficency of graph based
+ % on formula 2
+ 
+ G_y=sparse(RZcor);
+ [G_yrow,G_ycol]=size(G_y)
+ glob_n_effic= eff_graph(G_y, G_yrow)
+ 
+ %(glob_n_effic = 0.3678)
+
+%%%% eff_graph has replaced graph_efficiency %%%%%
+%I created graph_efficiency.m in OKACOGNET/software/MITNetwork to get the
+%vulnerability value
+%% Jaime algorithm
+%function [eff_value]=graph_efficiency(AdjMax)
+% *INPUT:* 
+% AdjMax: Adjacent matrix that represents a sparse graph
+%
+% *OUTPUT:*
+% S: eficiency value calculated based on Latora-Melchiori genios
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%Equation 3. PERURBATION
+%% Get all the perturbed matrixes for deleting one element,make all incidents links to nodei i =0.
+%G_per(i) = is the original matrix in which node i is a separate component
+%initialize array of matrix 90x90 for each of the perturbed graphs (links to node i =0)
+% Note that if we perturb in all possible ways we have
+%%
+G_zrow = Cnr(90)
+G_zrow = G_yrow 
+G_y_per=zeros(G_yrow, G_yrow, G_zrow); %array of matrixes with C(n,r) perturbed matrixes
+
+%glob_per_effic=zeros(G_yrow);
+%centrality=zeros(G_yrow);
+% array of reals that contain the measures for each matrix
+glob_per_effic=zeros(G_zrow);
+centrality=zeros(G_zrow);
+indexz=1
+NT = 90
+NT = 1
+random_perturb = 0 %perurbation random =1, targeted networks = 0
+if random_perturb == 1
+ for i= 1:NT
+    counter = i
+    %obtain the perturbed matrix
+    %G_y_per(:,:,i)= G_y; % 
+    % combos contains a matrix with all the subsets in the set of numbers between 1 and 90
+    combos = combntns(1:90,i)
+    %size(combos,1) gives the number of rows or perurbations
+    %Perturb G_y as specified by combos
+    %return arrray(size(combos,1) of matrix perturbed, each row of combos is a perurbation that correspnds to a new matrix, counter is the number of nodes that are deleted
+    nbpert = size(combos,1)
+    for j= 1:nbpert
+        G_y_per(:,:,indexz)= perturb_set(G_y, combos(j,:),counter); %
+        G_y_per(i,:,indexz)= 0;
+        G_y_per(:,i,indexz)= 0;
+        removednodes(indexz,:) = combos(j,:);
+        %build population of effic
+        glob_per_effic(indexz)= eff_graph(sparse(G_y_per(:,:,indexz)), G_yrow);
+        centrality(indexz)= (glob_n_effic-glob_per_effic(indexz))/glob_n_effic; 
+        %calculate statistics of the population
+        disp('INDEX IS:')
+        indexz=indexz+1
+        
+    end
+   disp('****ELEMENTS:')
+   disp(i)
+ end
+else
+    disp('Targeted Perturbation')
+    %perturbation targeted
+    %list or networks that will be deleted
+    %DMN
+    %nd bilateral inferior parietal lobule (AAL 61, 62).
+    targetcombos(1,:) = [23,24,25,26,35,36,37,68,61,62]
+    %Disconection fronto parietal sensory cortex 
+    %Disconection para, hippocampus and amygdala, 37..42 (repeated bec need to have = nb of columns)
+    targetcombos(2,:) = [37,38,39,40,41,42,37,38,39,40]
+    %Disconection thalamocortical
+    nbpert = size(targetcombos,1) %nb of rows of targetednetworks to be removed
+    for j= 1:nbpert
+        indexz = j
+        [rows,counter] = size(targetcombos)
+        G_y_per(:,:,indexz)= perturb_set(G_y, targetcombos(j,:),counter); %
+        disp('esto')
+        G_y_per(i,:,indexz)= 0;
+        G_y_per(:,i,indexz)= 0;
+        %removednodes(indexz,:) = combos(j,:);
+        %build population of effic
+        glob_per_effic(indexz)= eff_graph(sparse(G_y_per(:,:,indexz)), G_yrow);
+        centrality(indexz)= (glob_n_effic-glob_per_effic(indexz))/glob_n_effic; 
+        %calculate statistics of the population
+        disp('INDEX IS:')
+        j
+ 
+    end
+
+end
+
+if random_perturb == 0
+    indexz = nbpert
+else
+    disp ('nooo')
+    indexz = indexz -1;
+end
+eff_elder = glob_per_effic(1:indexz)
+cen_elder = centrality(1:indexz) 
+disp ('nppo')
+nodes_central=[];
+central_list=[];
+for i=1:G_yrow
+nodes_central=i;
+central_list= horzcat(centrality(i), central_list)
+end
+
+[B_y,IX_y]=sort(central_list);
+
+%results matrix, inex, value, ordered(index, value)
+
+xlswrite('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/19-Young-HOLM.xls',central_list', 'Young','A1:A90');
+xlswrite('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/19-Young-HOLM.xls',B_y', 'Young','B1:B90');
+xlswrite('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/19-Young-HOLM.xls', IX_y','Young','C1:C90');
+
+
+%results 
+%IX_y = 
+ %    2     6    11    13    14    16    18    20    28    52    58    61    71    72    73    50    54    55    56     4
+  %  15    86    51     8    82    17    53    76    49     3    21    23    26    89    19    90    41    70    30    78
+   % 80    37    62    25    64    36     9    10    12    60    48    42    45    46    66     5    43    38    39    88
+    %68     1    87    40    47    81    65    85     7    22    24    84    34    69    44    79    63    33    59    75
+   % 77    32    74    31    35    27    57    67    83    29
+    
+%By =
+ %         0         0         0         0         0         0         0         0         0         0         0    0.0022
+%   0.0022    0.0022    0.0022    0.0022    0.0022    0.0022    0.0022    0.0045    0.0045    0.0045    0.0045    0.0085
+%   0.0085    0.0085    0.0085    0.0096    0.0096    0.0220    0.0223    0.0223    0.0228    0.0228    0.0230    0.0230
+%   0.0269    0.0270    0.0272    0.0275    0.0275    0.0276    0.0280    0.0285    0.0285    0.0285    0.0302    0.0302
+%   0.0302    0.0317    0.0320    0.0323    0.0323    0.0323    0.0340    0.0344    0.0348    0.0349    0.0354    0.0356
+%   0.0356    0.0363    0.0364    0.0382    0.0387    0.0417    0.0427    0.0438    0.0470    0.0478    0.0478    0.0487
+%   0.0495    0.0506    0.0528    0.0561    0.0610    0.0694    0.0795    0.0888    0.0895    0.1032    0.1317    0.1674
+%   0.2127    0.2657    0.2710    0.2892    0.2974    0.3287
+
+% In elder there is only one node, node 2, with centrality =0, young more,
+% young have more nodes that have 0 centrality...so young networks are more
+% resilient (in node basis)

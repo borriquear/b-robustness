@@ -1,0 +1,13 @@
+#TeXlipse project settings
+#Thu Apr 30 04:00:37 EDT 2015
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=graphADrobustness-04302015.tex
+outputFile=graphADrobustness-04302015.pdf
+langSpell=en
+markDer=true
+srcDir=

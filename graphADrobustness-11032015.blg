@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.5)
+The top-level auxiliary file: graphADrobustness-11032015.aux
+The style file: plain.bst
+Database file #1: /Users/jagomez/Eclipse/workspace/bibliojgr/bibliojgr.bib
+Warning--there's a number but no volume in Fuster:2000
+You've used 64 entries,
+            2118 wiz_defined-function locations,
+            875 strings with 20375 characters,
+and the built_in function-call counts, 28797 in all, are:
+= -- 2676
+> -- 2072
+< -- 1
++ -- 827
+- -- 754
+* -- 2708
+:= -- 5000
+add.period$ -- 204
+call.type$ -- 64
+change.case$ -- 569
+chr.to.int$ -- 0
+cite$ -- 65
+duplicate$ -- 720
+empty$ -- 1692
+format.name$ -- 754
+if$ -- 5543
+int.to.chr$ -- 0
+int.to.str$ -- 64
+missing$ -- 64
+newline$ -- 335
+num.names$ -- 129
+pop$ -- 443
+preamble$ -- 1
+purify$ -- 505
+quote$ -- 0
+skip$ -- 476
+stack$ -- 0
+substring$ -- 1766
+swap$ -- 77
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 254
+warning$ -- 1
+while$ -- 236
+width$ -- 66
+write$ -- 730
+(There was 1 warning)

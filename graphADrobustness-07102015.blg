@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.5)
+The top-level auxiliary file: graphADrobustness-07102015.aux
+The style file: ieeetr.bst
+Database file #1: bibliojgr.bib
+Warning--I didn't find a database entry for "whitfield-gabrieli_default_2012"
+You've used 43 entries,
+            1876 wiz_defined-function locations,
+            746 strings with 15132 characters,
+and the built_in function-call counts, 15936 in all, are:
+= -- 1525
+> -- 919
+< -- 0
++ -- 322
+- -- 279
+* -- 1305
+:= -- 2329
+add.period$ -- 55
+call.type$ -- 43
+change.case$ -- 43
+chr.to.int$ -- 0
+cite$ -- 43
+duplicate$ -- 716
+empty$ -- 1152
+format.name$ -- 279
+if$ -- 3745
+int.to.chr$ -- 0
+int.to.str$ -- 43
+missing$ -- 43
+newline$ -- 144
+num.names$ -- 44
+pop$ -- 54
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 658
+stack$ -- 0
+substring$ -- 1147
+swap$ -- 405
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 143
+width$ -- 45
+write$ -- 454
+(There was 1 warning)

@@ -1,0 +1,471 @@
+sHOLMES correction
+% p0 0.001 50% 1s
+%23 YOUNG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% JGR06-30-2015
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+date_is = date %current date
+nb_young = 23
+%19 ELDER
+nb_elder = 19
+path_young_individuals =  '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/FunImgFC_AALTC/'
+path_elder_individuals =  '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/Elder-19/FunImgFC_AALTC/'
+
+is_young = 0
+is_elder = is_young - 1
+
+if is_young == 1
+    nb_indivs = nb_young
+    path_individuals = path_young_individuals
+    pajek_dest_file = '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/PajekYoungRZ23sub.net'
+    xls_rzcor_file = '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/YoungRZ23-HOLM.xls'
+    xls_dest_file = strcat('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/Cent-Eff-Young-', date_is)
+    xls_dest_file = strcat(xls_dest_file,'.txt')
+    
+
+else
+    nb_indivs = nb_elder
+    path_individuals = path_elder_individuals 
+    pajek_dest_file = '/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/PajekElderRZ19sub.net'
+    xls_rzcor_file ='/Users/jagomez/Eclipse/workspace/OKACOGNET/Resources/ElderRZ19-HOLM.xls' 
+    xls_dest_file = strcat('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/Cent-Eff-Elder-', date_is)
+    xls_dest_file = strcat(xls_dest_file,'.txt')
+    
+end
+Msub = zeros(nb_indivs, 90)
+postfix_i = '_AALTC.mat'
+MsubAll=zeros(172,90,nb_indivs);
+for i=1:nb_indivs
+    i
+    if (i < 10)
+        prefix_i = strcat('00',num2str(i))
+    elseif (i >= 10)
+        prefix_i = strcat('0',num2str(i))
+    end
+    prefix_i = strcat('sub_', prefix_i)     
+    local_mat = strcat(path_individuals, prefix_i)
+    indiv_mat_file = strcat(local_mat, postfix_i)
+    load(indiv_mat_file)
+    Msub=[AAL01TC, AAL02TC,AAL03TC,AAL04TC,AAL05TC,AAL06TC,AAL07TC,AAL08TC,AAL09TC,AAL10TC,AAL11TC, AAL12TC,AAL13TC,AAL14TC,AAL15TC,AAL16TC,AAL17TC,AAL18TC,AAL19TC,AAL20TC,AAL21TC,AAL22TC,AAL23TC,AAL24TC, AAL25TC,AAL26TC,AAL27TC,AAL28TC,AAL29TC,AAL30TC,AAL31TC,AAL32TC,AAL33TC,AAL34TC, AAL35TC,AAL36TC,AAL37TC,AAL38TC,AAL39TC,AAL40TC,AAL41TC,AAL42TC,AAL43TC,AAL44TC,AAL45TC,AAL46TC,AAL47TC, AAL48TC,AAL49TC,AAL50TC,AAL51TC,AAL52TC,AAL53TC,AAL54TC,AAL55TC,AAL56TC,AAL57TC, AAL58TC,AAL59TC,AAL60TC,AAL61TC,AAL62TC,AAL63TC,AAL64TC,AAL65TC,AAL66TC,AAL67TC,AAL68TC,AAL69TC,AAL70TC, AAL71TC,AAL72TC,AAL73TC,AAL74TC,AAL75TC,AAL76TC,AAL77TC,AAL78TC,AAL79TC,AAL80TC, AAL81TC,AAL82TC,AAL83TC,AAL84TC,AAL85TC,AAL86TC,AAL87TC,AAL88TC,AAL89TC,AAL90TC]
+    %Create the 3D matrix MsubAll properly 
+    %MsubAll=[Msub1,Msub2, Msub3,Msub4,Msub5,Msub6,
+    %Msub7,Msub8,Msub9,Msub10 ... Msub[nb_indivs]
+    MsubAll(:,:,i)= Msub;
+    
+end
+
+%Calculate correlation coefficient matrix for each subject
+%RsubAll array of 23 elements each is the R corr coef matrix returned by
+%'corrcoef' for each subject
+%initialize RsubAll to 0
+RsubAll=zeros(90,90,nb_indivs);
+N=nb_indivs;
+
+for i=1:nb_indivs
+    RsubAll(:,:,i)= corrcoef(MsubAll(:,:,i));
+end
+%Calculate Z transform
+%tz= 0.5*(log((1+RsubAll(i,j,k))/(1-RsubAll(i,j,k))))
+%0.5*log(1+p)/(i-p)
+RsubAllZ=RsubAll;
+for k=1:nb_indivs
+    for i=1:90
+        for j=1:90
+            p1=1+RsubAll(i,j,k);
+            p2=1-RsubAll(i,j,k);
+            tz= 0.5*(log(p1/p2));
+            RsubAllZ(i,j,k)= tz;
+        end   
+    end
+end
+
+RZ=zeros(90:90);
+PS=zeros(90:90);
+RZcor=zeros(90:90);
+PScor=zeros(90:90);
+%Note that the z-test (ztest) and the t-test (ttest) both assume that the
+%data are independently sampled from a normal distribution.
+%Statistics Toolbox functions are available for testing this assumption, such as chi2gof, jbtest, lillietest, and normplot.
+%Both the z-test and the t-test are relatively robust with respect to
+%departures from this assumption, so long as the sample size n is large enough. Both tests compute a sample mean , which, by the Central Limit Theorem, has an approximately normal sampling distribution with mean equal to the population mean ?, regardless of the population distribution being sampled.
+%The difference between the z-test and the t-test is in the assumption of the standard deviation ? of the underlying normal distribution. A z-test assumes that ? is known; a t-test does not. As a result, a t-test must compute an estimate s of the standard deviation from the sample.
+for i=1:90
+    for j=1:90        
+         [h p]=ttest(RsubAllZ(i,j,:),0.001);
+         PS(i,j)=p;
+         RZ(i,j)=h;
+         %[cor_p, hcor]=bonf_holm(p,.001);    
+         %PScor(i,j)=cor_p;
+         %RZcor(i,j)=hcor;
+        % 2 steps, Bonf Holmes
+    end
+end
+%[corrected_p, h]=bonf_holm(pvalues,alpha)
+%RZ is adjacency matrix, RZ(i,j) = 1 is i?nodes i j are correlated, 0
+%otherwise
+%RZcor is RZ correted with Bonferroni
+[PScor, RZcor]=bonf_holm(PS,0.001);
+
+
+%% Export Matrix RZ to Pajek and csv 
+coords = rand(90,3)
+write_matrix_to_pajek(RZ, pajek_dest_file ,'weighted',false,'directed',false,'coords', coords);
+xlswrite(xls_rzcor_file,RZcor, 'A1:CL90')
+
+%Calculate graph properties
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+degree_vec=degrees(RZcor);
+
+% Add plfit to Matlab http://tuvalu.santafe.edu/~aaronc/powerlaws/plfit.m
+[alpha, xmin, L] = plfit(degree_vec);
+h = plplot(degree_vec,xmin,alpha);
+%[p,gof]=plpva(degree, xmin);
+%%%%
+%%%%  BCT Toolbox
+
+ 
+ 
+ % Nertwork Identification
+ %%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%% Reny-Erdos model
+ % number of random matrix to be generated
+ M=100;
+ randomgraphs=zeros(90,90,M);
+ RZnumnodes =numnodes(RZcor);
+ RZnumedges =numedges(RZcor);
+% number of random matrix to be generated
+ for i= 1:M
+    randomgraphs(:,:,i)=random_graph(RZnumnodes,[ ],RZnumedges);
+ end
+
+%% CLUSTERING COEFFICIENT 
+%C = clustering_coef_bu(A);
+%The clustering coefficient is the fraction of triangles around a node
+%(equiv. the fraction of nodes neighbors that neighbors of each other).
+%Input:      A,      binary undirected connection matrix
+%Output:     C,      clustering coefficient vector
+Cpsw= clustering_coef_bu(RZcor);
+cpsw= mean(Cpsw);
+%Transitivity: The transitivity is the ratio of triangles to triplets in
+%the network and is an alternative to the clustering coefficient.
+transitivity_bu(RZcor)
+%Characteristic path length, global efficiency, eccentricity, radius,
+%diameter: The characteristic path length is the average shortest path length in the network. 
+%The global efficiency is the average inverse shortest path length in the network. The node eccentricity is the maximal shortest path length between a node and any other node. The radius is the minimum eccentricity and the diameter is the maximum eccentricity.
+ Lp=charpath(RZcor)
+ %genertae clustering and path for random networks
+ Cprd=zeros(90,1,M);
+ cprdi_mean=zeros;
+ Lpran=zeros;
+ cprdglob_mean=0;
+ for i= 1:M
+     Cprd(:,:,i)= clustering_coef_bu(randomgraphs(:,:,i));
+     cprdi_mean(i)=mean(Cprd(:,:,i));
+     Lpran(i)=charpath(randomgraphs(:,:,i));
+
+ end
+ 
+ %%%SMALL WORLD
+ 
+cprdglob_mean= mean(cprdi_mean);
+lpranmean=mean(Lpran);
+
+ %%% gamma, local clustering, if mygamma >1 higher clustering than in
+ %%% random network
+ mygamma=cpsw/cprdglob_mean;
+ 
+ %%% lambda, global path distance
+ 
+ mylambda= Lp/lpranmean;
+
+ % if smallw > 1 likely small world
+ mysmallw=mygamma/mylambda
+ sprintf('Small World parameters')
+ msg = sprintf('Gamma or local clustering is: %f .',mygamma)
+ 
+ msg = sprintf('Lambda or global path distance is: %f .',mylambda)
+ 
+ %%% Maslov Model
+ %Maslovresults=sym_correlation_profile(RanMaslov,1000)
+  % Nertwork Identification
+ %%%%%%%%%%%%%%%%%%%%%%%%%%
+ RanMaslov = sym_generate_srand(RZcor); % just one simulation
+ %for N=1000 synthetically generated random networks
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%% Network vulnerability %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ %Measures related with distance : The geodesic path between two nodes i.e. 
+ %the shortest path using Floyd?s algorithm (ojo para weighted directed graph) 
+ %(OKACOGNET/software/MITNetwork/FloydSPR.m)
+ %graphshortestpath solves  the shortest path problem
+ 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %% Equation 2 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ % invoke eff_graph.m a function that calculates efficiency of graph based
+ % on formula 2
+ %Formula 2, input: graph with N nodes, output: 1/(N(N-1)\sum dij) 
+ G_y=sparse(RZcor);
+ [G_yrow,G_ycol]=size(G_y)
+ glob_n_effic = eff_graph(G_y, G_yrow)
+ %ojo global no average, for the entire matrix not perturbation
+ 
+%%%% eff_graph has replaced graph_efficiency %%%%%
+%I created graph_efficiency.m in OKACOGNET/software/MITNetwork to get the
+%vulnerability value
+%% Jaime algorithm
+%function [eff_value]=graph_efficiency(AdjMax)
+% *INPUT:* 
+% AdjMax: Adjacent matrix that represents a sparse graph
+%
+% *OUTPUT:*
+% S: eficiency value calculated based on Latora-Melchiori genios
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%Equation 3. PERTURBATION
+%% Get all the perturbed matrixes for deleting one element,make all incidents links to nodei i =0.
+%G_per(i) = is the original matrix in which node i is a separate component
+%initialize array of matrix 90x90 for each of the perturbed graphs (links to node i =0)
+% Note that if we perturb in all possible ways we have
+%%
+G_zrow = Cnr(90)
+G_zrow = G_yrow 
+G_y_per=zeros(G_yrow, G_yrow, G_zrow); %array of matrixes with C(n,r) perturbed matrixes
+
+%glob_per_effic=zeros(G_yrow);
+%centrality=zeros(G_yrow);
+% array of reals that contain the measures for each matrix
+glob_per_effic=zeros(G_zrow);
+centrality=zeros(G_zrow);
+indexz=1
+%NT number of nodes ddeleted
+%NT = 90
+NT = 1
+random_perturb = 1 % 1=perturbation is random, delete exhaustively NT nodes =1, 0 = targeted networks
+if  random_perturb == 1
+ for i= 1:NT
+    counter = i
+    %obtain the perturbed matrix
+    %G_y_per(:,:,i)= G_y; % 
+    % combos contains a matrix with all the subsets in the set of numbers between 1 and 90
+    combos = combntns(1:90,i)
+    %size(combos,1) gives the number of rows or perurbations
+    %Perturb G_y as specified by combos
+    %return arrray(size(combos,1) of matrix perturbed, each row of combos is a perurbation that correspnds to a new matrix, counter is the number of nodes that are deleted
+    nbpert = size(combos,1)
+    for j= 1:nbpert
+        G_y_per(:,:,indexz)= perturb_set(G_y, combos(j,:),counter); %
+        G_y_per(i,:,indexz)= 0;
+        G_y_per(:,i,indexz)= 0;
+        removednodes(indexz,:) = combos(j,:);
+        %build population of effic
+        glob_per_effic(indexz)= eff_graph(sparse(G_y_per(:,:,indexz)), G_yrow);
+        centrality(indexz)= (glob_n_effic-glob_per_effic(indexz))/glob_n_effic; 
+        %calculate statistics of the population
+        %disp('INDEX IS:')
+        indexz=indexz+1      
+    end
+   disp('****ELEMENTS:')
+   disp(i)
+ end
+else 
+    %target networks to delete
+    disp('Targeted Perturbation')
+    %perturbation targeted
+    %list or networks that will be deleted
+    %DMN
+    %nd bilateral inferior parietal lobule (AAL 61, 62).
+    targetcombos(1,:) = [23,24,25,26,35,36,37,68,61,62]
+    %Disconection fronto parietal sensory cortex 
+    %targetcombos(2,:) = []
+    %Disconection thalamocortical
+    nbpert = size(targetcombos,1) %nb of rows of targetednetworks to be removed
+    for j= 1:nbpert
+        [rows,counter] = size(targetcombos)
+        G_y_per(:,:,indexz)= perturb_set(G_y, targetcombos(j,:),counter); %
+        G_y_per(i,:,indexz)= 0;
+        G_y_per(:,i,indexz)= 0;
+        %removednodes(indexz,:) = combos(j,:);
+        %build population of effic
+        indexz = j
+        glob_per_effic(indexz)= eff_graph(sparse(G_y_per(:,:,indexz)), G_yrow);
+        centrality(indexz)= (glob_n_effic-glob_per_effic(indexz))/glob_n_effic; 
+        %calculate statistics of the population
+        %disp('INDEX IS:')
+        sprintf ('Running perturbation number %d out of 90', indexz) 
+ 
+    end
+
+end
+
+if random_perturb == 0
+    indexz = nbpert
+else
+    indexz = indexz -1;
+end
+
+if is_young == 1
+    % Efficiency of the resulting network after having delete a node
+    eff_young = glob_per_effic(1:indexz)
+    % Centrality of the node
+    cen_young = centrality(1:indexz) 
+else
+    eff_elder = glob_per_effic(1:indexz)
+    cen_elder = centrality(1:indexz) 
+
+end
+
+nodes_central=[];
+central_list_y=[];
+for i=1:G_yrow
+    nodes_central=i;
+    central_list_y= horzcat(centrality(i), central_list_y);
+end
+%Order central nodes in order
+[B_y,IX_y]=sort(central_list_y);
+
+
+
+
+fileID = fopen(xls_dest_file, 'w')
+nodes_list=[1:90]
+
+
+%nodes_list = 1:90
+%AAL_list = {}
+if is_young == 1 
+    cen_list = cen_young
+    eff_list = eff_young
+    %write output in txt file, xlswrite sucks
+    fileID = fopen(xls_dest_file, 'w')
+    %status = xlswrite(xls_dest_file, 'Young', 'Young','A1');
+    %status = xlswrite(xls_dest_file, central_list_y', 'Young','A1:A90');
+    if fileID > -1
+        fprintf(fileID,'YOUNG\n');
+        fprintf(fileID,'ID\t Degree(i)\t Centrality(i)\t Efficiency(Network-i)\t\n');
+        fprintf(fileID,'%d\t%d\t%1.4f\t%1.4f\r\n',[nodes_list;degree_vec;cen_list;eff_list])
+        fclose(fileID);
+    else
+        error('File Young results output %s could not open', xls_dest_file)
+    end
+else
+    cen_list = cen_elder
+    eff_list = eff_elder
+    fileID = fopen(xls_dest_file, 'w')
+    if fileID > -1
+        fprintf(fileID,'ELDER\n');
+        fprintf(fileID,'ID\t Degree(i)\t Centrality(i)\t Efficiency(Network-i)\t\n');
+        fprintf(fileID,'%d\t%d\t%1.4f\t%1.4f\r\n',[nodes_list;degree_vec;cen_list;eff_list])
+        fclose(fileID);
+    else
+        error('File Elder results output %s could not open', xls_dest_file)
+    end
+    
+end
+
+
+
+
+%xlswrite('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/23-Young-HOLM.xls',B_y', 'Young','B1:B90');
+%xlswrite('/Users/jagomez/Eclipse/workspace/b-Robustness/Matlab/results/23-Young-HOLM.xls', IX_y','Young','C1:C90');
+%Max node= 170.0467
+%Min node 2=0, followed by 55,56, 
+
+%  Nodes from min to max:    2    55    56    19    52     5     6    53    54    51    22    13    88    69    67    21    31    87    34     3
+
+ %   25    66    85    14    32    82    70    15    24    84    50    36    38     9    90    89    33    63     8    10
+
+  %  11    37    81    29    12    86    47     4    74    83    35    79     7    28    80    65    75    64    27    58
+
+   % 26    39    73    30    57    40    72    62    48    16    44    46    49    61    43    77    76    78    42     1
+
+    %20    59    23    71    45    68    41    18    60    17
+
+%We can, furthermore, calculate the ranking of vulnerability of each node: (max vertex 60, min vertex 89)
+%(As suggested by Gol?dshtein et al. [69], the ordered distribution of vertices with respect to their
+%vulnerability Vi is related to the network hierarchy, thus the most vulnerable (critical)
+%vertex occupies the highest position in the network hierarchy.)
+%NB: We should study Improvability (http://arxiv.org/abs/cond-mat/0407491)
+
+% study the distribution of B_e and B_y
+%probplot(Y) produces a normal probability plot comparing the distribution
+%of the data Y to the normal distribution. Y can be a single vector, or a matrix with a separate sample in each column. The plot includes a reference line useful for judging whether the data follow a normal distribution.
+
+%Draw distribution of centrality
+
+probplot(B_y);
+histfit(B_y);
+
+
+%Young have normal distriution, elder not!
+
+% Section 2.7 Information theoretic analysis of Markov Chains
+
+%1. calculate transition matrix T from A
+%G_e -> TG_e
+
+sumr_y=zeros(G_yrow);
+%array with the sum of each row to build T 
+%sumy_r(k) is the number of ones in row k
+%Calculate the stationary distribution
+%stat_dis= k_i/"E
+stat_dis=zeros(1,G_yrow);
+for k=1:G_yrow
+    sumr_y(k)=0;
+    for l=1:G_yrow
+     sumr_y(k)= sumr_y(k) + RZcor(k,l);
+    end
+end
+%Calculate T=Aij/(sumj)Aij
+TG_y=zeros(G_yrow,G_yrow);
+for i= 1:G_yrow
+    for j= 1:G_yrow
+       TG_y(i,j)= RZcor(i,j)/sumr_y(i); 
+    end
+    stat_dis(i)=sum(RZcor(i,:));
+end
+
+%G_eper -> TG_eper
+
+TG_y_per=zeros(G_yrow, G_yrow, G_yrow);
+for i= 1:G_yrow
+    %obtain the perturbed transition matrix
+    TG_y_per(:,:,i)= TG_y;
+    TG_y_per(i,:,i)= 0;
+    TG_y_per(:,i,i)= 0; 
+end
+
+%Calculate the stationary distribution for each perturbed markov chain 
+stat_dis_per=zeros(G_yrow,G_yrow);
+
+
+%2. calculate entropy rate H(T) for each Markov process (TG_y, TG_y_per (ki=0))
+%from WSD toolbox
+
+hr_y=zeros(1,G_yrow);
+%initialize array of entropy rates
+alpha=0;
+% alpha=0 unbiased Markov process
+for i= 1:G_yrow
+    [hr_y(1,i) alpha] =entropy_rate(TG_y_per(:,:,i),alpha); 
+end
+
+%Draw distribution of entropy rate
+
+probplot(hr_y);
+histfit(hr_y);
+
+%3. calculate distance to each Markov process
+
+%[hr_unper alpha] =entropy_rate(RZcor,alpha);
+[hr_unperyoung alpha] =entropy_rate(TG_y,alpha);
+%hr_unper=2.1951
+%Note we have negative distance!
+for i= 1:G_yrow
+   disthr_y(i)= (hr_unperyoung-hr_y(1,i))/(hr_unperyoung);
+end
+
+probplot(disthr_y);
+histfit(disthr_y);

@@ -1,0 +1,320 @@
+This is pdfeTeXk, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.6.21)  8 APR 2013 12:38
+entering extended mode
+ Source specials enabled.
+**bRobv1.tex
+(./bRobv1.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, d
+utch, italian, norsk, portuges, spanish, swedish, nohyphenation, loaded.
+(./pnastwo.cls
+
+
+ Two Column Journal Style for the
+ Proceedings of the National Academy of Science 
+ Written by Amy Hendrickson, TeXnology, Inc., 9/04
+ 
+ This version is dated April 15, 2008
+
+
+Document Class: pnastwo 
+\affilcount=\count79
+\saveaffilcount=\count80
+\c@fnaffilcount=\count81
+\c@part=\count82
+\c@section=\count83
+\c@subsection=\count84
+\c@subsubsection=\count85
+\c@paragraph=\count86
+\c@subparagraph=\count87
+\c@figure=\count88
+\c@table=\count89
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+\bibskip=\skip43
+\footnum=\count90
+\savefootnum=\count91
+\abovefigcaptionskip=\skip44
+\abovetabcaptionskip=\skip45
+\abovetableskip=\skip46
+\belowtabcaptionskip=\dimen103
+\saveparskip=\dimen104
+\captionskip=\dimen105
+\PushOneColTopFig=\dimen106
+\PushOneColBotFig=\dimen107
+\PushOneColTopTab=\dimen108
+\PushOneColBotTab=\dimen109
+\PushTwoColTopFig=\dimen110
+\PushTwoColBotFig=\dimen111
+\PushTwoColTopTab=\dimen112
+\PushTwoColBotTab=\dimen113
+\intextfloatskip=\skip47
+\c@appfigure=\count92
+\c@apptable=\count93
+\c@appplate=\count94
+\checkforspace=\dimen114
+\savetopinsert=\box26
+\savebotinsert=\box27
+\secondsavetopinsert=\box28
+\secondsavebotinsert=\box29
+\firstcolbox=\box30
+\secondcolbox=\box31
+\thefirstbox=\box32
+\thesecondbox=\box33
+\firstcol=\dimen115
+\secondcol=\dimen116
+\checkheight=\dimen117
+\loopnum=\count95
+\firstcolsavefignum=\count96
+\footnotebox=\box34
+\ColUsed=\dimen118
+\FigSpace=\dimen119
+\testdblbotins=\box35
+\pageloopnum=\count97
+\endcolsavetopinsert=\box36
+\endcolsavebotinsert=\box37
+\testpagesize=\box38
+\savelastskip=\dimen120
+\partialpage=\box39
+\figandtabnumber=\count98
+\figandtabbox=\box40
+\pagefloatnumber=\count99
+\sizeoffloat=\box41
+\bogus=\count100
+\figinsert=\insert233
+\herebox=\box42
+\endfigbox=\box43
+\spanbox=\box44
+\dbltopins=\box45
+\dblbotins=\box46
+\dblbotskip=\skip48
+\dblfigandtabnumber=\count101
+\dblfigandtabbox=\box47
+\dblloopnum=\count102
+\savedblfigandtabnumber=\count103
+\dblspanherebox=\box48
+\captionwidth=\dimen121
+\widecaptionwidth=\dimen122
+\tablenoteloopnum=\count104
+\tablenotenum=\count105
+\c@theorem=\count106
+\c@lemma=\count107
+\c@definition=\count108
+\c@claim=\count109
+\c@alemma=\count110
+\c@remark=\count111
+\tablewide=\box49
+) (/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/graphics.cfg
+File: graphics.cfg 2005/02/03 v1.3 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: dvips.def on input line 80.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen123
+\Gin@req@width=\dimen124
+)
+(./pnastwoF.sty
+
+
+ -------------------------------------------
+ PostScript Fonts for PNAS One Column Journal Style
+ April 8b, 2008
+
+ IMPORTANT: If you use font encoding, as in \usepackage{T1enc},
+ please use it BEFORE \usepackage{pnasfont}, ie:
+ \documentclass{pnasone}
+ \usepackage{T1enc}
+ \usepackage[driver name]{color}
+
+ \usepackage{pnas}
+ -------------------------------------------
+ 
+ 
+) (/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen125
+))
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen126
+)
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count112
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count113
+\leftroot@=\count114
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count115
+\DOTSCASE@=\count116
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen127
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count117
+\c@MaxMatrixCols=\count118
+\dotsspace@=\muskip10
+\c@parentequation=\count119
+\dspbrk@lvl=\count120
+\tag@help=\toks17
+\row@=\count121
+\column@=\count122
+\maxfields@=\count123
+\andhelp@=\toks18
+\eqnshift@=\dimen128
+\alignsep@=\dimen129
+\tagshift@=\dimen130
+\tagwidth@=\dimen131
+\totwidth@=\dimen132
+\lineht@=\dimen133
+\@envbody=\toks19
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(./bRobv1.aux)
+\openout1 = `bRobv1.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Try loading font information for U+msa on input line 16.
+ (/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 16.
+
+(/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Font shape `OT1/tir/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/tir/b/n' tried instead on input line 48.
+LaTeX Font Info:    Font shape `OT1/tir/bx/n' in size <9> not available
+(Font)              Font shape `OT1/tir/b/n' tried instead on input line 77.
+
+
+LaTeX Warning: Citation `friston_modes_1998' on page 1 undefined on input line 
+77.
+
+
+LaTeX Warning: Citation `van_den_heuvel_exploring_2010' on page 1 undefined on 
+input line 101.
+
+[1
+
+{/usr/local/teTeX/share/texmf.local/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Citation `van_den_heuvel_exploring_2010' on page 2 undefined on 
+input line 192.
+
+LaTeX Font Info:    Font shape `OT1/tir/bx/n' in size <12> not available
+(Font)              Font shape `OT1/tir/b/n' tried instead on input line 198.
+
+LaTeX Warning: Citation `gazzaniga_new_1999' on page 2 undefined on input line 
+213.
+
+
+LaTeX Warning: Citation `bassett_understanding_2011' on page 2 undefined on inp
+ut line 214.
+
+
+LaTeX Warning: Citation `lee_resting-state_2012' on page 2 undefined on input l
+ine 228.
+
+
+LaTeX Warning: Citation `liang_widespread_2006' on page 2 undefined on input li
+ne 243.
+
+
+LaTeX Warning: Citation `micheloyannis_small-world_2006' on page 2 undefined on
+ input line 244.
+
+
+LaTeX Warning: Reference `' on page 2 undefined on input line 295.
+
+[2] (./bRobv1.bbl [3]) [4] (./bRobv1.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1998 strings out of 95137
+ 23623 string characters out of 1183013
+ 2075594 words of memory out of 4530429
+ 5158 multiletter control sequences out of 10000+50000
+ 39804 words of font info for 65 fonts, out of 2000000 for 2000
+ 58 hyphenation exceptions out of 5000
+ 27i,6n,24p,216b,323s stack positions out of 5000i,500n,6000p,200000b,40000s
+PDF statistics:
+ 55 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 1 words of extra memory for PDF output out of 10000
+{/usr/local/teTeX/share/texmf.tetex/fonts/enc/dvips/psnfssx/texnansi.enc}</us
+r/local/teTeX/share/texmf.tetex/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/loca
+l/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr6.pfb></usr/local/teTeX/sha
+re/texmf.tetex/fonts/type1/public/tt2001/fmex9.pfb></usr/local/teTeX/share/texm
+f.tetex/fonts/type1/bluesky/cm/cmmi6.pfb></usr/local/teTeX/share/texmf.tetex/fo
+nts/type1/bluesky/cm/cmr9.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/b
+luesky/cm/cmmi9.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/urw/helveti
+c/uhvro8a.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/urw/times/utmb8a.
+pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/urw/times/utmr8a.pfb
+Warning: /usr/local/teTeX/bin/i386-apple-darwin-current/pdflatex (file /usr/loc
+al/teTeX/share/texmf.tetex/fonts/type1/urw/times/utmr8a.pfb): glyph `nbspace' u
+ndefined
+></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmsy9.pfb></usr/loc
+al/teTeX/share/texmf.tetex/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/teTe
+X/share/texmf.tetex/fonts/type1/bluesky/cm/cmsy5.pfb></usr/local/teTeX/share/te
+xmf.tetex/fonts/type1/bluesky/cm/cmsy6.pfb></usr/local/teTeX/share/texmf.tetex/
+fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on bRobv1.pdf (4 pages, 119193 bytes).

@@ -1,0 +1,59 @@
+function [cost]=ba_opt_cost(X) 
+
+global wsd_opt_results wsd_opt_params  % a structure to carry the specifics of the optimisation.
+target      = wsd_opt_params.target;
+Nodes       = wsd_opt_params.Nodes;
+count_log   = wsd_opt_params.count_log; 
+model       = wsd_opt_params.model;
+nbin        = wsd_opt_params.nbin;
+plot_flag   = wsd_opt_params.plot_flag;
+echo_flag   = wsd_opt_params.echo_flag;
+iter_count  = wsd_opt_params.iter_count;
+wsd_power   = wsd_opt_params.power;
+w_target = wsd_opt_params.w_target;
+
+
+%global cdf_skitter pdf_skitter Nodes count_log
+%Nodes = 9204;
+
+% Generate iter_count number of models. 
+for count =1:iter_count
+ eval(['adj_matr = gen' model '(X,Nodes)']);
+ [w,index] = wsd(A,wsd_power,nbin,plot_flag,echo_flag);
+ wsd_opt_results.w(count_log,count).w=w;
+ temp(count,:)=w;
+end
+w = mean(temp);
+cost = mean((w_target-w).^2);    % calc mean squared error between target and topology. 
+
+wsd_opt_results.mean_w = w;
+wsd_opt_results.X(count_log,:)=X;
+wsd_opt_results.cost(count_log) = cost;
+
+[cdf_log pdf_log links cost index]=ba2(X)
+cdf_logger(count_log).x=mean(cdf_log);
+pdf_logger(count_log).x=mean(pdf_log);
+links_logger(count_log).x=links;
+alpha_logger (count_log).x=alpha;
+beta_logger(count_log).x=beta;
+
+% Estimate the cost function. Distance from the optimum deviation. 
+dis_sk = sum(quaternion(pdf_skitter,index,1)); 
+dis_ba = sum(quaternion(pdf_logger(count_log).x',index,1)); 
+cost = abs(dis_sk-dis_ba);
+cost_logger(count_log).abe=cost
+
+dis_sk = quaternion(pdf_skitter,index,1); 
+dis_ba = quaternion(pdf_logger(count_log).x',index,1); 
+cost = mean((dis_sk-dis_ba).^2)
+
+
+cost_logger(count_log).sse=cost;
+count_log
+
+save opt_results cdf_logger pdf_logger links_logger alpha_logger beta_logger cost_logger
+    
+count_log=count_log+1;
+
+
+
