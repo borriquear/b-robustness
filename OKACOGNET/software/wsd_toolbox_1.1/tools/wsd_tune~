@@ -1,9 +1,0 @@
-[w,index] = wsd_tune(model,target,X0,nbin,plot_flag,echo_flag)
-% model - a character with the name of the model.
-%   This model must be in /tools/models and called model.m
-%   current models: genba, genglp, inet, wax, wit
-% target - the adjacency matrix of the target graph. 
-% X0 - initial starting point. 
-% nbin - (optional, default 50) - number of bins in the WSD or a vector defining the bins. 
-% plot_flag - (optional, default 0) - supply a character for plotting ex: 'r00
- 
