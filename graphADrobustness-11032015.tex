@@ -1,7 +1,9 @@
 %%% 05-06-2015 updated from 30-04-2015 updated from 02-15-2015
 %%% Post reviewers decision for NBA journals
 \documentclass[12pt,a4paper]{article}
-\newcommand{\myreferences}{/Users/jagomez/Eclipse/workspace/bibliojgr/bibliojgr}
+\newcommand{\myreferences}{C:/Users/Jaime/Documents/GitHub/bibliography-jgr/bibliojgr}
+\usepackage{subfigure}
+
 %\usepackage[hang]{footmisc}
 %\pagenumbering{arabic}
 %\setlength{\footnotemargin}{0pt}
@@ -11,7 +13,7 @@
 \usepackage{amssymb,amsmath} 
 \usepackage{amsfonts}
 \usepackage{booktabs}
-\usepackage{subfigure}
+
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{epstopdf}
@@ -33,7 +35,7 @@
 \usepackage{tabularx}
 \usepackage[affil-it]{authblk}  %package for multiple authors
 \usepackage{caption}
-
+\graphicspath{{C:/Users/Jaime/Documents/GitHub/figures/}}
 \makeindex   
 
 \title{A quantitative study of network robustness in resting state fMRI in young and elder conditions}
@@ -43,8 +45,8 @@
 %\author[3]{Xiaoyu Tang\thanks{D.D@university.edu}}
 \author[3]{Jinglong Wu}%\thanks{wu@mech.okayama-u.ac.jp}}
 \affil[1]{The Hospital for Sick Children, Department of Neuroscience and Mental Health, University of Toronto, Bay St. 686, Toronto, Canada}
-\affil[2]{School of Mathematics and Statistics,  Central China Normal University, Wuhan, China.}
-\affil[3]{Biomedical Engineering Laboratory, Okayama University, 1-1-1 Tsushima-naka, Kita-ku, Okayama  Japan}
+\affil[2]{Key Laboratory of Adolescent Cyberpsychology and Behavior (CCNU), Ministry of Education, Wuhan 430079, China and School of Psychology, Central China Normal University, Wuhan 430079, China}
+\affil[3]{Biomedical Engineering Laboratory, Okayama University, 1-1-1 Tsushima-naka, Kita-ku, Okayama, Japan and Intelligent Robotics Institute, School of Mechatronics Engineering,Beijing Institute of Technology, Beijing, China}
 \renewcommand\Authands{ and }
 
 \begin{document}
@@ -169,11 +171,10 @@ committee of Okayama University, and written informed consent was obtained befor
  instructed to keep their eyes closed and not to think of anything in
  particular. The imaging area consisted of 32 functional gradient-echo planar
  imaging (EPI) axial slices (voxel size=3x3x4 mm3, TR=3000 ms, TE=50 ms,
- FA=90º, 64x64 matrix) that were used to obtain T2*-weighted fMRI images in the
+ FA=90º, acquisition matrix=80×79, FOV=240×240 mm2, slice thickness=4 mm, gap=0.5 mm) that were used to obtain T2*-weighted fMRI images in the
  axial plane. We obtained 176 functional volumes and excluded the first 4 scans
- from analysis. Before the EPI scan, a T1-weighted 3D magnetization-prepared
- rapid acquisition gradient echo (MP-RAGE) sequence was acquired (TR=2300 ms,
- TE=2.98 ms, TI=900 ms, voxel size=1x1x1 mm$^3$).
+ from analysis. After the EPI scan, a T1-weighted 3D magnetization-prepared
+ rapid acquisition gradient echo (MP-RAGE) sequence was acquired (TR=9.4 ms, TE=4.6 ms, FA=10°, acquisition matrix=240×240, voxel size=1×1×1 mm3, 200 contiguous axial slices).
 
 \subsection{Data preprocessing} 
 Data were preprocessed using Statistical Parametric Mapping software SPM8
@@ -225,8 +226,9 @@ connectivity between nodes.
 %Here we perform perturbations that consist on the obliteration of one or more nodes together with and all the edges that connect the lesioned node.
 
 The efficiency of a network is a network centrality
-measure that quantifies the network's reliability in transmitting information once a
-node or a set of nodes have being removed. Latora and Marchiori \cite{latora_efficient_2001} proposed a measure of network
+measure that quantifies the network's reliability in transmitting information. It follows that the  efficiency loss after the removal of a
+node or a set of nodes is the normalized difference in network efficiency before and after the intervention.
+Latora and Marchiori \cite{latora_efficient_2001} proposed a measure of network
 efficiency defined as the efficiency in transmitting information 
 between any two nodes $(i,j)$ in a graph G as the inverse of the shortest path that
 connects them
@@ -252,7 +254,7 @@ where $N$ is the number of nodes.
 We can calculate
 the information centrality $C$ of any node i in a network G as the variation
 in the network efficiency caused by the removal of the edges incident in i. Thus, the
-centrality of a node i, $C_i$, is the difference between the
+information centrality of a node i, $C_i$, is the difference between the
 efficiency of the original network G with N nodes and E edges, $G(N,E)$, and the
 efficiency of the resulting graph $G(N-i,E-k_i)$ with $N-i$ nodes and $E-k_i$ edges, where
 $k_i$ denotes the set of edges incident to node i. The centrality of a
@@ -265,7 +267,7 @@ C_i=\frac {\Sigma(G(N,E)) - \Sigma(G(N-i,E-k_i))} {\Sigma(G(N,E))}
 
 From equation \ref{eq:centr}, a network $G$ is considered to be robust to
 a perturbation if the network efficiency, $\Sigma(G)$, 
-stays close to the original value after a perturbation. Ideally $\Sigma(G(N,E)) = \Sigma(G(N,E-k_i))$
+stays close to the original value after a perturbation. Ideally $\Sigma(G(N,E)) = \Sigma(G(N -i,E-k_i))$
 with efficiency loss or centrality of node i equals to 0.
 By the same token, the information centrality of a set of nodes $S$ or the efficiency loss upon the removal of $S$, can be calculated as the normalized measure of the loss in network efficiency caused by the isolation of a set of nodes S in G.
 
@@ -331,7 +333,7 @@ The most significant loss in efficiency occurs with the removal of node 74 ("Len
 The average efficiency loss in the young condition is $2.44"\%" $ with a maximum of  $4.67"\%" $ for node 74 ("Lenticular nucleus, putamen") and no efficiency loss for node 89 ("temporal pole: middle temporal gyrus") (Figure \ref{fig:boxplot}). The rationale for the different impact in the efficiency caused by the obliteration of certain nodes can be found in the connectivity degree. In general, the nodes that after their removal trigger a low efficiency loss have also low connectivity degree, and those that produce a more pronounced reduction of the network efficiency tend to be more connected (Figure \ref{fig:gauss}, Figure \ref{fig:effloss}). 
 
 Similarly, for the elder condition, we denote $P_{o, 90}$ the distribution of networks with only one node removed in the elder condition. 
-The mean of the efficiency measure (equation \ref{eq:latm}) for the 90 networks obtained upon single node deletion is $0.109$. As it happened in the young condition, the removal of node 89 ("Inferior temporal gyrus") has no effect in the efficiency, that is, the network efficiency before and after the removal of the "Inferior temporal gyrus" has identical value. 
+The mean of the efficiency measure (equation \ref{eq:latm}) for the 90 networks obtained upon single node deletion is $0.109$. As it happened in the young condition, the removal of node 89 ("Temporal pole: middle temporal gyrus") has no effect in the efficiency. 
 Interestingly, the removal of nodes with the lowest connectivity degree (2) have also no quantifiable effect in the network efficiency (Figure \ref{fig:boxplot}). 
 %33,39,63,71,73,75,77,78,80,85 
 
@@ -493,7 +495,7 @@ In our study the efficiency loss produced by the disconnection of the left and t
 
 We apply the efficiency measure for lesioning of edges and we found no significant effect of age on DMN inter-connectivity ($0.16\%$ of efficiency loss in young subjects and $0.9\%$ in old subjects upon the disconnection of areas in different hemispheres).   
 %Hypothesis testing: Asymmtry
-We test the asymmetry hypothesis by which brain activity shows a more balance activity among the two hemispheres with age, that is, the hypothesis predicts that in young individuals brain activity is more asymmetric than in old individuals. To test it, we lesion sequentally the left and the right hemisphere and we calculate the efficiency loss for each case. The asymmetry hypothesis summons that in young individuals the difference in efficiency loss for disconnecting the hemispheres is expected to be larger than in the old condition. Aging thus, tries to compensate the reduction of activity level, for example in the DMN, by balancing the activity across the brain. 
+We test the asymmetry hypothesis by which brain activity shows a more balance activity among the two hemispheres with age, that is, the hypothesis predicts that in young individuals brain activity is more asymmetric than in old individuals. To test it, we lesion sequentially the left and the right hemisphere and we calculate the efficiency loss for each case. The asymmetry hypothesis summons that in young individuals the difference in efficiency loss for disconnecting the hemispheres is expected to be larger than in the old condition. Aging thus, tries to compensate the reduction of activity level, for example in the DMN, by balancing the activity across the brain. 
 %delete all odds, delete all even, Distance
 We see, on the contrary, that if one of the two hemispheres is entirely lesioned, the efficiency loss in young adults is $75.32\%$ when the left side is lesioned and $77.01\%$ when the right side is gone. 
 %The difference is 0.0169.
