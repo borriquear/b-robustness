@@ -13,7 +13,9 @@
 \usepackage{amssymb,amsmath} 
 \usepackage{amsfonts}
 \usepackage{booktabs}
-
+\usepackage{longtable}
+\usepackage{fancyhdr}
+\pagestyle{myheadings}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{epstopdf}
@@ -173,10 +175,10 @@ committee of Okayama University, and written informed consent was obtained befor
  instructed to keep their eyes closed and not to think of anything in
  particular. The imaging area consisted of 32 functional gradient-echo planar
  imaging (EPI) axial slices (voxel size=3x3x4 mm3, TR=3000 ms, TE=50 ms,
- FA=90º, acquisition matrix=80×79, FOV=240×240 mm2, slice thickness=4 mm, gap=0.5 mm) that were used to obtain T2*-weighted fMRI images in the
+ FA=90$^\circ$, acquisition matrix=80x79, FOV=240x240 mm2, slice thickness=4 mm, gap=0.5 mm) that were used to obtain T2*-weighted fMRI images in the
  axial plane. We obtained 176 functional volumes and excluded the first 4 scans
  from analysis. After the EPI scan, a T1-weighted 3D magnetization-prepared
- rapid acquisition gradient echo (MP-RAGE) sequence was acquired (TR=9.4 ms, TE=4.6 ms, FA=10°, acquisition matrix=240×240, voxel size=1×1×1 mm3, 200 contiguous axial slices).
+ rapid acquisition gradient echo (MP-RAGE) sequence was acquired (TR=9.4 ms, TE=4.6 ms, FA=10$^\circ$, acquisition matrix=240x240, voxel size=1x1x1 mm3, 200 contiguous axial slices).
 
 \subsection{Data preprocessing} 
 Data were preprocessed using Statistical Parametric Mapping software SPM8
@@ -456,9 +458,9 @@ Interestingly, we have identified three brain networks in which the lesioning in
 
 \begin{table}[!htbp]
 \centering%
-\caption{The table shows the efficiency loss after the disconnection of different brain structures in both conditions. Interestingly, the reduction in efficiency is not always more pronounced in the elder condition. For example, the disconnection of the central structures (caudate nucleus, putamen, pallidum and thalamus) triggers a larger efficiency disruption in young than in old individuals. A similar situation, larger efficiency loss in young compared old condition, also occurs with the disconnection of the limbic structures (hippocampus, parahippocampus and amygdala) and the occipital lobe areas. The table shows the efficiency loss in both young and old condition when target networks are lesioned. The lesion consists on the obliteration of the nodes defined in the second column. The efficiency loss is larger in old adults with the exception of the occipital lobe, the central structures and the limbic structures. The reduction of efficiency in the central structures is particularly interested since in the old condition it yields only a $3.16\%$ reduction in efficiency while in the young condition the efficiency loss for the same lesioning yields a reduction of $23.01\%$.}
-% The minor impact of the lesioning of central and limbic structures is conforming with the degradation of of fronto-stratial nework in aging \cite{salami_elevated_2014} and the break-down between the hipicampal regions and the DMN \cite{fjell_brain_2015}}
 
+% The minor impact of the lesioning of central and limbic structures is conforming with the degradation of of fronto-stratial nework in aging \cite{salami_elevated_2014} and the break-down between the hipicampal regions and the DMN \cite{fjell_brain_2015}}
+\newpage
 \begin{tabularx}{\linewidth}{XXXX}
 \toprule
 Target Brain Structure & AAL regions & Eff.loss Young &Eff.loss Old\\
@@ -483,6 +485,7 @@ Frontal Lobe & 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 51 52 & $42.83\%$& $
      Limbic structures (hippocampus, parahippocampus, amygdala) & 37 38 39 40 41 42 & $9.30\%$& $1.40\%$\\
      \bottomrule
 \end{tabularx}
+\caption{The table shows the efficiency loss after the disconnection of different brain structures in both conditions. Interestingly, the reduction in efficiency is not always more pronounced in the elder condition. For example, the disconnection of the central structures (caudate nucleus, putamen, pallidum and thalamus) triggers a larger efficiency disruption in young than in old individuals. A similar situation, larger efficiency loss in young compared old condition, also occurs with the disconnection of the limbic structures (hippocampus, parahippocampus and amygdala) and the occipital lobe areas. The table shows the efficiency loss in both young and old condition when target networks are lesioned. The lesion consists on the obliteration of the nodes defined in the second column. The efficiency loss is larger in old adults with the exception of the occipital lobe, the central structures and the limbic structures. The reduction of efficiency in the central structures is particularly interested since in the old condition it yields only a $3.16\%$ reduction in efficiency while in the young condition the efficiency loss for the same lesioning yields a reduction of $23.01\%$.}
 \label{tab:nodesn}
 \end{table}
 
@@ -555,7 +558,7 @@ This is consistent with the compensation hypothesis in healthy aging which state
 Can efficiency loss be used as a predictor of brain network differential activity? 
 To address this question further work is we needed in order to properly address the compatibility of informational efficiency with non parametric classifiers. 
 Vergun et al. \cite{vergun_characterizing_2013} applied a Support Vector Machine (SVM) linear classifier to rs-fMRI data in order to compare age-related differences in four of the major functional brain networks: the default, cingulo-opercular, fronto-parietal, and sensorimotor. 
-With this method they detected "connectivity hubs", or nodes with the most significant features that influenced age classification. 
+The classifier was able to detect "connectivity hubs", or nodes with the most significant features that influenced age classification. 
 %The best predictors of age based on SVM are not coincident with the best predictors in age using the efficiency loss method. 
 %YOSOLO atlas boundaries agreement meta studies classifier with metatalases 
 %, and replicate our results with different imaging techniques
