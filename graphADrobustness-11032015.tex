@@ -1,13 +1,8 @@
 %%% 05-06-2015 updated from 30-04-2015 updated from 02-15-2015
 %%% Post reviewers decision for NBA journals
 \documentclass[12pt,a4paper]{article}
-\newcommand{\myreferences}{C:/Users/Jaime/Documents/GitHub/bibliography-jgr/bibliojgr}
+%\newcommand{\myreferences}{C:/Users/Jaime/Documents/GitHub/bibliography-jgr/bibliojgr}
 \usepackage{subfigure}
-
-%\usepackage[hang]{footmisc}
-%\pagenumbering{arabic}
-%\setlength{\footnotemargin}{0pt}
-%\usepackage{footmisc,multicol, graphicx,makeidx,courier,helvet}
 \usepackage[T1]{fontenc}
 \usepackage[]{inputenc}
 \usepackage{amssymb,amsmath} 
@@ -20,8 +15,6 @@
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{textcomp}  %for degree symbol
-%\usepackage{apacite}
-%\usepackage{babel}
 
 \newcommand*{\addheight}[2][.5ex]{%
 \raisebox{0pt}[\dimexpr\height+(#1)\relax]{#2}%
@@ -45,7 +38,7 @@
 \author[2,4]{Yujie Li}%\thanks{liyj596@mail.ccnu.edu.cn}}
 \author[3]{Qiong Wu}%\thanks{gen421111@s.okayama-u.ac.jp}}
 %\author[3]{Xiaoyu Tang\thanks{D.D@university.edu}}
-\author[3,5]{Jinglong Wu}%\thanks{wu@mech.okayama-u.ac.jp}}
+\author[5,3]{Jinglong Wu}%\thanks{wu@mech.okayama-u.ac.jp}}
 \affil[1]{The Hospital for Sick Children, Department of Neuroscience and Mental Health, University of Toronto, Bay St. 686, Toronto, Canada}
 \affil[2]{Key Laboratory of Adolescent Cyberpsychology and Behavior (CCNU), Ministry of Education, Wuhan 430079, China}
 \affil[4] { School of Psychology, Central China Normal University, Wuhan 430079, China}
@@ -65,12 +58,6 @@ perturbations, in resting state functional connectivity networks (rs-fMRI) in yo
 We apply analytic measures of network communication efficiency in the human brain to make reasonable guesses about  compensatory mechanisms elicited in aging. 
 Specifically, we quantify the effect of "lesioning" (node cancelling) of either single regions-of-interest (ROI) or whole networks on global connectivity metrics  (i.e., efficiency).
 We find that young individuals are more resilient than old ones to random "lesioning" of brain areas, global network efficiency is over 3 times lower in older subjects relative to younger subjects. On the other hand, the "lesioning" of central and limbic structures in young subjects yield a larger efficiency loss than in older individuals. Overall our study shows a more idiosyncratic response to specific brain network "lesioning" in elder compared to young subjects, and that young adults are more resilient to random deletion of single nodes compared to old adults.}
-%The main finding was that the effects of node cancelling were very different in each group. For this purpose, they evaluated the amount of global efficiency before and after this 'functional intervention'.
-%Then, they investigated the effect of zeroing some nodes or entire subnetworks from the whole brain.
-%We investigate the effect of the lesioning of either indiviudual brain regions and networks of regions in young and elder subjects. 
-%Resiliency in elder is network specific 
-%\keywords{resting state fMRI, network degeneration hypothesis, Markov chain,
-%relative entropy}
 
 \section{Introduction}
 %i.Relevance of RS 
@@ -101,7 +88,6 @@ the other hand, is a model-free approach that allows separating resting
 fluctuations from other signal variations, resulting in a collection of spatial
 maps, one for each independent component, that represent functionally relevant networks in the brain
 \cite{calhoun_review_2009}.
-%Bad sentence, improve style
 While ICA has the advantage over the parametric approach that it does not need to
 assume a specific temporal model of correlation between regions of
 interest, the functional relevance of the different components is, however,
@@ -109,8 +95,8 @@ computed relative to their resemblance to a number of networks, based on
 criteria that are not easily formalized \cite{biswal_toward_2010}.
 
 %Graph-based 3ra via 
-A third approach, complementary to the other two, that is becoming of paramount importance is the network-based approach. Graph-based techniques provide new
-insights into the structure function relationship in the healthy brain, aging and neuropathological disorders \cite{fair_functional_2009}, 
+A third approach, complementary to the other two that is becoming of paramount importance is the network-based approach. Graph-based techniques provide new
+insights into the structure-function relationship in the healthy brain, aging and neuropathological disorders \cite{fair_functional_2009}, 
 \cite{wang_graph-based_2010}, \cite{he_graph_2010}, \cite{wang_graph_2011}, \cite{yu_altered_2011}, \cite{brier_functional_2014}, \cite{sala-llonch_changes_2014}. 
 The use of graph theoretic techniques to model brain networks has shifted the 
 emphasis from the identification of local subnetworks -default mode network,
@@ -126,12 +112,10 @@ non-trivial topological properties of functional networks in the human brain.
 Large-scale anatomical
 connectivity analysis in the mammalian brain, shows that brain topology is
 neither random nor regular. Instead, small world
-architectures \cite{Watts:1998} -highly clustered nodes connected thorough
-relatively short paths- have been identified in brain networks. 
-%\cite{Vaessen:2010}.
-Small world networks are not solely
-structural, functional networks with a small world organization have been
-identified in the mammal brain \cite{Bassett:2006}. Small world network properties have also been consistently found across different
+architectures -highly clustered nodes connected thorough
+relatively short paths- have been identified in both structural and functional brain networks  \cite{Watts:1998}, \cite{Bassett:2006}.
+
+Small world network properties have also been consistently found across different
 conditions, including normal development, aging, and
 in various pathological conditions \cite{wang_graph-based_2010}, \cite{anderson_decreased_2013}, \cite{stam_modern_2014}. 
 %http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3604768/
@@ -143,25 +127,24 @@ architecture of resting state can give clues about
 normal development and pathological conditions. For example, Supekar and
 colleagues \cite{Supekar:2008} have shown that the deterioration of small world
 properties such as the lowering of the cluster coefficient, affect local
-network connectivity, which in turn may work as a network biomarker for
+network connectivity which in turn may work as a network biomarker for
 Alzheimer's disease. Abnormalities in small-worldness may also have a
 significant positive correlation in, for example, schizophrenia
 \cite{liu_disrupted_2008} and epilepsy \cite{liao_altered_2010}, \cite{zhang_altered_2011}.
 
 %Transport efficiency
 Transport network efficiency measures have been used to study the relationship between structural and resting state functional connectivity \cite{goni_resting-brain_2014}. 
-The effects of lesioning in white matter connections can be studied via the simulation of the removal of individual connections from the connectome. Irimia and Van Hornreport \cite{irimia_systematic_2014}, using this technique, have been able to delineate "a core scaffold" or white matter network connections that when disrupted, trigger dramatic changes in the overall organization of the human connectome.   
+The effects of lesioning in white matter connections can be studied via the simulation of the removal of individual connections from the connectome. Irimia and Van Hornreport \cite{irimia_systematic_2014} using this technique, have been able to delineate "a core scaffold" or white matter network connections that when disrupted, trigger dramatic changes in the overall organization of the human connectome. However, a systematic study of the effects of simulated lesioning in rs-fMRI is still missing. 
+In this paper we try to fill this gap, providing efficiency and robustness measures to quantify the impact of simulated lesioning.
 
-A systematic study of the effects of simulated lesioning in rs-fMRI is still missing. 
-In this paper we try to fill this gap, providing efficiency and robustness measures to quantify the impact of simulated lesioning  based on \cite{latora_efficient_2001}.
-Aging is a complex physiological process with multiple temporal and spatial scales and it is unrealistic to expect any all encompasing predictive model. However, a common finding is that older subjects present reduced functional connectivity compared to young adults. We will try to replicate this finding and go beyond, by identifying the brain networks that when disconnected from the rest of the brain, result in dramatic/mild efficiency loss in transmitting information. 
-Previous studies have shown that modularity in both young and elderly condition is not random \cite{meunier_age-related_2009}, \cite{song_age-related_2014}. Nevertheless, a general picture of how normal aging affects network efficiency is missing. Here, we explore the hypothesis that normal aging brain is associated with changes in network efficiency. 
-%We provide a metric to analyze how efficiency in functional connectivity is affected by aging. 
-We investigate the hemispheric asymmetry reduction hypothesis, studying the effects of lesioning hemispheres separately in older compared to young adults.  
+Aging is a complex physiological process with multiple temporal and spatial scales and it is unrealistic to expect any all encompasing predictive model of aging. Nevertheless, a common finding is that older subjects present reduced functional connectivity compared to young adults. We will try to replicate this finding and go beyond, identifying the brain networks that when disconnected from the rest, result in dramatic/mild efficiency loss in transmitting information. 
+
+Previous studies have shown that modularity in both young and elderly condition is not random \cite{meunier_age-related_2009}, \cite{song_age-related_2014}. Nevertheless, a general picture of how normal aging affects network efficiency is missing. Here, we explore the hypothesis that normal aging  is associated with changes in network efficiency. 
+We investigate the hemispheric asymmetry reduction hypothesis \cite{cabeza_aging_2002}, studying the effects of lesioning hemispheres separately in older compared to young adults.  
 
 The rest of the paper is structured as follows. Section \ref{mat-methods} introduces the 
 methodology followed in the data acquisition and reconstruction, data
-pre-processing, and data connectivity analysis in the young and elder conditions. Then, we build a model to study quantitatively how network robustness is affected upon the removal of both nodes and specific networks as well as edges in both conditions. The simulations of the model are shown in Section \ref{results}. The empirical and clinical implications of the model are discussed in Section \ref{discussion}. 
+pre-processing, and data connectivity analysis in the young and elder conditions. Then, we build a model to study quantitatively how network robustness is affected upon the removal of either nodes and specific networks as well as edges in both conditions. The simulations of the model are shown in Section \ref{results}. The empirical and clinical implications of the model are discussed in Section \ref{discussion}. 
 
 \section{Materials and Methods}
 \label{mat-methods}
@@ -174,11 +157,11 @@ The study was approved by the ethics
 committee of Okayama University, and written informed consent was obtained before the study. All subjects were imaged using a 1.5 T Philips scanner vision whole-body MRI system (Okayama University Hospital, Okayama, Japan), which was equipped with a head coil. Functional MR images were acquired during rest when subjects were
  instructed to keep their eyes closed and not to think of anything in
  particular. The imaging area consisted of 32 functional gradient-echo planar
- imaging (EPI) axial slices (voxel size=3x3x4 mm3, TR=3000 ms, TE=50 ms,
- FA=90$^\circ$, acquisition matrix=80x79, FOV=240x240 mm2, slice thickness=4 mm, gap=0.5 mm) that were used to obtain T2*-weighted fMRI images in the
+ imaging (EPI) axial slices (voxel size = 3x3x4mm$^3$, TR = 3000ms, TE = 50ms,
+ FA = 90$^\circ$, acquisition matrix = 80x79, FOV = 240x240mm$^2$, slice thickness=4mm, gap=0.5mm) that were used to obtain T2*-weighted fMRI images in the
  axial plane. We obtained 176 functional volumes and excluded the first 4 scans
  from analysis. After the EPI scan, a T1-weighted 3D magnetization-prepared
- rapid acquisition gradient echo (MP-RAGE) sequence was acquired (TR=9.4 ms, TE=4.6 ms, FA=10$^\circ$, acquisition matrix=240x240, voxel size=1x1x1 mm3, 200 contiguous axial slices).
+ rapid acquisition gradient echo (MP-RAGE) sequence was acquired (TR = 9.4ms, TE = 4.6ms, FA=10$^\circ$, acquisition matrix= 240x240, voxel size = 1x1x1mm$^3$, 200 contiguous axial slices).
 
 \subsection{Data preprocessing} 
 Data were preprocessed using Statistical Parametric Mapping software SPM8
@@ -186,10 +169,10 @@ Data were preprocessed using Statistical Parametric Mapping software SPM8
 \footnote{http://restfmri.net/forum/index.php}. To correct for differences in
 slice acquisition time, all images were synchronized to the middle slice.
 Subsequently, images were spatially realigned to the first volume due to head
-motion. None of the subjects in both conditions had head movements exceeding 2.5 mm on any axis or
+motion. None of the subjects in both conditions had head movements exceeding 2.5mm on any axis or
 rotations greater than 2.5\textdegree. After the correction,  the imaging data were
 normalized to the Montreal Neurological Institute (MNI) EPI template supplied
-with SPM8 (resampled to 2x2x2 mm$3$ voxels) \footnote{http://imaging.mrc-cbu.cam.ac.uk/imaging/Templates}. In order to avoid introducing artificially local spatial correlation, the normalized images were
+with SPM8 (resampled to 2x2x2mm$^3$ voxels) \footnote{http://imaging.mrc-cbu.cam.ac.uk/imaging/Templates}. In order to avoid introducing artificially local spatial correlation, the normalized images were
 not smoothed. Finally, the resulting data were temporally band-pass filtered
 (0.01-0.08 Hz) to reduce the effects of low-frequency drifts and high-frequency
 physiological noises \cite{jiao_granger_2011}.
@@ -200,8 +183,9 @@ the estimated head motion parameters, the global brain signal and the average
 time series in the cerebrospinal fluid and white matter regions were removed
 from the data through linear regression. It ought to be noted that Murphy and colleagues in \cite{murphy_impact_2009}  
 have pointed out that global signal removal may artificially introduce anti-correlated networks. 
-The effect of the removal of the global signal on resting state correlation maps have been examined by Fox and colleagues \cite{fox_global_2009}, reaching to the conclusion that several characteristics of anticorrelated networks are not attributable to global signal removal and therefore suggesting a biological basis for those anticorrelations.  
-The fMRI data were parcellated into 90 regions using an automated anatomical labeling template (AAL) \cite{tzourio-mazoyer_automated_2002}. For each subject, the mean time series of each region was obtained by simply
+The effect of the removal of the global signal on resting state correlation maps have been examined by Fox and colleagues \cite{fox_global_2009}, reaching to the conclusion that several characteristics of anticorrelated networks are not attributable to global signal removal and therefore suggesting a biological basis for those anticorrelations. 
+
+The fMRI data were parcellated into 90 regions using the automated anatomical labeling template (AAL) \cite{tzourio-mazoyer_automated_2002}. For each subject, the mean time series of each region was obtained by simply
 averaging the time series of all voxels within that region.
 
 \subsection{Brain network construction} 
@@ -214,13 +198,13 @@ the possible $4005=\frac{90x89}{2}$ pairwise correlations across subjects
 to examine whether each inter-regional correlation significantly differed from
 zero. 
 A Bonferroni-Holm correction for multiple comparisons was
-further used to threshold the correlation matrix into an adjacency matrix M. $M(i,j) =1$ if there is a significant correlation between brain regions $i$ and $j$ and $M(i,j) =0$, otherwise (Figure \ref{fig:adjmat}). Finally, an undirected binary graph was acquired in which nodes represent brain regions and edges represent links between regions.
+further used to threshold the correlation matrix into the adjacency matrix M shown in Figure \ref{fig:adjmat}. Finally, an undirected binary graph was acquired in which nodes represent brain regions and edges represent links between regions.
 
 \subsection{Information Efficiency}
 \label{ss:nrobeffvul}
 %Distance related measures (Network Efficiency and Network Vulnerability)
 A quantitative understanding of network robustness, that is, functional
-network invariance under perturbation can shed light on 
+network invariance under perturbation, can shed light on 
 the properties that mediate in developmental, aging and pathological processes
 in the human brain. In essence, robustness measures the capacity of the network to
 perform the same function before and after a perturbation. Perturbations are
@@ -230,8 +214,7 @@ connectivity between nodes.
 %Here we perform perturbations that consist on the obliteration of one or more nodes together with and all the edges that connect the lesioned node.
 
 The efficiency of a network is a network centrality
-measure that quantifies the network's reliability in transmitting information. It follows that the  efficiency loss after the removal of a
-node or a set of nodes is the normalized difference in network efficiency before and after the intervention.
+measure that quantifies the network's reliability in transmitting information. 
 Latora and Marchiori \cite{latora_efficient_2001} proposed a measure of network
 efficiency defined as the efficiency in transmitting information 
 between any two nodes $(i,j)$ in a graph G as the inverse of the shortest path that
@@ -256,13 +239,14 @@ between any two nodes $\varepsilon_{ij}$
 where $N$ is the number of nodes. 
  
 We can calculate
-the information centrality $C$ of any node i in a network G as the variation
+the  \emph{information centrality} $C$ 
+of any node i in a network G as the variation
 in the network efficiency caused by the removal of the edges incident in i. Thus, the
 information centrality of a node i, $C_i$, is the difference between the
 efficiency of the original network G with N nodes and E edges, $G(N,E)$, and the
 efficiency of the resulting graph $G(N-i,E-k_i)$ with $N-i$ nodes and $E-k_i$ edges, where
 $k_i$ denotes the set of edges incident to node i. The centrality of a
-node is a normalized measure of the loss in network efficiency, caused by the isolation of a node in G. Formally,
+node is a normalized measure of the loss in network efficiency, caused by the isolation of a node in G. Thus, the centrality of node i or the \emph{efficiency loss} after the disconnection of node i is
 
 \begin{equation}
 C_i=\frac {\Sigma(G(N,E)) - \Sigma(G(N-i,E-k_i))} {\Sigma(G(N,E))} 
@@ -271,8 +255,9 @@ C_i=\frac {\Sigma(G(N,E)) - \Sigma(G(N-i,E-k_i))} {\Sigma(G(N,E))}
 
 From equation \ref{eq:centr}, a network $G$ is considered to be robust to
 a perturbation if the network efficiency, $\Sigma(G)$, 
-stays close to the original value after a perturbation. Ideally $\Sigma(G(N,E)) = \Sigma(G(N -i,E-k_i))$
+stays close to the original value after a perturbation. Ideally, $\Sigma(G(N,E)) = \Sigma(G(N -i,E-k_i))$
 with efficiency loss or centrality of node i equals to 0.
+
 By the same token, the information centrality of a set of nodes $S$ or the efficiency loss upon the removal of $S$, can be calculated as the normalized measure of the loss in network efficiency caused by the isolation of a set of nodes S in G.
 
 \begin{equation}
@@ -284,12 +269,10 @@ C_S=\frac {\Sigma(G(N,E)) - \Sigma(G(N-S,E-k_S)) } {\Sigma(G(N,E))}
 \label{results}
 
 % random 
- The global network efficiency for unperturbed networks as defined in Equation \ref{eq:latm} is
- 0.3678 for young subjects and 0.1144 for elder subjects. Thus, young subjects
- connectivity network is a bit more than three times more efficient in terms of the shortest
- path distance between any two nodes \ref{fig:adjmat}.
+ The global network efficiency for unperturbed networks as defined in equation \ref{eq:latm} is
+ 0.3678 for young subjects and 0.1144 for elder subjects. Thus, young subjects connectivity network is slightly more than three times more efficient in terms of the shortest path distance between any two nodes as calculated in equation \ref{eq:latm}.
 
-In order to obtain the efficiency measures described in Equations \ref{eq:centr} and \ref{eq:centrS}, we perturb the resting state network in three ways. First, using random single node deletion (Section \ref{ss:single}),  second targeting specific networks of interest (Section \ref{ss:target}) and third the efficiency loss after lesioning edges (Section \ref{ss:edges}). 
+In order to obtain the efficiency measures described in equations \ref{eq:centr} and \ref{eq:centrS}, we perturb the resting state network in three ways. First, using random single node deletion (Section \ref{ss:single}),  second targeting specific networks of interest (Section \ref{ss:target}) and third the efficiency loss after lesioning edges (Section \ref{ss:edges}). 
 
 \begin{figure}[H]
     \subfigure[\label{subfig-1:dummy}]{%
@@ -300,8 +283,7 @@ In order to obtain the efficiency measures described in Equations \ref{eq:centr}
       \includegraphics[width=0.515\textwidth,height=0.515\textheight,keepaspectratio]{figures/oldadjmatrix.pdf}
     }
     \caption{\small (a) Adjacency matrix in the young condition.   
-  \small (b) Adjacency matrix old condition. The red dots prepresent connections between two nodes. The 
-  number of edges in the young condition is 718 and in the young condition is 308, the average degree connectivity are 8.97 and 4.42 respectively.}
+  \small (b) Adjacency matrix old condition. The adjacency matrix $M(i,j) =1$ if there is a significant correlation between brain regions $i$ and $j$ and $M(i,j) =0$, otherwise The red dots represent connections between two nodes. The number of edges in the young condition is 718 and in the young condition is 308, the average degree connectivity is 8.97 and 4.42, respectively.}
     \label{fig:adjmat}
   \end{figure} 
  
@@ -329,32 +311,35 @@ Similarly, the number of perturbed networks obtained by deleting two nodes in al
 
 We build a distribution of the efficiency measures described in section \ref{eq:latm}
 for both young and elder condition for the systematic removal of one node. Thus, in the young condition, we denote $P_{y, 90}$ the distribution of networks with only one node removed, that is, $P_{y, 90}$ has 90 different networks where for each of of them, one node and its connections have been deleted. 
-The mean of the efficiency measure for $P_{y, 90}$ is 0.358. The removal of node  "Inferior temporal gyrus" (89) has no effect in the efficiency, that is, the network efficiency before and after the removal has identical value. 
+The mean of the efficiency measure for $P_{y, 90}$ is 0.358. 
+%The removal of node  "Inferior temporal gyrus" (89) has no effect in the efficiency, that is, the network efficiency before and after the removal has identical value. 
 %Nodes 35 ("Median cingulate and paracingulate gyri") and 36 ("Posterior cingulate gyrus") have also an extremely mild effect after their removal. 
 %deleted
 %The fact that the PCC had nearly no effect on efficiency (interpreted as those regions having low connectivity degree) is inconsistent with previous work demonstrated that the PCC is one of the most structurally and functionally connected regions in the brain (for example, Crossley, Mechelli et al 2014, Brain). Why is this the case?
 The most significant loss in efficiency occurs with the removal of node 74 ("Lenticular nucleus, putamen") followed by node 31 ("Insula right") . 
 The average efficiency loss in the young condition is $2.44"\%" $ with a maximum of  $4.67"\%" $ for node 74 ("Lenticular nucleus, putamen") and no efficiency loss for node 89 ("temporal pole: middle temporal gyrus") (Figure \ref{fig:boxplot}). The rationale for the different impact in the efficiency caused by the obliteration of certain nodes can be found in the connectivity degree. In general, the nodes that after their removal trigger a low efficiency loss have also low connectivity degree, and those that produce a more pronounced reduction of the network efficiency tend to be more connected (Figure \ref{fig:gauss}, Figure \ref{fig:effloss}). 
 
-Similarly, for the elder condition, we denote $P_{o, 90}$ the distribution of networks with only one node removed in the elder condition. 
+Similarly, for the elder condition, we denote $P_{e, 90}$ the distribution of networks with only one node removed. 
 The mean of the efficiency measure (equation \ref{eq:latm}) for the 90 networks obtained upon single node deletion is $0.109$. As it happened in the young condition, the removal of node 89 ("Temporal pole: middle temporal gyrus") has no effect in the efficiency. 
 Interestingly, the removal of nodes with the lowest connectivity degree (2) have also no quantifiable effect in the network efficiency (Figure \ref{fig:boxplot}). 
 %33,39,63,71,73,75,77,78,80,85 
 
 The most significant loss in efficiency occurs with the removal of node node 62 ("Inferior parietal, but supramarginal and angular gyri"). After the removal of this node, the efficiency loss relative to the original network is the $32.87"\%"$. This is an interesting result since node 62 is not a highly connected node, its connectivity degree is 6. Nodes 24 ("Superior frontal gyrus, medial"), 44 ("Calcarine fissure and surrounding cortex") and 51 ("Middle occipital gyrus") have more connections, connectivity degree 10, and upon their deletion the efficiency loss is not as severe as in the case of node 62. 
-The mean efficiency loss in the elder condition after the removal of a single node is  $4.61"\%"$. The effect in the loss of efficiency triggered by the disconnection of brain areas is more stereotypical i.e., less differentiated  in the elder condition than in young condition, that is, the connectivity degree alone is a much worse predictor of efficiency loss for old than for young subjects (Figure \ref{fig:gauss}, Figure \ref{fig:effloss}).
-This is in agreement with the litterature of functional connectivity in healthy aging. The process of aging underlies global reorganization of brain functional networks that reflect the topological changes observed across the human lifespan \cite{cao_topological_2014}, \cite{song_age-related_2014}.  
+The mean efficiency loss in the elder condition after the removal of a single node is  $4.61"\%"$ (in the young condition is $2.44"\%"$). 
+
+%the loss of efficiency triggered by the disconnection of brain areas is more stereotypical i.e., less differentiated  in the elder condition than in young condition, that is, 
+The connectivity degree alone is a much worse predictor of efficiency loss for old than for young subjects (Figure \ref{fig:gauss} and Figure \ref{fig:effloss}). This is in agreement with the literature of functional connectivity in healthy aging. The process of aging underlies global reorganization of brain functional networks that reflect the topological changes observed across the human lifespan \cite{cao_topological_2014}, \cite{song_age-related_2014}.  
 Furthermore, as shown in \cite{geerligs_brain-wide_2015} brain networks in the elderly showed decreased modularity (less distinct functional networks) and decreased local efficiency.
 %node 24, 0.2892 and the other 2 really small node 44 0.0387, node 51 0.0382
 
 %Figure 2
 \begin{figure}[!ht]
     \subfigure[Young: Network efficiency after one node deletion\label{subfig-1:dummy}]{%
-      \includegraphics[width=0.49\textwidth]{figures/Fig-2-y-boxplot-eff_p.eps}
+      \includegraphics[width=0.50\textwidth]{figures/Fig-2-y-boxplot-eff_p.pdf}
     }
     \hfill
     \subfigure[Old: Network efficiency after one node deletion\label{subfig-2:dummy}]{%
-      \includegraphics[width=0.46\textwidth]{figures/Fig-2-o-boxplot-eff_p.eps}
+      \includegraphics[width=0.479\textwidth]{figures/Fig-2-o-boxplot-eff_p.pdf}
     }
      \subfigure[Young: Degree distribution (X) Efficiency loss (Y)\label{subfig-1:dummy}]{%
       \includegraphics[width=0.49\textwidth]{figures/regressionyoung.pdf}
@@ -363,7 +348,7 @@ Furthermore, as shown in \cite{geerligs_brain-wide_2015} brain networks in the e
     \subfigure[Old: Degree distribution (X) Efficiency loss (Y)\label{subfig-2:dummy}]{%
       \includegraphics[width=0.48\textwidth]{figures/regressionold.pdf}
     }
-    \caption{\small (a) Boxplot of network efficiency after random lesion of individual nodes. Only a very few nodes fall outside the box whose edges are the 25th and 75th percentiles. \small (b) Boxplot of network efficiency after random lesion of individual nodes. More nodes fall outside below the 25th percentile than in the young condition. The distribution in the elder condition is more skewed than in the young condition.\small (c) Degree distribution (x-axis) and efficiency loss or node centrality (y-axis) after single node connectivity removal in the young condition.  
+    \caption{\small (a) Boxplot of network efficiency after random lesion of individual nodes in young subjects. Only a very few nodes fall outside the box whose edges are the 25th and 75th percentiles. \small (b) Boxplot of network efficiency after random lesion of individual nodes  in old subjects. More nodes fall outside below the 25th percentile than in the young condition. The distribution in the elder condition is more skewed than in the young condition.\small (c) Degree distribution (x-axis) and efficiency loss or node centrality (y-axis) after single node connectivity removal in the young condition.  
   \small (d)  Degree distribution (x-axis) and efficiency loss node centrality (y-axis) after single node connectivity removal in the elder condition. Each dot in charts \small (c) and \small (d) represents a node with connectivity degree equals to x that upon its removal produces a variation in the network efficiency equals to y, normalized between 0 (no efficiency loss) and 1 (maximum efficiency loss). The linear regression in the young condition is 0.755 and in the old condition is 0.4002.}
     \label{fig:boxplot}
   \end{figure}
@@ -377,9 +362,9 @@ Furthermore, as shown in \cite{geerligs_brain-wide_2015} brain networks in the e
     \subfigure[Frequency bars for efficiency loss in young (green) and old (blue) for single node removal\label{subfig-2:dummy}]{%
       \includegraphics[width=0.5\textwidth,height=0.5\textheight,keepaspectratio]{figures/lossdistrib-greenisYoung-blueisold.pdf}
     }     
-    \caption{\small (a) Efficiency loss normalized (0,1) due to the removal of each node in both elder and young condition. While in the young condition there are no nodes that upon its removal the efficiency of the resulting network deteriorates drastically, in the elder condition, there are 6 nodes that upon their removal trigger a $20\%$ or more reduction in the network efficiency. Nodes 8 ("Middle frontal gyrus"), $29.7\%$  24 ("Superior frontal gyrus, medial"), $28.9\%$   34 ("Median cingulate and paracingulate gyri"), $27.1\%$  56 ("Fusiform gyrus"),$21.2\%$  62 ("Inferior parietal, but supramarginal and angular gyri"), $32.8\%$  and 64 ("Supramarginal gyrus"), $26.5\%$ of efficiency loss.   
+    \caption{\small (a) Efficiency loss normalized (0,1) due to the removal of single nodes in both conditions. While in the young condition there are no nodes that upon its removal the efficiency of the resulting network deteriorates drastically, in the elder condition, there are 6 nodes that upon their removal trigger a $20\%$ or more reduction in the network efficiency. The efficiency loss of node 8 ("Middle frontal gyrus"), $29.7\%$, node 24 ("Superior frontal gyrus, medial"), $28.9\%$, node 34 ("Median cingulate and paracingulate gyri"), $27.1\%$, node 56 ("Fusiform gyrus"),$21.2\%$, node 62 ("Inferior parietal, but supramarginal and angular gyri"), $32.8\%$ and node 64 ("Supramarginal gyrus"), $26.5\%$.   
   \small (b) Distribution of efficiency loss after node removal in both young (green histogram) and elder condition (blue histogram). The efficiency loss in the young condition is narrow. The elder condition, on the other hand, has a more spread distribution of efficiency values. 
-The range in efficiency loss in the young condition varies a $4.67\%$ and in the elder condition varies a $32.87\%$}
+The spread or difference between maximum and minimum efficiency loss in efficiency loss among nodes is $4.67\%$ for young subjects and $32.87\%$ for old subjects.}
     \label{fig:gauss}
   \end{figure} 
 
@@ -399,7 +384,7 @@ The range in efficiency loss in the young condition varies a $4.67\%$ and in the
 
 \subsection{Efficiency after target networks lesioning}
 \label{ss:target}
-So far, we have quantified the efficiency loss due to the removal of single nodes, in this section we investigate how the efficiency measure is affected by the removal of entire networks of interest. In particular, we study the efficiency loss of eight different brain networks, namely, the Default Mode Network (DMN), temporal lobe, frontal lobe, insula and cingulate gyrus, occipital lobe, parietal lobe, central structures and limbic structures (Figure \ref{fig:targetbn}).
+So far, we have quantified the efficiency loss due to the removal of single nodes, in this section we investigate how the efficiency measure is affected by the removal of entire networks of interest. In particular, we study the efficiency loss of the Default Mode Network (DMN), temporal lobe, frontal lobe, insula and cingulate gyrus, occipital lobe, parietal lobe, central structures and limbic structures. The numerical results are displayed in table \ref{tab:nodesn} and brain connectivity is shown in figure \ref{fig:targetbn}).
  
 %%Hypothesis testing
 The DMN is commonly considered to consist of medial prefrontal cortex
@@ -416,10 +401,8 @@ The strong efficiency reduction associated with the lesioning of the DMN in old 
 %http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4392680/
 %The vision-related brain regions (hereafter called Visual) in the AAL template include left and right calcarine fissure and surrounding cortex (Nodes 45,46), left and right lingual gyrus (Nodes 47,49), left and right superior occipital gyrus (Nodes 49,50), left and right middle occipital gyrus (Nodes 51, 52), left and right inferior occipital gyrus (Nodes 53, 54), left and right fusiform gyrus (Nodes 55, 56), left and right superior parietal gyrus (Nodes 59,60), and right inferior temporal gyrus (Nodes 89, 90). The removal of the Visual network in young adults triggers an efficiency loss of the $38.93\%$ while in the elder condition the same procedure yields a $55.98\%$. 
 The removal of the frontal lobe, the parietal lobe and the temporal lobe have as well a larger impact in the elder condition than in the young condition. 
-Interestingly, we have identified three brain networks in which the lesioning in young individuals has a larger impact compared to old subjects. The lesioning of the occipital lobe trigger a slightly lower efficiency loss value in the old condition compared to the young condition. More interestingly is the lesioning of the limbic structures and the central structures. The efficiency loss for these structures shows a distinct diference between young and old individuals with larger values for the former. The minor impact of the lesioning of central and limbic structures in the old condition is conforming with the literature that shows degradation of fronto-stratial network in aging \cite{salami_elevated_2014} and the break-down between the hipocampal regions and the DMN \cite{fjell_brain_2015}. 
+Interestingly, we have identified three brain structures in which the lesioning in young individuals has a larger impact compared to old subjects. The lesioning of the occipital lobe trigger a slightly lower efficiency loss value in the old condition compared to the young condition. More interestingly is the lesioning of the limbic structures and the central structures. The efficiency loss for these structures shows a distinct difference between young and old individuals with larger values for the former. The minor impact of the lesioning of central and limbic structures in the old condition is conforming with the literature that shows degradation of fronto-stratial network in aging \cite{salami_elevated_2014} and the break-down between the hipocampal regions and the DMN \cite{fjell_brain_2015}. 
 
-%The degradation of fronto-striatal network in task studies has been suggested to be a driving force of memory decline in aging. The connectivity of fronto-striatal pathways are also related to self-esteem \cite{fjell_brain_2015}. The removal of fronto-striatal edges in the young condition the removal of edges that connect the frontalstratium pathways gives a reduction of efficiency of $0.37\%$. In the old condition, there are no  edges connecting fronto-stratial areas and therefore there is no efficiency loss associated to this lesioning.  
-%Frontostriatal circuits are neural pathways that connect frontal lobe regions with the basal ganglia (striatum) that mediate motor, cognitive, and behavioural functions within the brain. 
 \begin{figure}[!ht]
     \caption{Connectivity network for target network removal in both conditions.}%(Table \ref{tab:nodesn}) }
 
@@ -485,7 +468,7 @@ Frontal Lobe & 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 51 52 & $42.83\%$& $
      Limbic structures (hippocampus, parahippocampus, amygdala) & 37 38 39 40 41 42 & $9.30\%$& $1.40\%$\\
      \bottomrule
 \end{tabularx}
-\caption{The table shows the efficiency loss after the disconnection of different brain structures in both conditions. Interestingly, the reduction in efficiency is not always more pronounced in the elder condition. For example, the disconnection of the central structures (caudate nucleus, putamen, pallidum and thalamus) triggers a larger efficiency disruption in young than in old individuals. A similar situation, larger efficiency loss in young compared old condition, also occurs with the disconnection of the limbic structures (hippocampus, parahippocampus and amygdala) and the occipital lobe areas. The table shows the efficiency loss in both young and old condition when target networks are lesioned. The lesion consists on the obliteration of the nodes defined in the second column. The efficiency loss is larger in old adults with the exception of the occipital lobe, the central structures and the limbic structures. The reduction of efficiency in the central structures is particularly interested since in the old condition it yields only a $3.16\%$ reduction in efficiency while in the young condition the efficiency loss for the same lesioning yields a reduction of $23.01\%$.}
+\caption{The table shows the efficiency loss after the disconnection of different brain structures in both conditions. Interestingly, the reduction in efficiency is not always more pronounced in the elder condition. For example, the disconnection of the central structures (caudate nucleus, putamen, pallidum and thalamus) triggers a larger efficiency disruption in young than in old individuals. A similar situation, larger efficiency loss in young compared old condition, also occurs with the disconnection of the limbic structures (hippocampus, parahippocampus and amygdala) and the occipital lobe areas. The table shows the efficiency loss in both young and old condition when target networks are lesioned. The lesion consists on the obliteration of the nodes defined in the second column. The efficiency loss is larger in old adults with the exception of the occipital lobe, the central structures and the limbic structures. The reduction of efficiency in the central structures is particularly interesting since in the old condition it yields only a $3.16\%$ reduction in efficiency while in the young condition the efficiency loss for the same lesioning yields a reduction of $23.01\%$.}
 \label{tab:nodesn}
 \end{table}
 
@@ -493,23 +476,22 @@ Frontal Lobe & 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 51 52 & $42.83\%$& $
 \subsection{Efficiency after target networks lesioning of edges}
 \label{ss:edges}
 %Lesion of edges
-To test the hypothesis that that the relationship between the hippocampus and the DMN tends to break down with age we need to lesion the edges that connect these brain structures rather than nodes as we have done in the previous sections. 
+To test the hypothesis that that the relationship between the hippocampus and the DMN tends to break down with age, we need to lesion the edges that connect these brain structures rather than nodes as we have done in the previous sections. 
 Salami et al. show that \cite{salami_elevated_2014} elevated hippocampal activity at rest may lower the degree to which the hippocampus interacts with other regions during memory tasks, and thus results in memory deficits. However, this view is not uncontested and in \cite{Damoiseaux_2015} it is suggested that connectivity between left and right hippocampus is negatively related to age.
 %https://ww4.aievolution.com/hbm1501/index.cfm?do=abs.viewAbs&abs=4088
-In our study the efficiency loss produced by the disconnection of the left and the right side of hippocampal and parahippocampal areas does not yield a reduction of efficiency loss since these areas are not connected in the old subjects (Table \ref{tab:edges}) 
+In our study the efficiency loss produced by the disconnection of the left and the right side of hippocampal and parahippocampal areas does not yield a reduction of efficiency loss since these areas are not connected in the old subjects (Table \ref{tab:edges}). 
+%We found no significant effect of age on DMN inter-connectivity ($0.16\%$ of efficiency loss in young subjects and $0.9\%$ in old subjects upon the disconnection of DMN areas in different hemispheres). 
 
-We apply the efficiency measure for lesioning of edges and we found no significant effect of age on DMN inter-connectivity ($0.16\%$ of efficiency loss in young subjects and $0.9\%$ in old subjects upon the disconnection of areas in different hemispheres).   
-%Hypothesis testing: Asymmtry
-We test the asymmetry hypothesis by which brain activity shows a more balance activity among the two hemispheres with age, that is, the hypothesis predicts that in young individuals brain activity is more asymmetric than in old individuals. To test it, we lesion sequentially the left and the right hemisphere and we calculate the efficiency loss for each case. The asymmetry hypothesis summons that in young individuals the difference in efficiency loss for disconnecting the hemispheres is expected to be larger than in the old condition. Aging thus, tries to compensate the reduction of activity level, for example in the DMN, by balancing the activity across the brain. 
+We test the asymmetry hypothesis by which brain activity shows a more balance activity among the two hemispheres with age, that is, the hypothesis predicts that in young individuals, brain activity is more asymmetric than in old individuals. The asymmetry hypothesis summons that in young individuals the difference in efficiency loss for disconnecting the two hemispheres is expected to be larger than in the old condition. The rationale behind the hypothesis is that during aging the brain tries to compensate the reduction of activity level, for example in the DMN, by balancing activity across the brain. 
 %delete all odds, delete all even, Distance
-We see, on the contrary, that if one of the two hemispheres is entirely lesioned, the efficiency loss in young adults is $75.32\%$ when the left side is lesioned and $77.01\%$ when the right side is gone. 
+In young adults, we find that if one of the two hemispheres is entirely lesioned (all areas of one hemisphere are unreacheable from the opposed hemisphere) the efficiency loss is very similar. Precisely, the efficiency loss  when the left side is lesioned is $75.32\%$ and when the lesioning occurs in the right side the efficiency loss is $77.01\%$. 
 %The difference is 0.0169.
 In old subjects, the lesioining of the right side has a more pronounced impact in the efficiency loss, $91.21\%$ for the removal of the right side and $70.89\%$ for the removal of the left side. 
 %The differece is 0.2032.  
 This result is consistent with the HAROLD (hemispheric asymmetry reduction in older adults) model proposed by  
 Cabeza \cite{cabeza_aging_2002}. The difference in efficiency loss in old subjects after entire hemispheral disconnection 
 is 10 times larger ($\sim 20\%$) than in the young subjects ($\sim 2\%$) indicates that old subjects are more sensitive or less robust to unilateral disruptions because aging process tend to reduce hemispheric asymmetry.
-We hypothesize that a process of de-differentiation may be a key mechanism to explain age-related hemispheric asymmetry reductions. As it was already mentioned in section \ref{ss:single}  the efficiency loss triggered by the disconnection of brain areas is more stereotypical (less differentiated) in the elder condition than in young condition.
+Based on this results, we hypothesize that a process of de-differentiation may be a key mechanism to explain age-related hemispheric asymmetry reductions. As it was already mentioned in section \ref{ss:single}  the efficiency loss triggered by the disconnection of brain areas is more stereotypical (less differentiated) in the elder condition than in young condition.
 
 \begin{table}[!htbp]
 \centering%
@@ -541,35 +523,29 @@ The literature reviewed here suggests that graph-based network
 analyses are capable of uncovering system-level changes associated with
 aging in the resting brain. 
 %A new theoretical framework to investigate network invariance under perturbation and how it is affected by internally driven processes such as aging is provided.
-We have analyzed the functional connectivity in resting state using a perturbational approach consisting on either the systematic removal of single nodes and the removal of entire networks of interest such as the DMN and others. We have computed the loss in network efficiency upon the lesioning of brain areas.
+We have analyzed the functional connectivity in resting state using a perturbational approach consisting on either the systematic removal of single nodes and the removal of entire networks of interest such as the DMN and others, and we have computed the loss in network efficiency.
+
 %Random removal 1 node
 Our results expand previous works on the study of robustness of
 structural brain networks. %
 Interestingly, we find that the distribution of network efficiency in the young and the elder condition show very different signatures. This is consistent with existing evidence \cite{meunier_age-related_2009} that both young and elderly conditions show non random modularity and that normal aging brain is associated with changes in modularity \cite{song_age-related_2014}.
 
-The functional resting state network in young adults is more robust to random node removal than in elder subjects. The efficiency loss in young subjects, upon the removal of single nodes is always below the $5\%$, while in the elder condition the removal of individual nodes may yield a dramatic reduction of the network efficiency (max $32.87\%$).
+The efficiency loss in young subjects, upon the removal of single nodes is always below the $5\%$, while in the elder condition the removal of individual nodes may yield a dramatic reduction of the network efficiency (maximum of $32.87\%$).
 The young adults are, thus, more robust to random deletion of single nodes. However, when the lesioning is focused in specific brain networks rather than single regions, the efficiency loss for young subjects is in occassions higher than when the same damage is done in old subjects. For example, the disconnection of the occipital lobe, limbic structures and central structures yield larger efficiency loss in the young condition. This result is compatible with previous studies in normal healthy aging that show an increase in functional connectivity in the sensorimotor network and a decrease in resting state networks, including the DMN \cite{song_age-related_2014}.
 The continuum decrease in DMN functional connectivity found from normal aging to mild cognitive impairment and to Alzheimer's disease (AD) can be quantitatively studied. The lowering of DMN activity is associated with better performance on attention-demanding tasks, and DMN hyperactivity is being related to negative rumination and depression \cite{whitfield-gabrieli_default_2012}.    
 
 We replicate the common finding that older subjects present reduced functional connectivity compared to young adults \cite{sala-llonch_changes_2014}. Healthy normal aging is associated with cognitive decline and the functional disconnection observed here and other studies might play an important role \cite{ferreira_resting-state_2013}, \cite{dennis_functional_2014}.  
-We observe largest values of efficiency loss in old adults compared to young adults in the Default-Mode-Network and the frontal lobe (Table \ref{tab:nodesn})
-This is consistent with the compensation hypothesis in healthy aging which states that older adults brains compensate for the overall functional deficits by increasing the activity levels in some areas. In this view, the DMN is a highly susceptible system in healthy aging \cite{betzel_changes_2014}, \cite{onoda_decreased_2012}.  Increased activity is being observed in frontal regions as a reorganization process mediated by healthy normal aging \cite{cabeza_aging_2002}, \cite{park_adaptive_2009}   
+We observe largest values of efficiency loss in old adults compared to young adults in the Default-Mode-Network and the frontal lobe (Table \ref{tab:nodesn}).
+This is consistent with the compensation hypothesis in healthy aging which states that older adults brains compensate for the overall functional deficits by increasing the activity levels in frontal regions, as part of a reorganization process mediated by healthy normal aging \cite{cabeza_aging_2002}, \cite{park_adaptive_2009}. In this view, the DMN is a highly susceptible system in healthy aging \cite{betzel_changes_2014}, \cite{onoda_decreased_2012}. 
 
 Can efficiency loss be used as a predictor of brain network differential activity? 
-To address this question further work is we needed in order to properly address the compatibility of informational efficiency with non parametric classifiers. 
 Vergun et al. \cite{vergun_characterizing_2013} applied a Support Vector Machine (SVM) linear classifier to rs-fMRI data in order to compare age-related differences in four of the major functional brain networks: the default, cingulo-opercular, fronto-parietal, and sensorimotor. 
-The classifier was able to detect "connectivity hubs", or nodes with the most significant features that influenced age classification. 
-%The best predictors of age based on SVM are not coincident with the best predictors in age using the efficiency loss method. 
-%YOSOLO atlas boundaries agreement meta studies classifier with metatalases 
-%, and replicate our results with different imaging techniques
-%Hypothesis testing: SVM
+The classifier was able to detect "connectivity hubs", or nodes with the most significant features that influenced age classification. More work is however needed in order to properly address the compatibility of informational efficiency measures with non parametric classifiers. 
 
-With this work we expect to pave the way for future works to establish a link between pathological lesions and
-the topological centrality and efficiency measures provided here. Informational efficiency measures may also shed light on the dynamics and control of resting state networks in mental disorders. A natural continuation of this work is to incorporate a translational outlook to, for example, investigate whether hubs of human brain networks are more likely to be anatomically abnormal than non-hubs in many brain disorders \cite{crossley_hubs_2014}.
-This perturbational approach can also be extended to study the interplay between network efficiency and brain metabolic demand, aiming to identify pathological signatures for early diagnosis in neurodegenerative disorders. The network dynamics associated with different conditions -normal healthy aging, mild cognitive impairment, Alzheimer's disease etc.- can be simulated with the same or similar type of functional intervention proposed here. Interventions other than disconnecting regions of interest or entire subnetworks from the whole brain, may include stress simulations induced by impairment of structural, functional or both connectivity patterns in multimodal imaging models. The computational lesioning of brain foci holds promise for systemic understanding of compensatory mechanisms and other network mechanisms e.g., cascade and contagion effects, under normal and pathological conditions.   
+A natural continuation of this work is to incorporate a translational outlook to, for example, investigate whether hubs of human brain networks are more likely to be anatomically abnormal than non-hubs in brain disorders \cite{crossley_hubs_2014}. Informational efficiency measures may also shed light on the dynamics and control of resting state networks in mental disorders. 
+This perturbational approach can also be extended to study the interplay between network efficiency and brain metabolic demand, aiming to identify pathological signatures for early diagnosis in neurodegenerative disorders. The network dynamics associated with different conditions -normal healthy aging, mild cognitive impairment, Alzheimer's disease etc.- can be simulated with the same or similar type of functional intervention proposed here. Interventions other than disconnecting regions of interest or entire subnetworks from the whole brain, may include stress simulations induced by impairment of structural, functional or both connectivity patterns in multimodal imaging models. The computational lesioning of brain foci holds promise for systemic understanding of compensatory and other network mechanisms e.g., cascade and contagion effects, under normal and pathological conditions.   
 
-\bibliographystyle{plain}
-\bibliography{/Users/jagomez/Eclipse/workspace/bibliojgr/bibliojgr}
-%\bibliography{bibliojgr}
+\bibliographystyle{abbrv}
+\bibliography{C:/Users/Jaime/Documents/GitHub/bibliography-jgr/bibliojgr}
 
 \end{document}
